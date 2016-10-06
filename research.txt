@@ -1,1 +1,37 @@
 // This is a file for research. Put your name and then your research following it
+
+Sara:
+For the skin care app there is this website (http://www.healthcentral.com/skin-care/c/1443/161252/10-skin-care-apps/)
+that introduces 10 apps for skin care. Among these ten there was one that was close to
+shanon's idea:
+Love my Skin:
+
+"An app to promote awareness of skin cancer. You can “tap” on a section of the body 
+to highlight any moles you want to watch in the future.
+ You can enter descriptions and details and then update each time
+ you do a skin self-check, tracking any changes.
+ Available for iPad and iPhone. Free"
+
+Although the idea seems really close it didn't mention anywhere that the app itself
+can actually do image processing.
+There is also another app which is for iphone too named Skin Tracker that 
+I think is exactly what we wanted to make. Here is the link for that:
+https://itunes.apple.com/ca/app/skin-tracker/id497322842?mt=8
+and this was its description:
+
+"Analyse your skin disease by tracking your daily food, medicine, stress-level and feeling. Take photos of the affected 
+areas of your skin and track its development towards total healing. Also see the progress of the disease and the healing 
+process in a graphical analysis. Export the data and take it with you to medical consultations. This app supports you to 
+analyse possible reasons for your skin disease. It is a helpful tracker in case of a dietary change to get your skin cured.
+ The app provides a basic food setup of what might be good for you to eat and what kind of food you should rather avoid."
+
+Both of these apps are for iphone though. Other than these there was a Skin Scan and
+Skin cancer app which were iphone apps too here is the link:(http://internetmedicine.com/dermatology-apps/).
+So maybe we can make an app for android?
+I found this app for android: first derm: Dermatology Online but it basically take pictures
+and send them anonymously to a doctor and see what to do next.
+Of course as the prof said we shouldn't think about the way we are doing it at the first stage but I was just wondering
+if making an android app would be considered as a new product?
+------------------------------------------------------------------------------------------------------------------------------
+
+
