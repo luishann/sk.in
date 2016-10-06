@@ -73,3 +73,28 @@ track of their client’s skin condition.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
+Sebastian:
+I started to do a little bit of user research about what people, in particular millenials, are looking for when they choose between skin products.
+After reading the paper I suggest that we have two different pathways to take in our product.
+1.Most Common Products:
+	We could have a journal for any normal individual who uses facial creams, moisturizers, fairness creams and day/night creams.
+	In order to track their progress and how their skin responds to the different products on a daily basis.
+	These products focus on fighting pimples,stress and worry lines and also wrinkles for ageing population. 
+2.Specialty Products:
+	We could also have a product that helps patients track their progress when they are suffering from a given skin condition.
+	There are many skin illnesses out there that require treatment and doctors are worried about how their patients are doing with the particular product they recommended. 
+	This could be more like integrating the idea I had to bring doctors and patients together, but focusing only on dermathologists and skin cancer or another skin illness.
+	
+
+Opportunities:
+Also, there is a recent trend for men skin care products. Since women have been the main target for these companies now men are getting into the market and keen to spend on skin care.
+So, I would suggest to make the system inclusive for both genders since it can be valuable for both.However men are more drawn to technical functional things, according to the paper. 
+
+
+Another thing that I found interesting is that skin care products have low penetration in urban and rural markets because if its price in most cases but also due to ignorance of the population. 
+
+All this information is taken from: http://www.ccsenet.org/journal/index.php/ijms/article/viewFile/17698/11901
+
+We would want to know what our user group is mostly interested about in terms of tracking products for their day-to-day behaviour
+and how to create a compellng UX that motivates them to use it regularly.
+
