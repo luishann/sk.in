@@ -34,4 +34,27 @@ Of course as the prof said we shouldn't think about the way we are doing it at t
 if making an android app would be considered as a new product?
 ------------------------------------------------------------------------------------------------------------------------------
 
+Nikita:
+
+I think SkinTracker is more of tracker different diseases. Shannon's idea is to track products
+
+The healthcare website  doesn't have any app similiar to  that
+
+Shannon idea  is to track different products for a given disease and rank them accordingly. 
+
+This website has points which we should consider for tracking products 
+http://www.paulaschoice.com/expert-advice/skin-care-basics/_/stopping-unwanted-reactions-to-skincare-products
+
+In terms of deliverable
+Product:
+SkinCare  Product Tracker
+Users: 
+People switching  between skincare products
+Problem solved:
+Deciding which product works best for  us by try and testing it once. This app tracks the info so next time we have the problem we already know the solution
+
+Overall the idea is good. There can be more additional features.
+
+In terms of technology. I would be more happy with iOS.
+
 
