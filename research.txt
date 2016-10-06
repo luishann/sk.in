@@ -61,9 +61,15 @@ In terms of technology. I would be more happy with iOS.
 
 Shannon:
 Skin care app
-Nikita is right on track (but I think we can steal some ideas from that Skin Tracker app Sara found). The app I have in mind is more geared towards helping people set a skincare routine to tackle their issues. The users can specify what skin concerns they have (such as acne, blackheads, eczema etc.) and then what products they are currently using to try to treat their conditions. So it would sort of be like a journal where they can either post pictures of their problem areas daily/weekly however often they want, and/or write it out as a journal entry describing their skin or how they’re liking the products so far. 
+Nikita is right on track (but I think we can steal some ideas from that Skin Tracker app Sara found). The app I have in mind is more
+geared towards helping people set a skincare routine to tackle their issues. The users can specify what skin concerns they have (such as 
+acne, blackheads, eczema etc.) and then what products they are currently using to try to treat their conditions. So it would sort of be 
+like a journal where they can either post pictures of their problem areas daily/weekly however often they want, and/or write it out as a 
+journal entry describing their skin or how they’re liking the products so far. 
 
-I tried searching the Google play store and I couldn’t find any android apps like this (but I will do a more thorough search later for mobile apps in general). The closest one I can find is called Skincare Sidekick but it’s geared towards salons and spa trying to keep track of their client’s skin condition.
+I tried searching the Google play store and I couldn’t find any android apps like this (but I will do a more thorough search later for 
+mobile apps in general). The closest one I can find is called Skincare Sidekick but it’s geared towards salons and spa trying to keep 
+track of their client’s skin condition.
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
