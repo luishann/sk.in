@@ -98,3 +98,55 @@ All this information is taken from: http://www.ccsenet.org/journal/index.php/ijm
 We would want to know what our user group is mostly interested about in terms of tracking products for their day-to-day behaviour
 and how to create a compellng UX that motivates them to use it regularly.
 
+Group Meeting, Thursday Oct 6 -
+-Relationship between User and Doctor 
+-Weekly Ranking of Best Skin Care  Products for particlar skin  issues
+-For user  to  user  interaction:  provide user blogs  (mutual stories)
+The blogging is on a volunteer basis.
+
+Daily basis products?
+Two  categories  - Basic Skincare ,  Severe problem
+
+The people who don't want to track can see mutual stories.
+
+Story thing is a later thing.
+
+Choose out of top 10 problems. 
+
+Notifications 
+
+Saving feature  so you can track your problems again.
+
+Also suggestions in the beginning. 
+
+Target specific users
+
+Technology - Android +  Web server
+
+Target Users - 1) Severe skin issues or concerns people  (not specific gender targeted)
+		2)  People who want to track their  skincare products
+		3) Dermatologists
+		
+Why would someone use our product?
+Someone want to see progress in their skin. Their is no such app in  the  market. To learn from different user experiences.
+
+What are users using today to solve their problem?
+- Keeping Pictures
+-  A diary app
+2 hour  planning meeting next week + 1 review  meeting
+
+User  Personas
+-   Severe skincare issue
+	(girl)
+-  Casual person
+  (guy)
+- Dermatologist
+  ( any one)
+  
+  Another Suggestion  feature 
+  - Inform  user if a product  has an  ingredient they are allergic to.
+  
+  
+
+
+
