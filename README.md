@@ -1,6 +1,6 @@
 #Project CSC301 Team 15
 
-Meeting October 3rd 
+## Meeting October 3rd 
 
 Secretary: John Chen
 
