@@ -19,8 +19,20 @@ on how certain skin care products/treatments are working for their particular ca
    You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem?
+Currently there is only one mobile app in the market called Skin Tracker that also provides a platform for users to write entries and 
+take photos to keep track of their skin progress. However, this app is only available for iOS and costs $6.99. Therefore users who don't 
+own an iPhone or don't want to shell out money may choose to use our product. These people not using Skin Tracker has to resort to either
+using regular photo albums in their phone, or to use a regular diary/journal app not intended for their purpose. Our app would appeal to
+these people because it would be much more organized than using a regular photo album and we'll add useful features for skin tracking
+that a regular diary would not have. A dedicated app for this purpose would also motivate people to be more committed in tracking their
+skin concerns, as we will have reminders/notifications for those who may be too forgetful to regularly add a new picture to their photo
+album.
 
-YOUR ANSWER GOES HERE ...
+Another thing that sets us apart from the Skin Tracker app is that Skin Tracker emphasizes on the impact of food, stress, and emotions on 
+the healing of skin diseases. Our app on the other hand highlights the use of skincare products and we will have features that allow 
+people to see if a product is doing any good or harm. So as much as we are tracking a person's skin, we will also be tracking the 
+effectiveness of a user's skincare products/ skincare routine, something that Skin Tracker does not do.
+
 
  * Short (3 min' read max)
  * Essentially, we want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
