@@ -147,6 +147,7 @@ User  Personas
   - Inform  user if a product  has an  ingredient they are allergic to.
   
   
-
+Nikita Update
+After discussing the idea with a friend and thinking more about it. I found that our user stories blog should not be optional instead we    should mention to the user while they are making their profile that certain parts of the product usage and experience would be used to create user stories, because if we keep to the users most of them wouldn't care to write and hence we would end up in no stories. So extracting stories from their profiles is a better option. 
 
 
