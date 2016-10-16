@@ -150,4 +150,26 @@ User  Personas
 Nikita Update
 After discussing the idea with a friend and thinking more about it. I found that our user stories blog should not be optional instead we    should mention to the user while they are making their profile that certain parts of the product usage and experience would be used to create user stories, because if we keep to the users most of them wouldn't care to write and hence we would end up in no stories. So extracting stories from their profiles is a better option. 
 
+-------------------
+Sara Update
+Ten most common skin concerns:
+1.Acne(Acne vulgaris)
+2.Atopic dermatitis (Eczema):dry scaly and itchy skin that scratching might lead
+to a thickened area.
+3.Shingles(Herpes Zoster):caused by the same virus as chickenpox
+4.Hives(Urticaria):Raised red itchy areas like bug bites
+5.Sunburn
+6.Contact Dermatitis: a type of eczema and may come from plants,
+jewerly,latex gloves, or bleach or soaps.
+7.Age or liver spots: flat brown blotches usually on old people's skin
+8.Rosacea:chronic swelling of the face with redness prominent blood vessels and
+pimples.
+9.Athlet's Foot(Tinea Pedis):fungal infections.can lead to extreme itching redness and 
+cracked skin on the feet.
+10. Basal Cell Carcinoma:the most common type of skin cancer
+other problems: scars,birthmarks, spider and varicose veins, stretch marks(after rapid 
+weight gain for example), white spots,ingrown hairs and moles
+links:http://www.lifescript.com/health/centers/skin/tips/top_10_womens_skin_problems_solved.aspx
+https://www.drugs.com/slideshow/most-common-skin-conditions-1086
+
 
