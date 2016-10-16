@@ -1,5 +1,9 @@
 #Project CSC301 Team 15
 
+## Major Planning Meeting October 16
+We all contributed to a google doc of our deliverable '#2, the planning meeting
+https://drive.google.com/open?id=12QYf4JHgPzTjwSkGZWYaGA8PKmZdM39cghKgrL6sXMY
+
 ## Meeting October 3rd 
 
 Secretary: John Chen
