@@ -1,5 +1,13 @@
 #Project CSC301 Team 15
 
+## Major Planning Meeting October 16
+We all contributed to a google doc of our deliverable '#2, the planning meeting doc
+
+https://drive.google.com/open?id=12QYf4JHgPzTjwSkGZWYaGA8PKmZdM39cghKgrL6sXMY
+We have also decided to use Trello as our SCRUM artifact in order to keeo our development team organized.
+Our Trello board can be found at:
+https://trello.com/b/9vpWgPMC/csc301
+
 ## Meeting October 3rd 
 
 Secretary: John Chen
