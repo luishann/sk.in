@@ -1,7 +1,7 @@
 # APP NAME
 
 #### Q1: What are you planning to build?
-We plan to build a product that makes tracking skin care products and treatments easier for both end-users and dermathologists.
+We plan to build a product that makes tracking skin care products and treatments easier for end-users.
 This product is aimed for people who: A) have a severe skin issue that needs special treatment or B) have a 
 strong desire to keep track of their usage of a certain skin product. We aim to make this process easier, measurable and 
 motivating. We are planning to build a native mobile application together with a web server to make it accessible from any device
