@@ -1,4 +1,4 @@
-# 
+# APP NAME
 
 #### Q1: What are you planning to build?
 We plan to build a product that makes tracking skin care products and treatments easier for both end-users and dermathologists.
