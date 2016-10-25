@@ -2,8 +2,8 @@
 
 ## Iteration XX - Review & Retrospect
 
- * When: Oct 24, 2016
- * Where: Bahen Center
+ * When: Oct 25, 2016
+ * Where: Skype
 
 ## Process - Reflection
 
