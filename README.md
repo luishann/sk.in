@@ -1,5 +1,14 @@
 #Project CSC301 Team 15
 
+## Research into Android
+http://codetheory.in/android-navigation-drawer/
+http://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/
+https://lmjabreu.com/post/why-and-how-to-avoid-hamburger-menus/
+https://www.google.ca/search?q=android+sliding+menu&oq=android+sliding+menu&aqs=chrome..69i57j69i65l3j69i60j69i59.2966j0j7&sourceid=chrome&ie=UTF-8
+https://www.google.ca/search?q=navigation+drawer+activity&oq=navigation+drawer+act&aqs=chrome.1.69i57j0l5.12791j0j7&sourceid=chrome&ie=UTF-8
+https://www.sitepoint.com/creating-a-cloud-backend-for-your-android-app-using-firebase/
+
+
 ## Major Planning Meeting October 16
 We all contributed to a google doc of our deliverable '#2, the planning meeting doc
 
