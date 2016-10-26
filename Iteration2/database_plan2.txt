@@ -46,10 +46,10 @@ description
 
 MyIssue:
 id
-issueID
+userID
 startDate (first time they add a product for this issue) 
 endDate (when they close this issue)
 
 IssueTagged:
 myProductID
-issueID
+myIssueID
