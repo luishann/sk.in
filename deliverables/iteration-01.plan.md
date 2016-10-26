@@ -54,8 +54,8 @@ We will keep constant communication through Facebook Messenger and updating our 
 team is performing as a whole.
 
  * What's the purpose of each meeting?
-The weekly meeting's before tutorial will be to update and review one another about our progress or any new problems that anyone might have encountered.
-Any skype meeting we have will be more of an immediate/emergency situation, perhaps after an office hour with our TA in which he provided important criticisms.
+The weekly meetings before tutorial will be to update and review one another about our progress or any new problems that anyone might have encountered.
+Any skype meeting we have will be more of an immediate/emergency situation, perhaps after an office hour with our TA Adam in which he provided important criticisms.
 And our final review meeting will be when everyone is done their artifacts to discuss the process.
 
 
@@ -100,6 +100,10 @@ The process of creating user personas was very important for us since it helped 
 6) Survey -> Nikita
 For explanation of the survey results, please see "surveys.docx" under artifacts.
 The survey itself can be found at https://www.surveymonkey.com/r/D59ZZJX.
+
+7) Preliminary MockUp using PopApp -> John
+Our very first UX prototype was rapidly done using PopApp, after seeing the tools suggested in lecture. A much more detailed write-up can be found in popAppArtifact.txt. The prototype is here:  
+https://popapp.in/w/projects/5803365a481a103c5bac88f8/preview/5803b93fab6d4d3514aa66e7
 
 
 ## Product
