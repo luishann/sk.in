@@ -10,7 +10,7 @@
 
 Our team agreed that the best way to approach this phase of our project was meeting regularly and keep a flowing communication in order to have a big set of ideas available. In addition, we decided to focus our product in a particular, well-defined user group. After bringing numerous ideas to the table we wanted to focus on a product targeted to people facing skin conditions that help them keep track of their progress. This brainstorming, communication and planning process will be pivotal in the success of our product. Additionally, this stage of the process helped us to know each other and learn how each one of us work and what skills set each member has and learn which job they will be more comfortable taking in further sprints.
 
-** Decisions turned out well: **
+** Decisions turned out well:
 
 
 - Set a systematic time to meet helped us better communicate our insights to the team and listen to other people’s opinion on a given idea. This way creating all the artifacts was faster and we avoided repetition since we were all on the same page.
