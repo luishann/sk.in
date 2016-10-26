@@ -76,11 +76,19 @@ Goals/tasks that were met/completed:
    - Data organization is defined through database schemas, posted in artifacts 
 
 
+
 Goals/tasks that were planned but not met/completed:
 
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why it was not met/completed.      
-   e.g. Did you change your mind, or did you just not get to it yet?
+ 1. Making a small interface in Android 
+   - Did not have time to get to the beginnings of coding as the environment is new and requires more research into Android API
+ 2.	Starting the Server
+   - Still have to decide which language to use for the server 
+   - We have left this as a goal for the phase 2 planning meeting
+ 3. Talking to dermatologists about viability of our application
+   - If we include dermatologists in our application, this will broaden the scope, 
+   - We wanted to restrict the objective to a specific niche of attracting users with skin related concerns so we decided to pivot to another direction, by not involving dermatologists
+
+
 
 (Optional) Goals/tasks that were not originally planned, but ended up being not met/completed:
 
