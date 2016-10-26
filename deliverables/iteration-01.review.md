@@ -98,5 +98,18 @@ Goals/tasks that were planned but not met/completed:
 
 Going into the next iteration, our main insights are:
 
- * List the few (2-5) high-level concepts that should guide your work for the next few weeks.
- * These concepts should help you prioritize features and decide on where to focus your efforts.
+1) Using the CRC Cards to guide back-end development
+  - Since CRC cards outline the functionality of each class in this application, this can help us rank the tasks to see which ones play an important role in developing the foundation for this application.
+
+2) Continue using Trello to keep track of completed work 
+  - We will assign tasks regularly on Trello to control the flow of work between the members in the team. 
+  - Through this process, the work is balanced between the members and will help meet deadlines.
+  
+3) Create slack channels for team-based work
+ - Organize conversations within each sub team of the assigned tasks
+ - We will have slack channels to help discuss every member’s concerns and progress regarding the tasks they are assigned. 
+
+4) Assign rotating scrum masters for future meetings
+ - To introduce new perspectives at presenting, managing and completing tasks
+ - To give everyone an opportunity to lead and organize the team 
+
