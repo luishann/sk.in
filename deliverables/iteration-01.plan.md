@@ -115,20 +115,37 @@ https://popapp.in/w/projects/5803365a481a103c5bac88f8/preview/5803b93fab6d4d3514
 
 ## Product
 
-Goals and tasks:
- * Numbers are goals, letters indicate tasks to complete the goal
- 1) Demonstrate a clear and concise core feature list for our application
-    a) Break down the application feature list by prioritizing functionality decisions
-    b) Decide which features to keep and which are beyond the scope of the assignment
-    c) Describe the purpose of each feature to the end-user
- 2) Display all on-paper and high-level planning.
-    a) Anything that does not involve coding but rather involves design and schema should have been thought out and demonstrated in some way.
-    b) Make sure to have at least one artifact for every area of development listed above
- 3) Make all major decisions related to design and schemas as a group
-    a) Regularly meet up in order to discuss the application
-    b) Confer with others when making decisions on our roles
-    c) Decide which languages will be used
- 4) Create an organized and structured way of meeting and planning and keeping track of work done.
-    a) Implement a scrum organization software
-    b) Decide on a form of online communication and use that in order to ask questions and arrange meetings
-    c) Use consistently a polling system to find out when people are available
+Goals and tasks
+Numbers are goals, letters indicate tasks to complete the goal
+
+#1 Demonstrate a clear and concise core feature list for our application
+
+a.	Break down the application feature list by prioritizing functionality decisions
+
+b.	Decide which features to keep and which are beyond the scope of the assignment
+
+c.	Describe the purpose of each feature to the end-user
+
+
+#2	Display all on-paper and high-level planning.
+
+a.	Anything that does not involve coding but rather involves design and schema should have been thought out and demonstrated in some way.
+
+b.	Make sure to have at least one artifact for every area of development listed above
+
+
+#3	Make all major decisions related to design and schemas as a group
+
+a.	Regularly meet up in order to discuss the application
+
+b.	Confer with others when making decisions on our roles
+
+c.	Decide which languages will be used
+
+#4	Create an organized and structured way of meeting and planning and keeping track of work done.
+
+a.	Use a scrum organization software
+
+b.	Decide on a form of online communication and use that in order to ask questions and arrange meetings
+
+c.	Consistently use a polling system to find out when people are available
