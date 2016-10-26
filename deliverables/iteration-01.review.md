@@ -76,19 +76,36 @@ Goals/tasks that were met/completed:
    - Data organization is defined through database schemas, posted in artifacts 
 
 
+
+
 Goals/tasks that were planned but not met/completed:
 
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why it was not met/completed.      
-   e.g. Did you change your mind, or did you just not get to it yet?
+ 1. Making a small interface in Android 
+   - Did not have time to get to the beginnings of coding as the environment is new and requires more research into Android API
+ 2.	Starting the Server
+   - Still have to decide which language to use for the server 
+   - We have left this as a goal for the phase 2 planning meeting
+ 3. Talking to dermatologists about viability of our application
+   - If we include dermatologists in our application, this will broaden the scope, 
+   - We wanted to restrict the objective to a specific niche of attracting users with skin related concerns so we decided to pivot to another direction, by not involving dermatologists
 
-(Optional) Goals/tasks that were not originally planned, but ended up being not met/completed:
 
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why you decided to change your plan and add this goal/task.
 
 
 Going into the next iteration, our main insights are:
 
- * List the few (2-5) high-level concepts that should guide your work for the next few weeks.
- * These concepts should help you prioritize features and decide on where to focus your efforts.
+1) Using the CRC Cards to guide back-end development
+  - Since CRC cards outline the functionality of each class in this application, this can help us rank the tasks to see which ones play an important role in developing the foundation for this application.
+
+2) Continue using Trello to keep track of completed work 
+  - We will assign tasks regularly on Trello to control the flow of work between the members in the team. 
+  - Through this process, the work is balanced between the members and will help meet deadlines.
+  
+3) Create slack channels for team-based work
+ - Organize conversations within each sub team of the assigned tasks
+ - We will have slack channels to help discuss every member’s concerns and progress regarding the tasks they are assigned. 
+
+4) Assign rotating scrum masters for future meetings
+ - To introduce new perspectives at presenting, managing and completing tasks
+ - To give everyone an opportunity to lead and organize the team 
+
