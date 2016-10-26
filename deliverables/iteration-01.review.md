@@ -46,9 +46,36 @@ We are planning to make the following changes to our process:
 
 Goals/tasks that were met/completed:
 
- * List goals/tasks, from most to least important.
- * If a goal/task was not part of the original iteration plan, please mention it.
- * For each goal/task, refer to artifact(s) that show that it was met/completed.
+1) Have our team organization systemized
+o	We are using Trello (Scrum artifact) to accomplish this goal
+o	On Trello, we will organize a to-do list where each member will be assigned their respective tasks and deadlines 
+o	This gives us the flexibility of moving tasks into different cycles as we progress into the development.
+
+2) Research into the skin care products to find uniqueness between our product with the ones established
+o	We wanted to see which applications have already implemented our objectives and if so, look into what features they were lacking
+o	We analysed the features of applications with objectives similar to ours, and conducted a research on what would enhance the user experience
+o	We concluded our research in a Research.txt file
+
+3) Have the rough design of the application sketched
+o	We drew rough designs of how the interphase should look like
+o	We uploaded mock up images that demonstrate our designs
+
+4) Have a rough idea of how to start Android development
+o	We researched into 
+o	how to create navigation bars and whether to use navigation bars/hamburger menus or tabs 
+o	how fragments are better than activities, as they are reusable whereas activities need to be created every time. 
+o	Links are posted in artifacts that demonstrates our research
+
+5) Have an outline of the application’s functionality
+o	Have the functionality outlined for each feature
+o	Outline the collaboration and responsibilities of different objects and classes in the application
+o	Done through CRC Cards (Uploaded in artifacts)
+
+6) Have an outline of how to organize and store information about Users, Products, Product Reviews, and Skin Issues separately
+
+o	Create Relations between users, their skin issues, the products they use and the reviews they make on the products to help organize the storage of information
+o	Data organization is defined through database schemas, posted in artifacts 
+
 
 Goals/tasks that were planned but not met/completed:
 
