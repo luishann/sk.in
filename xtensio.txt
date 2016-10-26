@@ -1,0 +1,8 @@
+Xtensio:
+
+The process of creating user personas was very important for us since it helped us focus more our user gorup.
+Before creating this personas, we were deciding if we wanted to focus more on dermatologists as our end user
+or we wanted to make an app for the people that suffer skin conditions. After creating this artifacts, it 
+became clear to us that the problem that normal people have right now is a bigger problem for them and 
+we can create a product that solves it. 
+
