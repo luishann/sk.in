@@ -77,6 +77,7 @@ Goals/tasks that were met/completed:
 
 
 
+
 Goals/tasks that were planned but not met/completed:
 
  1. Making a small interface in Android 
@@ -89,11 +90,6 @@ Goals/tasks that were planned but not met/completed:
    - We wanted to restrict the objective to a specific niche of attracting users with skin related concerns so we decided to pivot to another direction, by not involving dermatologists
 
 
-
-(Optional) Goals/tasks that were not originally planned, but ended up being not met/completed:
-
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why you decided to change your plan and add this goal/task.
 
 
 Going into the next iteration, our main insights are:
