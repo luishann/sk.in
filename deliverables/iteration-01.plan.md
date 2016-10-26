@@ -47,7 +47,7 @@ Areas of Development
 
 #### Events
 
-Please describe the meetings you planning to have:
+Please describe the meetings you are planning to have:
 We plan to meet on every Monday prior to the evening class in person for at least one hour as a status update and clarification meeting. Further online meetings will be arranged when roadblocks are encountered or pivots are required. Our final review meeting has been planned for Oct 21. And finally, our last meeting before the due date will be Oct 25.
 
 We will keep constant communication through Facebook Messenger and updating our tasks using Trello to have an overview look on how the 
