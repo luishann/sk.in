@@ -50,6 +50,7 @@ First Iteration:
 - Each other's work
 
 Database Schema:
+
 - Discussed whether we want people to create several entries for one day or one entry a day that covers several products and issues
 - Both sides involve different focuses and different logic for the database schema
 - Decided that users will create one entry a day, covering several products and several issues, and will be able to rate each product individually but not each issue. There will also be a rating for their overall face.
@@ -58,6 +59,8 @@ Database Schema:
 - Decided that users should be able to close issues at any point
 - startDate for MyIssue refers to the first time they add a product for that issue
 - endDate for MyIssue refers to them choosing to close an issue
+
+TO DO:
 
 + Nikita
 -> Do Trello and Github configuration
