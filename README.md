@@ -1,17 +1,6 @@
 #Project CSC301 Team 15
 
-## Research into Android
-http://codetheory.in/android-navigation-drawer/
 
-http://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/
-
-https://lmjabreu.com/post/why-and-how-to-avoid-hamburger-menus/
-
-https://www.google.ca/search?q=android+sliding+menu&oq=android+sliding+menu&aqs=chrome..69i57j69i65l3j69i60j69i59.2966j0j7&sourceid=chrome&ie=UTF-8
-
-https://www.google.ca/search?q=navigation+drawer+activity&oq=navigation+drawer+act&aqs=chrome.1.69i57j0l5.12791j0j7&sourceid=chrome&ie=UTF-8
-
-https://www.sitepoint.com/creating-a-cloud-backend-for-your-android-app-using-firebase/
 
 
 ## Major Planning Meeting October 16
@@ -59,3 +48,17 @@ Solution: Emphatically NOT Tinder!
 But location based app, we vet the users by a competitive application process etc.
 
 For next meeting: everyone pick an idea they like and do some research on it. We will conduct the vote next time!
+
+
+#### Research into Android
+http://codetheory.in/android-navigation-drawer/
+
+http://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/
+
+https://lmjabreu.com/post/why-and-how-to-avoid-hamburger-menus/
+
+https://www.google.ca/search?q=android+sliding+menu&oq=android+sliding+menu&aqs=chrome..69i57j69i65l3j69i60j69i59.2966j0j7&sourceid=chrome&ie=UTF-8
+
+https://www.google.ca/search?q=navigation+drawer+activity&oq=navigation+drawer+act&aqs=chrome.1.69i57j0l5.12791j0j7&sourceid=chrome&ie=UTF-8
+
+https://www.sitepoint.com/creating-a-cloud-backend-for-your-android-app-using-firebase/
