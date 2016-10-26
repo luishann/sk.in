@@ -1,4 +1,4 @@
-# SKINME
+# Sk.in
 
 ## Iteration 01
 
