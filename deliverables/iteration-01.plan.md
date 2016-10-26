@@ -1,6 +1,6 @@
-# YOUR PRODUCT/TEAM NAME
+# SKINME
 
-## Iteration XX
+## Iteration 01
 
  * Start date: October 16
  * End date: October 21
@@ -48,8 +48,10 @@ Areas of Development
 #### Events
 
 Please describe the meetings you planning to have:
- * When and where? In-person or online?
 We plan to meet on every Monday prior to the evening class in person for at least one hour as a status update and clarification meeting. Further online meetings will be arranged when roadblocks are encountered or pivots are required. Our final review meeting has been planned for Oct 21. And finally, our last meeting before the due date will be Oct 25.
+
+We will keep constant communication through Facebook Messenger and updating our tasks using Trello to have an overview look on how the 
+team is performing as a whole.
 
  * What's the purpose of each meeting?
 The weekly meeting's before tutorial will be to update and review one another about our progress or any new problems that anyone might have encountered.
