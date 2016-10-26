@@ -1,9 +1,63 @@
 
-## Final Submission Meeting October 26
+## Final Submission Meeting And Initial Planning Meeting October 26
 
-Secratary: Anisha Rohra
+Secratary: Anisha
+Trello: Nikita
 
 Refining the file structure of the github account and proof-reading/editing all the deliverables.
+
+Planned List of All Features:
+- Log in
+- Sign up
+- Adding an entry
+- Modify/Delete entry
+- View all entries
+- Search Products
+- Review Products
+- Analytics (Tracking Progress)
+- Product List (Add, Delete)
+- Tagging System for Issues (Displaying them)
+- Systems (database, server)
+
+First Iteration:
+1) Adding an entry
+- uploading an photo
+- rating system
+- text descriptions
+- define a product (drop down list)
+- write tags
+- storing all of this in database
+- create an Entry class and all required methods
+2) Modify/Delete Entry
+3) Create the datebase
+- implement schema using postgresSQL
+- host database on heroku
+- connect to jdcb
+4) Create the server
+- implement on spark
+- host on heroku
+- connect to the backend java and to the database
+5) Log in
+6) Sign up
+7) TESTING
+- Each other's work
+
+Database Schema:
+- Discussed whether we want people to create several entries for one day or one entry a day that covers several products and issues
+- Both sides involve different focuses and different logic for the database schema
+- Decided that users will create one entry a day, covering several products and several issues, and will be able to rate each product individually but not each issue. There will also be a rating for their overall face.
+- Also decided that when a user creates a product they must specify issues relating to that product at that moment, and so when they choose the products of the day, the issues will be auto generated
+- Modified the database schema within iteration2 folder to reflect these changes in decisions
+- Decided that users should be able to close issues at any point
+- startDate for MyIssue refers to the first time they add a product for that issue
+- endDate for MyIssue refers to them choosing to close an issue
+
++ Nikita
+-> Do Trello and Github configuration
+
++ Everyone
+-> Skype meeting at 10:30pm
+-> Looked at revised database schema and the decisions listed above
 
 ## Major Review Meeting October 25
 
