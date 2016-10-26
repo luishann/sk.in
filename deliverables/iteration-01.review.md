@@ -22,7 +22,7 @@ Our team agreed that the best way to approach this phase of our project was meet
 - Doing our own research about what are the major challenges that people facing skin conditions have to go through helped us tailor our product to meet the user’s needs. For example, the survey results were extremely insightful for us because they helped us make our product more specific for people who suffer a severe/medical skin condition that requires detailed tracking.
 
 
-** Decisions did not turn out as well as you hoped: **
+**Decisions did not turn out as well as you hoped:**
 
 
 - We did not asked for help when we required it. We thought that the process of creating an Android UI was going to be simple enough to finish it in this iteration. However, as one could see in our Trello board, that task has been staged for more than a week there. Since we had to refresh our knowledge in Android and also it depends heavily on all the external dependencies, the process of debugging was lengthy and stopped us from moving forward.
@@ -31,7 +31,7 @@ Our team agreed that the best way to approach this phase of our project was meet
 - User research was not as simple as we thought it was going to be. We were expecting hundreds of responses in order to have a significant sample of the population from where we can derive important insights to find the “pain” that our users were experiencing regarding skin-care products. However, survey responses were not as high as we thought and we expected more people willing to take a survey. 
 
 
-** Changes to be Made: **
+**Changes to be Made:**
 
 
 - First, we will have our team communications through Slack. We have already set up the team for it and we think that having different channels for different tasks during the development process will make the process easier and faster for the whole team.
@@ -46,7 +46,7 @@ Our team agreed that the best way to approach this phase of our project was meet
 
 ## Product - Review
 
-** Goals/tasks that were met/completed: **
+**Goals/tasks that were met/completed:**
 
 1) Have our team organization systemized
  - We are using Trello (Scrum artifact) to accomplish this goal
@@ -78,7 +78,7 @@ Our team agreed that the best way to approach this phase of our project was meet
   - Data organization is defined through database schemas, posted in artifacts 
 
 
-** Goals/tasks that were planned but not met/completed: **
+**Goals/tasks that were planned but not met/completed:**
 
  1. Making a small interface in Android 
    - Did not have time to get to the beginnings of coding as the environment is new and requires more research into Android API
@@ -90,7 +90,7 @@ Our team agreed that the best way to approach this phase of our project was meet
    - We wanted to restrict the objective to a specific niche of attracting users with skin related concerns so we decided to pivot to another direction, by not involving dermatologists
 
 
-** Going into the next iteration, our main insights are: **
+**Going into the next iteration, our main insights are:**
 
 1) Using the CRC Cards to guide back-end development
   - Since CRC cards outline the functionality of each class in this application, this can help us rank the tasks to see which ones play an important role in developing the foundation for this application.
