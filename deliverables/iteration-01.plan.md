@@ -62,18 +62,21 @@ And our final review meeting will be when everyone is done their artifacts to di
 #### Artifacts
 
 1) Trello/Slack -> Nikita
+
 Can be found at
 
 We used trello to maintain a list of features to be implemented (sorted by priority), working, tested and completed. This helped us to be organized. It also helped everyone to be updated on the various tasks assigned to the team. It made implementing agile much easier and smoother. We plan to continue using trello to aid our agile development throughout the project.
 
 
 2) Mockup and InVision -> Anisha
+
 Can be found under artifacts -> "Mockup Sketches.PDF" and at https://projects.invisionapp.com/share/M3921JPWB#/screens.
 
 The mockup should be an on paper design of most of the pages we will be creating on the Android front-end development. Rather than focusing on the colours or the visual niceties, the mockup is for the definition of the features, indicating the floor plan for how users can interact with the application and the paths they can take to use the different features. Using InVision to take the on paper designs and upload them online, then using features that allow linking buttons to different screens to provide a basic run through of the app. If confused about where to click on the screen, please take a look at the comments section of that screen.
 
 
 3) CRC Cards -> Sara
+
 Can be found under artifacts -> "CRC.pdf".
 
 In total, there are six classes that we will need in our back end design.
@@ -86,22 +89,26 @@ The Server class basically gets and sends data back and forth between different 
 
 
 4) Database Schema -> Shannon
+
 Can be found under artifacts -> "Database_Schema.png" and "database_plan.txt"
 
 We decided to use a relational database to store all user data for our mobile app. We generated the schema using www.app.genmymodel.com. The user table is used for storing all user login information. The product table is a table of products that any user can access as it stores all the different products that users have ever reviewed or added to their list of products. ProductReview stores all reviews on any particular product by any user. MyProduct are specific products users have added to their product list. For the user’s journal, there is the Entry table to store all the entries, Photo table to store all the photos used for any entries, and ProductUsed for products used during an entry. As for issues, we have a global table to store all issues. Users can reference those issues in the IssueRating where they rate any issues they have tagged in an entry.
 
 
 5) User Personas -> Sebastian
+
 User Personas: In the following link you can find the user personas that we will have in mind when building our product
 https://app.xtensio.com/folio/5mrkn2li
 
 The process of creating user personas was very important for us since it helped us focus more our user group. Before creating this personas, we were deciding if we wanted to focus more on dermatologists as our end user or we wanted to make an app for the people that suffer skin conditions. After creating this artifacts, it  became clear to us that the problem that normal people have right now is a bigger problem for them and we can create a product that solves it. 
 
 6) Survey -> Nikita
+
 For explanation of the survey results, please see "surveys.docx" under artifacts.
 The survey itself can be found at https://www.surveymonkey.com/r/D59ZZJX.
 
 7) Preliminary MockUp using PopApp -> John
+
 Our very first UX prototype was rapidly done using PopApp, after seeing the tools suggested in lecture. A much more detailed write-up can be found in popAppArtifact.txt. The prototype is here:  
 https://popapp.in/w/projects/5803365a481a103c5bac88f8/preview/5803b93fab6d4d3514aa66e7
 
