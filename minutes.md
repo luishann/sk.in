@@ -20,6 +20,7 @@ Planned List of All Features:
 - Systems (database, server)
 
 First Iteration:
+
 1) Adding an entry
 - uploading an photo
 - rating system
@@ -28,17 +29,23 @@ First Iteration:
 - write tags
 - storing all of this in database
 - create an Entry class and all required methods
+
 2) Modify/Delete Entry
+
 3) Create the datebase
 - implement schema using postgresSQL
 - host database on heroku
 - connect to jdcb
+
 4) Create the server
 - implement on spark
 - host on heroku
 - connect to the backend java and to the database
+
 5) Log in
+
 6) Sign up
+
 7) TESTING
 - Each other's work
 
