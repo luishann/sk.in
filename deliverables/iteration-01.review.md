@@ -1,6 +1,6 @@
 # SK.IN/TEAM 15
 
-## Iteration XX - Review & Retrospect
+## Iteration 01 - Review & Retrospect
 
  * When: Oct 25, 2016
  * Where: Skype
