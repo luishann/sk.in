@@ -107,7 +107,7 @@ Our team agreed that the best way to approach this phase of our project was meet
  - To introduce new perspectives at presenting, managing and completing tasks
  - To give everyone an opportunity to lead and organize the team 
  
- In terms of features which we would be focusssing on are
+ In terms of features we would be focusssing on :-
   - Creating a login/signup page
   - Adding/Deleting/Mofifying/Viewing Entries
   - Adding Products to entry and user's profile
@@ -115,6 +115,5 @@ Our team agreed that the best way to approach this phase of our project was meet
   - Tagging Issues
   - Creating a Database for storing entries
   
-  We plan to finish these features in the next iteration so that we can focus on more complex features such as analytics and progress of
-  the users.
+  We plan to finish these features in the next iteration so that we can focus on more complex features in the next iteration such as         analytics and progress of users based on the products and the entries.
 
