@@ -106,4 +106,15 @@ Our team agreed that the best way to approach this phase of our project was meet
 4) Assign rotating scrum masters for future meetings
  - To introduce new perspectives at presenting, managing and completing tasks
  - To give everyone an opportunity to lead and organize the team 
+ 
+ In terms of features which we would be focusssing on are
+  - Creating a login/signup page
+  - Adding/Deleting/Mofifying/Viewing Entries
+  - Adding Products to entry and user's profile
+  - Viewing and searching products
+  - Tagging Issues
+  - Creating a Database for storing entries
+  
+  We plan to finish these features in the next iteration so that we can focus on more complex features such as analytics and progress of
+  the users.
 
