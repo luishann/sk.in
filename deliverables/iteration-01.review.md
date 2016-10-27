@@ -80,8 +80,8 @@ Our team agreed that the best way to approach this phase of our project was meet
 
 **Goals/tasks that were planned but not met/completed:**
 
- 1. Making a small interface in Android 
-   - Did not have time to get to the beginnings of coding as the environment is new and requires more research into Android API
+ 1. Making a small user interface in Android 
+   - Did not have time to get to the beginnings of coding as the environment is new and requires more research into Android API. For example, we spent countless minutes simply re-downloading and updating Android Studio and also waiting for the emulator to start up each time.  
  2.	Starting the Server
    - Still have to decide which language to use for the server 
    - We have left this as a goal for the phase 2 planning meeting
