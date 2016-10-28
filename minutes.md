@@ -81,6 +81,9 @@ Database Decisions
 + Entry class needs to have its own description that will be measurable. 
 + Sebastian will create a sample server in Spark hosted on heroku. This server should have sample API calls to the java backend.
 + All tasks have been assigned to each person evenly and we plan to start testing in 5 days when we have implemented it. 
++ Implementing Slack channels in order to make our communications smoother as we develop the system and we will need different layers.
++ The SCRUM master for this week will be Sebastian. 
+
 ## Major Review Meeting October 25
 
 Secratary: Anisha Rohra
