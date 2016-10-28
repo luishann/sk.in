@@ -46,10 +46,8 @@ description
 
 MyIssue:
 id
-userID
-startDate (first time they add a product for this issue) 
-endDate (when they close this issue)
+name
 
 IssueTagged:
-myProductID
+entryID
 myIssueID
