@@ -17,8 +17,8 @@ public class Main {
 
   public static void main(String[] args) {
 
-    //port(Integer.valueOf(System.getenv("PORT")));
-    //staticFileLocation("/public");
+    port(Integer.valueOf(System.getenv("PORT")));
+    staticFileLocation("/public");
 
     get("/entries", (req, res) -> "All the entries should be displayed");
 
