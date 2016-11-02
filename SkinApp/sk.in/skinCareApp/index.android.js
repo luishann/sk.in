@@ -11,7 +11,8 @@ import {
   Text,
   View,
   Navigator,
-  DrawerLayoutAndroid
+  DrawerLayoutAndroid,
+  ToolbarAndroid
 } from 'react-native';
 
 var navigationView = (
@@ -21,33 +22,36 @@ var navigationView = (
     );
 
 export default class skinCareApp extends Component {
-  /*render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }*/
   render() {
     return (
-      <DrawerLayoutAndroid
+      <View style={styles.containerToolbar}>
+        <DrawerLayoutAndroid
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => navigationView}>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text style={{margin: 10, fontSize: 15, textAlign: 'right'}}>Hello</Text>
-          <Text style={{margin: 10, fontSize: 15, textAlign: 'right'}}>World!</Text>
-        </View>
-      </DrawerLayoutAndroid>
+          <View style={styles.containerToolbar}>
+            <ToolbarAndroid style={styles.toolbar}
+                           title={this.props.title}
+                           //navIcon={require('image!ic_arrow_back_white_24dp')}
+                           navIcon={require('./ic_drawer.png')}
+                           onIconClicked={DrawerLayoutAndroid.pop}
+                           //titleColor={'#FFFFFF'}/>
+                           titleColor={'#000000'}/>
+            <View style={styles.container}>
+              <Text style={styles.welcome}>
+                Welcome to React Native!
+              </Text>
+              <Text style={styles.instructions}>
+                To get started, edit index.android.js
+              </Text>
+              <Text style={styles.instructions}>
+                Double tap R on your keyboard to reload,{'\n'}
+                Shake or press menu button for dev menu
+              </Text>
+            </View>
+          </View>
+        </DrawerLayoutAndroid>
+      </View>
     );
   }
 }
@@ -68,6 +72,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  containerToolbar: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    backgroundColor: '#F5FCFF',
+  },
+  toolbar: {
+    backgroundColor: '#e9eaed',
+    height: 56,
   },
 });
 
