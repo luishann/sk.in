@@ -1,3 +1,26 @@
+## Update Meeting Phase 2 Nov 1
+Secretary: Nikita
+
+We are switching to React Js. It is easier to implement functionality and develop. You can see build it that time instead of building it from scratch everybody. We all will go through React resources to learn it. We can use sample apps. We already have added sample app that to github.
+We need a rest API to connect the backend to the react app.
+Reassigned trello tasks
+For everypage needs a javascript file 
+No longer new fragments to add a entry/view entry it is one javascript file.
+
+From React to Server pass objects using JSON
+
+Our App is SK.IN in SkinApp
+
+SampleApp - My appointment master
+
+Example dao - john will make it for entry class
+
+https request - in server
+
+Backend in server
+
+Tasks assigned on trello
+https://trello.com/b/9vpWgPMC/csc301
 
 ## Final Submission Meeting And Initial Planning Meeting October 26
 
