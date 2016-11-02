@@ -9,11 +9,19 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator,
+  DrawerLayoutAndroid
 } from 'react-native';
 
+var navigationView = (
+      <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Im inside the Drawer!</Text>
+      </View>
+    );
+
 export default class skinCareApp extends Component {
-  render() {
+  /*render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -27,6 +35,19 @@ export default class skinCareApp extends Component {
           Shake or press menu button for dev menu
         </Text>
       </View>
+    );
+  }*/
+  render() {
+    return (
+      <DrawerLayoutAndroid
+        drawerWidth={300}
+        drawerPosition={DrawerLayoutAndroid.positions.Left}
+        renderNavigationView={() => navigationView}>
+        <View style={{flex: 1, alignItems: 'center'}}>
+          <Text style={{margin: 10, fontSize: 15, textAlign: 'right'}}>Hello</Text>
+          <Text style={{margin: 10, fontSize: 15, textAlign: 'right'}}>World!</Text>
+        </View>
+      </DrawerLayoutAndroid>
     );
   }
 }
