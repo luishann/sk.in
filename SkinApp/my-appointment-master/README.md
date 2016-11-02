@@ -1,4 +1,6 @@
 # My Appointment
+## Sample App to get ideas and learn patterns for React Native
+## Use it as a template.
 Appointment Booking App built with React Native and Redux
 
 [watch the demo here ](https://www.youtube.com/watch?v=It2kq7CRfGA)
