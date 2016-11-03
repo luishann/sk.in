@@ -14,7 +14,8 @@ import {
   DrawerLayoutAndroid,
   ToolbarAndroid,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
 import Journal from './Journal';
@@ -26,7 +27,7 @@ render() {
    return (
     <ToolbarAndroid
      title={this.props.title}
-     navIcon={require('./ic_menu_black.png')}
+     navIcon={require('./ic_menu.png')}
      style = {styles.toolbar}
      titleColor={'white'}
      onIconClicked={this.props.sidebarRef}/>
@@ -55,12 +56,24 @@ export default class SkinCareApp extends Component {
 
   render() {
     var navigationView = (
-        <View style={{flex: 1, backgroundColor: '#fff'}}>
+        <View style={styles.navMenu}>
+        <View style={{backgroundColor: '#6fc7d1',height: 110}}>
+
+            <View style={{backgroundColor: '#6fc7d1',height: 50, margin: 30}}>
+              <Image style={{flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'contain'}} source={require('./user_profile_pic.png')}/>
+
+            </View>
+          </View>
             <TouchableOpacity onPress={this._change.bind(this, 1)}>
-                <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Journal</Text>
+                  <Text style={styles.menuItem}>
+                  <Image source={require('./ic_book.png')} />  Journal</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={this._change.bind(this, 2)}>
-                <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Products</Text>
+                <Text style={styles.menuItem}>
+                <Image source={require('./ic_product.png')} />  Products</Text>
             </TouchableOpacity>
         </View>
     );
@@ -72,7 +85,7 @@ export default class SkinCareApp extends Component {
         renderNavigationView={() => navigationView}
         ref={'DRAWER'}>
         <MyToolbar style={styles.toolbar}
-            title={'sk.in'}
+            title={'SK.IN'}
             navigator={this.props.navigator}
             sidebarRef={()=>this._setDrawer()}
         />
@@ -112,8 +125,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   toolbar: {
-    backgroundColor: '#e9eaed',
+    backgroundColor: '#6fc7d1',
     height: 56,
+    elevation: 10
+  },
+  navMenu: {
+    flex: 1,
+    backgroundColor: '#fff'
+  },
+  menuItem: {
+    marginLeft: 25,
+    marginTop: 20,
+    fontSize: 16,
+    textAlign: 'left'
+  },
+  menuIcon: {
+    marginTop: 20,
   },
 });
 
