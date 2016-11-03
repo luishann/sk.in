@@ -1,3 +1,10 @@
+## Final Planning Meeting Nov 2
+Secretary: Shannon
+
+We discussed the feedback Nikita and Sara recieved from the TA at office hours, as well as our results from
+the first iteration. We used insights from the feedback and the discussion to write iteration-02.plan.md together
+on an online text editor with Anisha leading the team and articulating our points.
+
 ## Update Meeting Phase 2 Nov 1
 Secretary: Nikita
 
