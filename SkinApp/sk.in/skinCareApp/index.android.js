@@ -13,14 +13,12 @@ import {
   Navigator,
   DrawerLayoutAndroid,
   ToolbarAndroid,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 
-var navigationView = (
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
-      <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Im inside the Drawer!</Text>
-      </View>
-);
+import Journal from './Journal';
+import Products from './Products';
 
 class MyToolbar extends Component {
 render() {
@@ -37,7 +35,36 @@ render() {
 }
 
 export default class SkinCareApp extends Component {
+
+  _setDrawer() {
+    this.refs['DRAWER'].openDrawer();
+   }
+
+   _change(route){
+     this.refs['NAV'].push({id: route})
+     this.refs['DRAWER'].closeDrawer();
+   }
+
+  _renderScene(route, navigator) {
+    if(route.id === 1){
+         return <Journal />
+     }else if(route.id === 2){
+         return <Products />
+     }
+   }
+
   render() {
+    var navigationView = (
+        <View style={{flex: 1, backgroundColor: '#fff'}}>
+            <TouchableOpacity onPress={this._change.bind(this, 1)}>
+                <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Journal</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this._change.bind(this, 2)}>
+                <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Products</Text>
+            </TouchableOpacity>
+        </View>
+    );
+
     return (
       <DrawerLayoutAndroid
         drawerWidth={300}
@@ -48,19 +75,18 @@ export default class SkinCareApp extends Component {
             title={'sk.in'}
             navigator={this.props.navigator}
             sidebarRef={()=>this._setDrawer()}
-          />
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text style={{margin: 10, fontSize: 15, textAlign: 'right'}}>Hello</Text>
-
-        </View>
+        />
+        <Navigator
+            initialRoute={{id: 1}}
+            renderScene={this._renderScene}
+            ref={'NAV'}
+        />
       </DrawerLayoutAndroid>
     );
   }
 
- _setDrawer() {
-   this.refs['DRAWER'].openDrawer();
-  }
 }
+
 
 const styles = StyleSheet.create({
   container: {
