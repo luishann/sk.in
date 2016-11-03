@@ -1,0 +1,9 @@
+STRUCTURE:
+scheme://username:password@host:port/database
+-> use this to interpret the following URL
+
+DATABASE URL:
+postgres://ziopwikywoanoj:yO-w-jpnxex5OKPQXLJE0sjgC6@ec2-54-225-64-254.compute-1.amazonaws.com:5432/d9mma6e753ienl
+-> obtained by running postgres://ziopwikywoanoj:yO-w-jpnxex5OKPQXLJE0sjgC6@ec2-54-225-64-254.compute-1.amazonaws.com:5432/d9mma6e753ienl on command line
+
+USE POSTICO/PGADMIN/COMMAND-LINE to create a server using that URL
