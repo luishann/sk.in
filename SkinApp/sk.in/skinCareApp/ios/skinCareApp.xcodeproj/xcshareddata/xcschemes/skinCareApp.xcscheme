@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "skinCareApp.app"
-               BlueprintName = "skinCareApp"
-               ReferencedContainer = "container:skinCareApp.xcodeproj">
+               BuildableName = "SkinCareApp.app"
+               BlueprintName = "SkinCareApp"
+               ReferencedContainer = "container:SkinCareApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "skinCareAppTests.xctest"
-               BlueprintName = "skinCareAppTests"
-               ReferencedContainer = "container:skinCareApp.xcodeproj">
+               BuildableName = "SkinCareAppTests.xctest"
+               BlueprintName = "SkinCareAppTests"
+               ReferencedContainer = "container:SkinCareApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "skinCareAppTests.xctest"
-               BlueprintName = "skinCareAppTests"
-               ReferencedContainer = "container:skinCareApp.xcodeproj">
+               BuildableName = "SkinCareAppTests.xctest"
+               BlueprintName = "SkinCareAppTests"
+               ReferencedContainer = "container:SkinCareApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "skinCareApp.app"
-            BlueprintName = "skinCareApp"
-            ReferencedContainer = "container:skinCareApp.xcodeproj">
+            BuildableName = "SkinCareApp.app"
+            BlueprintName = "SkinCareApp"
+            ReferencedContainer = "container:SkinCareApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "skinCareApp.app"
-            BlueprintName = "skinCareApp"
-            ReferencedContainer = "container:skinCareApp.xcodeproj">
+            BuildableName = "SkinCareApp.app"
+            BlueprintName = "SkinCareApp"
+            ReferencedContainer = "container:SkinCareApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "skinCareApp.app"
-            BlueprintName = "skinCareApp"
-            ReferencedContainer = "container:skinCareApp.xcodeproj">
+            BuildableName = "SkinCareApp.app"
+            BlueprintName = "SkinCareApp"
+            ReferencedContainer = "container:SkinCareApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
