@@ -36,7 +36,7 @@ render() {
  }
 }
 
-export default class skinCareApp extends Component {
+export default class SkinCareApp extends Component {
   render() {
     return (
       <DrawerLayoutAndroid
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('skinCareApp', () => skinCareApp);
+AppRegistry.registerComponent('SkinCareApp', () => SkinCareApp);
