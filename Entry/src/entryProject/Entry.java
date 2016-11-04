@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Entry extends Observable {
+	/* To implement observable pattern*/
 	
 	//List of issues
 	 private List<String> issues = new ArrayList<String>();
@@ -32,6 +33,7 @@ public class Entry extends Observable {
 	  * Add rating for the entry
 	  */
 	 public void addRating(int rating){
+		 //Setting a new rating
 		 this.rating = rating;
 	 }
 	 
