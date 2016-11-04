@@ -45,7 +45,9 @@ public class Entry extends Observable {
 	 */
 	public void addProduct(Product product) {
 		// Add this product to the user entry
-		products.add(product);
+		if (!products.contains(product)) {
+			products.add(product);
+		}
 	}
 
 	/**
