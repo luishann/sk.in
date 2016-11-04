@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class Entry extends Observable {
+public class Entry extends Observable implements Comparable{
 	/* To implement observable pattern */
 
 	// List of issues
@@ -137,6 +137,16 @@ public class Entry extends Observable {
 	 */
 	public int getRating() {
 		return rating;
+	}
+
+	@Override
+	public int compareTo(Object obj) {
+		// TODO Auto-generated method stub
+		if(!(obj instanceof Entry)){
+			throw new IllegalArgumentException();
+		}
+		
+		return Integer.compare(this.getRating(), ((Entry)obj).getRating());
 	}
 
 }
