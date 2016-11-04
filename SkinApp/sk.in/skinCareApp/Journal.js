@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, StyleSheet,
-  TouchableHighlight, RecyclerViewBackedScrollView} from 'react-native';
+import { View, Text, ListView, StyleSheet, Image,
+  TouchableNativeFeedback, RecyclerViewBackedScrollView} from 'react-native';
 
 /* JSON object for journal entries data. This is just a hard coded example,
 probably not the best way to format the JSON data (e.g. the id is the key here
@@ -38,13 +38,13 @@ var JournalListView = React.createClass({
 
   render: function() {
     return (
-      <View style={{flex: 1, paddingTop: 22}}>
+      <View style={{flex: 1, paddingTop: 0, backgroundColor:'#f2f2f2'}}>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this._renderRow}
           renderScrollComponent={props => <RecyclerViewBackedScrollView
             {...props} />}
-          renderSeparator={this._renderSeparator}
+
         />
       </View>
     );
@@ -62,18 +62,20 @@ var JournalListView = React.createClass({
     highlightRow: (sectionID: number, rowID: number) => void) {
     //var imgSource = THUMB_URLS[rowHash % THUMB_URLS.length];
     return (
-      <TouchableHighlight onPress={() => {
+      <TouchableNativeFeedback onPress={() => {
         this._pressRow(rowID);
-        highlightRow(sectionID, rowID);
-      }}>
-        <View>
-          <View style={styles.row}>
-            <Text style={styles.text}>{rowData.date}</Text>
-            <Text style={styles.text}>{rowData.issues}</Text>
-            <Text style={styles.text}>{rowData.rating}</Text>
+        highlightRow(sectionID, rowID);}}
+        background={TouchableNativeFeedback.Ripple('#000000')}>
+        <View style={styles.row}>
+          <View style={styles.entry}>
+            <Text style={styles.date}>{rowData.date}</Text>
+            <Text style={styles.text}>Rating</Text>
+            <Text style={styles.text}>
+              <Image source={require('./icons/ic_tag_small_red.png')} />  {rowData.issues}</Text>
           </View>
+          <Image source={require('./icons/ic_photos4.png')} />
         </View>
-      </TouchableHighlight>
+      </TouchableNativeFeedback>
     );
   },
 
@@ -101,8 +103,10 @@ var JournalListView = React.createClass({
 export default class Journal extends Component {
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F6F6F6',}}>
+      <View style={{flex: 1}}>
+
         <JournalListView />
+        <Image source={require('./icons/ic_add_yellow.png')} style={styles.actionButton}/>
       </View>
     )
   }
@@ -110,12 +114,34 @@ export default class Journal extends Component {
 
 var styles = StyleSheet.create({
   row: {
+    padding: 10,
+    paddingRight: 15,
+    //backgroundColor: '#F6F6F6',
+    backgroundColor: '#FFF',
+    marginTop: 4,
+    marginBottom: 7,
+    marginLeft: 9,
+    marginRight: 9,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    //elevation: 2,
+  },
+  entry: {
     //flexDirection: 'row',
     justifyContent: 'center',
-    padding: 10,
-    backgroundColor: '#F6F6F6',
+    marginLeft: 15,
+    justifyContent: 'center',
   },
   text: {
     flex: 1,
   },
+  date: {
+    fontSize: 16,
+    flex: 1,
+  },
+  actionButton: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+  }
 });

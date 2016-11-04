@@ -14,7 +14,7 @@ import {
   DrawerLayoutAndroid,
   ToolbarAndroid,
   ScrollView,
-  TouchableOpacity,
+  TouchableNativeFeedback,
   Image
 } from 'react-native';
 
@@ -27,7 +27,7 @@ class MyToolbar extends Component {
     return (
       <ToolbarAndroid
         title={this.props.title}
-        navIcon={require('./ic_menu.png')}
+        navIcon={require('./icons/ic_menu.png')}
         style = {styles.toolbar}
         titleColor={'white'}
         onIconClicked={this.props.sidebarRef}/>
@@ -69,21 +69,25 @@ export default class SkinCareApp extends Component {
               width: null,
               height: null,
               resizeMode: 'contain'}}
-              source={require('./ic_user.png')}/>
+              source={require('./icons/ic_user.png')}/>
           </View>
         </View>
 
         {/* Journal item */}
-        <TouchableOpacity onPress={this._change.bind(this, 1)}>
-          <Text style={styles.menuItem}>
-          <Image source={require('./ic_book.png')} />  Journal</Text>
-        </TouchableOpacity>
+        <TouchableNativeFeedback onPress={this._change.bind(this, 1)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text><Image source={require('./icons/ic_book_red.png')} />  Journal</Text>
+          </View>
+        </TouchableNativeFeedback>
 
         {/* Products item */}
-        <TouchableOpacity onPress={this._change.bind(this, 2)}>
-          <Text style={styles.menuItem}>
-          <Image source={require('./ic_product.png')} />  Products</Text>
-        </TouchableOpacity>
+        <TouchableNativeFeedback onPress={this._change.bind(this, 2)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text><Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
+          </View>
+        </TouchableNativeFeedback>
       </View>
     );
 
@@ -97,16 +101,16 @@ export default class SkinCareApp extends Component {
 
         {/* Render toolbar */}
         <MyToolbar
-            title={'SK.IN'}
-            navigator={this.props.navigator}
-            sidebarRef={()=>this._setDrawer()}
+          title={'SK.IN'}
+          navigator={this.props.navigator}
+          sidebarRef={()=>this._setDrawer()}
         />
 
         {/* Render navigator (which renders the scene) */}
         <Navigator
-            initialRoute={{id: 1}}
-            renderScene={this._renderScene}
-            ref={'NAV'}
+          initialRoute={{id: 1}}
+          renderScene={this._renderScene}
+          ref={'NAV'}
         />
       </DrawerLayoutAndroid>
     );
@@ -126,10 +130,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   menuItem: {
-    marginLeft: 25,
-    marginTop: 20,
-    fontSize: 16,
-    textAlign: 'left'
+    height: 60,
+    justifyContent: 'center',
+    paddingLeft: 20,
   },
 });
 
