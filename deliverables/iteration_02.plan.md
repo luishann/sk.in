@@ -60,6 +60,8 @@ Review meeting and Video making meeting within November 12 to November 14, depen
 
 #### Artifacts
 
+**DAO/ORM research**
+
 **TRELLO Board**
 https://trello.com/b/9vpWgPMC/csc301
 -> to keep track of whose working on which part
