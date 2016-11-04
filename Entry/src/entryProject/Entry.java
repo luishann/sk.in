@@ -35,13 +35,14 @@ public class Entry extends Observable {
 	 *            the date that the entry was created
 	 */
 	public Entry(String photoPath, String date) {
-
+		
 		this.photoPath = photoPath;
 		this.date = date;
 	}
 
-	/*
-	 * Update the list of products for the entry
+	/**
+	 * Add an product to the list of products if it is not already there
+	 * @param product
 	 */
 	public void addProduct(Product product) {
 		// Add this product to the user entry
@@ -84,8 +85,9 @@ public class Entry extends Observable {
 		this.photoPath = newPath;
 	}
 
-	/*
-	 * Add rating for the entry
+	/**
+	 * Add rating to this entry
+	 * @param rating
 	 */
 	public void addRating(int rating) {
 		// Setting a new rating
