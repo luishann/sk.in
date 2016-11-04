@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class Entry extends Observable implements Comparable{
+public class Entry implements Comparable{
 	/* To implement observable pattern */
 
 	// List of issues
@@ -34,10 +34,18 @@ public class Entry extends Observable implements Comparable{
 	 * @param date
 	 *            the date that the entry was created
 	 */
-	public Entry(String photoPath, String date) {
+	public Entry(String date) {
 		
 		this.photoPath = photoPath;
 		this.date = date;
+	}
+	
+	/**
+	 * Adds a picture using the location of that picture
+	 * @param photoPath the location of the picture
+	 */
+	public void addPhoto(String photoPath){
+		this.photoPath = photoPath;
 	}
 
 	/**
@@ -47,7 +55,6 @@ public class Entry extends Observable implements Comparable{
 	public void addProduct(Product product) {
 		// Add this product to the user entry
 		if (!products.contains(product)) {
-			notifyObservers(product);
 			products.add(product);
 		}
 	}

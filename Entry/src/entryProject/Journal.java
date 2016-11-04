@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Journal extends Observable implements Observer {
+public class Journal{
 
 	// The list of entries for the journal
 	private List<Entry> entries = new ArrayList<Entry>();
@@ -28,7 +28,7 @@ public class Journal extends Observable implements Observer {
 	public void addEntry(String photoPath) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		Entry entry = new Entry(photoPath, dateFormat.format(date));
+		Entry entry = new Entry(dateFormat.format(date));
 		entries.add(entry);
 	}
 
@@ -96,7 +96,7 @@ public class Journal extends Observable implements Observer {
 	}
 
 	/**
-	 * Sorts the entries by their ratings
+	 * Sorts the entries by their ratings in a decresing order
 	 * 
 	 * @return the sorted list
 	 */
@@ -106,17 +106,6 @@ public class Journal extends Observable implements Observer {
 		return sortedEntries;
 	}
 
-	/**
-	 * Journal observes an entry and if a new product was added for an entry it
-	 * should notify the user to add that product to the list of all products
-	 */
-	public void update(Observable entry, Object product) {
 
-		if (!(product instanceof Product)) {
-			throw new IllegalArgumentException();
-		}
-		this.notifyObservers(product);
-
-	}
 
 }
