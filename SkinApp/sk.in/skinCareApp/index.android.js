@@ -4,50 +4,136 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator,
+  DrawerLayoutAndroid,
+  ToolbarAndroid,
+  ScrollView,
+  TouchableNativeFeedback,
+  Image
 } from 'react-native';
 
-export default class skinCareApp extends Component {
+import Journal from './Journal';
+import Products from './Products';
+
+class MyToolbar extends Component {
   render() {
+    var navigator = this.props.navigator;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <ToolbarAndroid
+        title={this.props.title}
+        navIcon={require('./icons/ic_menu.png')}
+        style = {styles.toolbar}
+        titleColor={'white'}
+        onIconClicked={this.props.sidebarRef}/>
     );
   }
 }
 
+export default class SkinCareApp extends Component {
+
+  // Open navigation drawer
+  _setDrawer() {
+    this.refs['DRAWER'].openDrawer();
+  }
+
+  // Changing route from clicking item in navigation drawer
+  _change(route){
+    this.refs['NAV'].push({id: route})
+    this.refs['DRAWER'].closeDrawer();
+  }
+
+  // Render scene depending on route number
+  _renderScene(route, navigator) {
+    if(route.id === 1){
+      return <Journal />
+    } else if (route.id === 2){
+      return <Products />
+    }
+  }
+
+  render() {
+    // Navigation menu view
+    var navigationView = (
+      <View style={styles.navMenu}>
+
+        {/* Header for showing user profile picture/ name. Dummy data for now */}
+        <View style={{backgroundColor: '#6fc7d1',height: 110}}>
+          <View style={{backgroundColor: '#6fc7d1',height: 60, margin: 30}}>
+            <Image style={{flex: 1,
+              width: null,
+              height: null,
+              resizeMode: 'contain'}}
+              source={require('./icons/ic_user.png')}/>
+          </View>
+        </View>
+
+        {/* Journal item */}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 1)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text><Image source={require('./icons/ic_book_red.png')} />  Journal</Text>
+          </View>
+        </TouchableNativeFeedback>
+
+        {/* Products item */}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 2)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text><Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
+          </View>
+        </TouchableNativeFeedback>
+      </View>
+    );
+
+    return (
+      // Render navigation drawer
+      <DrawerLayoutAndroid
+        drawerWidth={300}
+        drawerPosition={DrawerLayoutAndroid.positions.Left}
+        renderNavigationView={() => navigationView}
+        ref={'DRAWER'}>
+
+        {/* Render toolbar */}
+        <MyToolbar
+          title={'SK.IN'}
+          navigator={this.props.navigator}
+          sidebarRef={()=>this._setDrawer()}
+        />
+
+        {/* Render navigator (which renders the scene) */}
+        <Navigator
+          initialRoute={{id: 1}}
+          renderScene={this._renderScene}
+          ref={'NAV'}
+        />
+      </DrawerLayoutAndroid>
+    );
+  }
+
+}
+
+
 const styles = StyleSheet.create({
-  container: {
+  toolbar: {
+    backgroundColor: '#6fc7d1',
+    height: 56,
+    elevation: 10
+  },
+  navMenu: {
     flex: 1,
+    backgroundColor: '#fff'
+  },
+  menuItem: {
+    height: 60,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    paddingLeft: 20,
   },
 });
 
-AppRegistry.registerComponent('skinCareApp', () => skinCareApp);
+AppRegistry.registerComponent('SkinCareApp', () => SkinCareApp);
