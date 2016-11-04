@@ -47,6 +47,7 @@ public class Entry extends Observable implements Comparable{
 	public void addProduct(Product product) {
 		// Add this product to the user entry
 		if (!products.contains(product)) {
+			notifyObservers(product);
 			products.add(product);
 		}
 	}
@@ -139,6 +140,7 @@ public class Entry extends Observable implements Comparable{
 		return rating;
 	}
 
+	
 	@Override
 	public int compareTo(Object obj) {
 		// TODO Auto-generated method stub
@@ -149,4 +151,7 @@ public class Entry extends Observable implements Comparable{
 		return Integer.compare(this.getRating(), ((Entry)obj).getRating());
 	}
 
+}
+class Product{
+	
 }
