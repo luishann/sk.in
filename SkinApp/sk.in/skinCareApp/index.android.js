@@ -14,72 +14,103 @@ import {
   DrawerLayoutAndroid,
   ToolbarAndroid,
   ScrollView,
-  TouchableOpacity
+  TouchableNativeFeedback,
+  Image
 } from 'react-native';
 
 import Journal from './Journal';
 import Products from './Products';
 
 class MyToolbar extends Component {
-render() {
-  var navigator = this.props.navigator;
-   return (
-    <ToolbarAndroid
-     title={this.props.title}
-     navIcon={require('./ic_menu_black.png')}
-     style = {styles.toolbar}
-     titleColor={'white'}
-     onIconClicked={this.props.sidebarRef}/>
+  render() {
+    var navigator = this.props.navigator;
+    return (
+      <ToolbarAndroid
+        title={this.props.title}
+        navIcon={require('./icons/ic_menu.png')}
+        style = {styles.toolbar}
+        titleColor={'white'}
+        onIconClicked={this.props.sidebarRef}/>
     );
- }
+  }
 }
 
 export default class SkinCareApp extends Component {
 
+  // Open navigation drawer
   _setDrawer() {
     this.refs['DRAWER'].openDrawer();
-   }
+  }
 
-   _change(route){
-     this.refs['NAV'].push({id: route})
-     this.refs['DRAWER'].closeDrawer();
-   }
+  // Changing route from clicking item in navigation drawer
+  _change(route){
+    this.refs['NAV'].push({id: route})
+    this.refs['DRAWER'].closeDrawer();
+  }
 
+  // Render scene depending on route number
   _renderScene(route, navigator) {
     if(route.id === 1){
-         return <Journal />
-     }else if(route.id === 2){
-         return <Products />
-     }
-   }
+      return <Journal />
+    } else if (route.id === 2){
+      return <Products />
+    }
+  }
 
   render() {
+    // Navigation menu view
     var navigationView = (
-        <View style={{flex: 1, backgroundColor: '#fff'}}>
-            <TouchableOpacity onPress={this._change.bind(this, 1)}>
-                <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Journal</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this._change.bind(this, 2)}>
-                <Text style={{margin: 10, fontSize: 15, textAlign: 'left'}}>Products</Text>
-            </TouchableOpacity>
+      <View style={styles.navMenu}>
+
+        {/* Header for showing user profile picture/ name. Dummy data for now */}
+        <View style={{backgroundColor: '#6fc7d1',height: 110}}>
+          <View style={{backgroundColor: '#6fc7d1',height: 60, margin: 30}}>
+            <Image style={{flex: 1,
+              width: null,
+              height: null,
+              resizeMode: 'contain'}}
+              source={require('./icons/ic_user.png')}/>
+          </View>
         </View>
+
+        {/* Journal item */}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 1)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text><Image source={require('./icons/ic_book_red.png')} />  Journal</Text>
+          </View>
+        </TouchableNativeFeedback>
+
+        {/* Products item */}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 2)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text><Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
+          </View>
+        </TouchableNativeFeedback>
+      </View>
     );
 
     return (
+      // Render navigation drawer
       <DrawerLayoutAndroid
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => navigationView}
         ref={'DRAWER'}>
-        <MyToolbar style={styles.toolbar}
-            title={'sk.in'}
-            navigator={this.props.navigator}
-            sidebarRef={()=>this._setDrawer()}
+
+        {/* Render toolbar */}
+        <MyToolbar
+          title={'SK.IN'}
+          navigator={this.props.navigator}
+          sidebarRef={()=>this._setDrawer()}
         />
+
+        {/* Render navigator (which renders the scene) */}
         <Navigator
-            initialRoute={{id: 1}}
-            renderScene={this._renderScene}
-            ref={'NAV'}
+          initialRoute={{id: 1}}
+          renderScene={this._renderScene}
+          ref={'NAV'}
         />
       </DrawerLayoutAndroid>
     );
@@ -89,31 +120,19 @@ export default class SkinCareApp extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  containerToolbar: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
-  },
   toolbar: {
-    backgroundColor: '#e9eaed',
+    backgroundColor: '#6fc7d1',
     height: 56,
+    elevation: 10
+  },
+  navMenu: {
+    flex: 1,
+    backgroundColor: '#fff'
+  },
+  menuItem: {
+    height: 60,
+    justifyContent: 'center',
+    paddingLeft: 20,
   },
 });
 
