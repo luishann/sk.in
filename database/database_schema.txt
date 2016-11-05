@@ -1,0 +1,37 @@
+DROP SCHEMA Skin CASCADE;
+
+CREATE TABLE Skin.User (
+	ID serial PRIMARY KEY,
+	username VARCHAR(12) UNIQUE NOT NULL,
+	password VARCHAR(12) NOT NULL,
+	email text NOT NULL
+);
+
+
+CREATE TABLE Skin.Product (
+	ID serial PRIMARY KEY,
+	name text NOT NULL,
+	brand text
+);
+
+
+CREATE TABLE Skin.ProductReview (
+	ID serial PRIMARY KEY,
+	productID integer REFERENCES Skin.Product(ID) NOT NULL,
+	userID integer REFERENCES Skin.User(ID) NOT NULL,
+	rating integer CHECK (rating >= 1 AND rating <= 5) NOT NULL,
+	review text
+); 
+
+
+CREATE TABLE Skin.MyProduct (
+	ID serial PRIMARY KEY,
+	userID integer REFERENCES Skin.User(ID) NOT NULL,
+	productID integer REFERENCES Skin.Product(ID) NOT NULL,
+	startDate timestamp DEFAULT now(),
+	endDate timestamp,
+	expiryDate timestamp
+	);
+
+
+
