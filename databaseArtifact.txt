@@ -1,4 +1,0 @@
-Database Artifact
-Database_Schema.png and database_plan.txt
-
-We decided to use a relational database to store all user data for our mobile app. We generated the schema using www.app.genmymodel.com. The user table is used for storing all user login information. The product table is a table of products that any user can access as it stores all the different products that users have ever reviewed or added to their list of products. ProductReview stores all reviews on any particular product by any user. MyProduct are specific products users have added to their product list. For the user’s journal, there is the Entry table to store all the entries, Photo table to store all the photos used for any entries, and ProductUsed for products used during an entry. As for issues, we have a global table to store all issues. Users can reference those issues in the IssueRating where they rate any issues they have tagged in an entry.

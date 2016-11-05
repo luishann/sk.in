@@ -1,1 +1,0 @@
-We used trello to maintain a list of features to be implemented (sorted by priority), working, tested and completed. This helped us to be organized. It also helped everyone to be updated on the various tasks assigned to the team. It made implementing agile much easier and smoother. We plan to continue using trello to aid our agile development throughout the project. 
