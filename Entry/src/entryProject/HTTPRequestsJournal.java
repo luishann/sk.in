@@ -12,16 +12,18 @@ public class HTTPRequestsJournal {
 	public static void makeCall() throws IOException
 	{
 		
-	
+		
 		//replace with the endpoint of our database
-        URL yahoo = new URL("https://www.yahoo.com/"); 
-        URLConnection yc = yahoo.openConnection();
+        URL databaseEndpoint = new URL("http://johntiger1.github.io/"); 
+        URLConnection dataConn = databaseEndpoint.openConnection();
         
         //the question is what our database responds with
+        //in theory we should use composition -- make a new Journal
+        //object in here
         //discuss with Sebastian
         BufferedReader in = new BufferedReader(
                                 new InputStreamReader(
-                                yc.getInputStream()));
+                                dataConn.getInputStream()));
         String inputLine;
 
         while ((inputLine = in.readLine()) != null) 
