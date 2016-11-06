@@ -1,0 +1,2 @@
+Not currently going to use Factory, since while we have many DAOs, each one is specifc to that thing. For example, if we have a BottleDAO, 
+we might need multiple DAOs, but there is only one DAO for Bottle.
