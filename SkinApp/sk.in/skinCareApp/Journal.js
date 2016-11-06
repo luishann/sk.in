@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, StyleSheet, Image,
+import { View, Text, ListView, StyleSheet, Image, TouchableOpacity,
   TouchableNativeFeedback, RecyclerViewBackedScrollView} from 'react-native';
 
 /* JSON object for journal entries data. This is just a hard coded example,
@@ -106,9 +106,15 @@ export default class Journal extends Component {
       <View style={{flex: 1}}>
 
         <JournalListView />
-        <Image source={require('./icons/ic_add_yellow.png')} style={styles.actionButton}/>
+        <TouchableOpacity onPress={this._onPressButton} style={styles.touchableButton}>
+          <Image source={require('./icons/ic_add_yellow.png')}/>
+        </TouchableOpacity>
       </View>
     )
+  }
+
+  _onPressButton() {
+
   }
 }
 
@@ -139,9 +145,11 @@ var styles = StyleSheet.create({
     fontSize: 16,
     flex: 1,
   },
-  actionButton: {
-    position: 'absolute',
+  touchableButton: {
     bottom: 10,
     right: 10,
-  }
+    width: 48,
+    height: 48,
+    position: 'absolute',
+  },
 });
