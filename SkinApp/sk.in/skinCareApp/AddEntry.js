@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class AddEntry extends Component {
   static get defaultProps() {
@@ -16,3 +16,7 @@ export default class AddEntry extends Component {
     )
   }
 }
+
+var styles = StyleSheet.create({
+
+});

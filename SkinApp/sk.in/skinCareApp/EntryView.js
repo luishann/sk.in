@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default class Products extends Component {
+export default class EntryView extends Component {
   static get defaultProps() {
     return {
-      title: 'Products'
+      title: 'Entry View'
     };
   }
 
   render() {
     return (
       <View>
-        <Text>This is the products scene.</Text>
+        <Text>This is an EntryView scene.</Text>
       </View>
     )
   }
