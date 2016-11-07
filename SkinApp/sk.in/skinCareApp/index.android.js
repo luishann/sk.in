@@ -20,6 +20,7 @@ import {
 
 import Journal from './Journal';
 import Products from './Products';
+import AddEntry from './AddEntry';
 
 class MyToolbar extends Component {
   render() {
@@ -44,16 +45,21 @@ export default class SkinCareApp extends Component {
 
   // Changing route from clicking item in navigation drawer
   _change(route){
-    this.refs['NAV'].push({id: route})
-    this.refs['DRAWER'].closeDrawer();
+    _navigator.push({id: route})
+    if (this.refs['DRAWER']) {
+      this.refs['DRAWER'].closeDrawer();
+    }
   }
 
   // Render scene depending on route number
   _renderScene(route, navigator) {
+    _navigator = navigator;
     if(route.id === 1){
-      return <Journal />
+      return <Journal changeRoute={this._change}/>
     } else if (route.id === 2){
       return <Products />
+    } else if (route.id === 3) {
+      return <AddEntry />
     }
   }
 
@@ -109,7 +115,7 @@ export default class SkinCareApp extends Component {
         {/* Render navigator (which renders the scene) */}
         <Navigator
           initialRoute={{id: 1}}
-          renderScene={this._renderScene}
+          renderScene={this._renderScene.bind(this)}
           ref={'NAV'}
         />
       </DrawerLayoutAndroid>
