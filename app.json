@@ -1,0 +1,6 @@
+{
+  "name": "Skin.Me",
+  "description": "Backend for the mobile application. Application that tracks and helps people to use their skin products better",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
