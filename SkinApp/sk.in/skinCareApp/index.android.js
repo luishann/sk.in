@@ -64,7 +64,7 @@ export default class SkinCareApp extends Component {
     } else if (route.id === 2){
       return <Products />
     } else if (route.id === 3) {
-      return <AddEntry />
+      return <AddEntry changeRoute={this._changeRoute}/>
     } else if (route.id === 4) {
       return <EntryView />
     }
@@ -130,7 +130,6 @@ export default class SkinCareApp extends Component {
   }
 
 }
-
 
 const styles = StyleSheet.create({
   toolbar: {
