@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # java-getting-started
 
 A barebones Java app, which can easily be deployed to Heroku.
@@ -38,3 +39,11 @@ $ heroku open
 For more information about using Java on Heroku, see these Dev Center articles:
 
 - [Java on Heroku](https://devcenter.heroku.com/categories/java)
+=======
+#Project CSC301 Team 15
+
+Please take a look at our 'deliverables' subfolder in order to view the product.md, plan.md, and review.md files.
+The artifacts are all within the 'artifacts' subfolder.
+
+Have a look at our Trello board here: https://trello.com/b/9vpWgPMC/csc301
+>>>>>>> 66cac46f90042903ea01be52dad2c467a34cd17c
