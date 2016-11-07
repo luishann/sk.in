@@ -12,4 +12,7 @@ host: ec2-54-225-64-254.compute-1.amazonaws.com
 port: 5432
 database: d9mma6e753ienl
 
+jdbc:postgresql://ec2-54-225-64-254.compute-1.amazonaws.com:5432/d9mma6e753ienl?user=ziopwikywoanoj&password=yO-w-jpnxex5OKPQXLJE0sjgC6&sslmode=require
+
+
 USE POSTICO/PGADMIN/COMMAND-LINE to create a server using that URL
