@@ -1,3 +1,16 @@
+## Meeting Nov 6
+Secretary: Sara
+
+Start time: 10:39 PM
+End time: 1:00 AM
+
+We decided that we will not be needing java classes anymore because we can only use JSON objects instead. (although we might need the Entry class for server).
+Tested the database and tested the front end of our journal.
+Sebastian described how spark works for the server part.
+Decided not to do DAOs because we will not make Java objects.
+
+Changed the Trello and Slack (Updated the roles for this iteration).
+
 ## Final Planning Meeting Nov 2
 Secretary: Shannon
 
