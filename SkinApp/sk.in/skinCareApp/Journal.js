@@ -65,7 +65,8 @@ var JournalListView = React.createClass({
     //var imgSource = THUMB_URLS[rowHash % THUMB_URLS.length];
     return (
       <TouchableNativeFeedback onPress={() => {
-        this._pressRow(rowID);
+        this.props.changeRoute(4);
+        //this._pressRow(rowID);
         highlightRow(sectionID, rowID);}}
         background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
@@ -107,7 +108,7 @@ export default class Journal extends Component {
     return (
       <View style={{flex: 1}}>
 
-        <JournalListView />
+        <JournalListView changeRoute={this.props.changeRoute}/>
 
         {/* Add Entry Button */}
         <TouchableOpacity onPress={this.props.changeRoute.bind(this, 3)}
@@ -118,9 +119,6 @@ export default class Journal extends Component {
     )
   }
 
-  _onPressButton() {
-
-  }
 }
 
 var styles = StyleSheet.create({

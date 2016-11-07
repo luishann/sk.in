@@ -21,6 +21,7 @@ import {
 import Journal from './Journal';
 import Products from './Products';
 import AddEntry from './AddEntry';
+import EntryView from './EntryView';
 
 class MyToolbar extends Component {
   render() {
@@ -51,15 +52,21 @@ export default class SkinCareApp extends Component {
     }
   }
 
+  _changeRoute(route){
+    _navigator.push({id: route})
+  }
+
   // Render scene depending on route number
   _renderScene(route, navigator) {
     _navigator = navigator;
     if(route.id === 1){
-      return <Journal changeRoute={this._change}/>
+      return <Journal changeRoute={this._changeRoute}/>
     } else if (route.id === 2){
       return <Products />
     } else if (route.id === 3) {
       return <AddEntry />
+    } else if (route.id === 4) {
+      return <EntryView />
     }
   }
 
