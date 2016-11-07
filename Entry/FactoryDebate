@@ -1,0 +1,9 @@
+Not currently going to use Factory, since while we have many DAOs, each one is specifc to that thing. For example, if we have a BottleDAO, 
+we might need multiple DAOs, but there is only one DAO for Bottle.
+
+Sources consulted:
+https://en.wikipedia.org/wiki/Factory_method_pattern
+https://sourcemaking.com/design_patterns/factory_method/java/1
+http://www.oracle.com/technetwork/java/dataaccessobject-138824.html
+https://www.tutorialspoint.com/design_pattern/factory_pattern.htm
+

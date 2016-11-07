@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, StyleSheet, Image,
+import { View, Text, ListView, StyleSheet, Image, TouchableOpacity,
   TouchableNativeFeedback, RecyclerViewBackedScrollView} from 'react-native';
 
 /* JSON object for journal entries data. This is just a hard coded example,
@@ -22,6 +22,8 @@ const dummyData =  {
   '13': {date: 'Oct 23, 2016', issues: "acne, blackheads", rating: '* *'},
   '14': {date: 'Oct 22, 2016', issues: "acne, blackheads", rating: '* *'},
 };
+
+var _navigator;
 
 /* Code adapted from the React Native docs */
 var JournalListView = React.createClass({
@@ -106,9 +108,18 @@ export default class Journal extends Component {
       <View style={{flex: 1}}>
 
         <JournalListView />
-        <Image source={require('./icons/ic_add_yellow.png')} style={styles.actionButton}/>
+
+        {/* Add Entry Button */}
+        <TouchableOpacity onPress={this.props.changeRoute.bind(this, 3)}
+        style={styles.touchableButton}>
+          <Image source={require('./icons/ic_add_yellow.png')}/>
+        </TouchableOpacity>
       </View>
     )
+  }
+
+  _onPressButton() {
+
   }
 }
 
@@ -139,9 +150,11 @@ var styles = StyleSheet.create({
     fontSize: 16,
     flex: 1,
   },
-  actionButton: {
-    position: 'absolute',
+  touchableButton: {
     bottom: 10,
     right: 10,
-  }
+    width: 48,
+    height: 48,
+    position: 'absolute',
+  },
 });

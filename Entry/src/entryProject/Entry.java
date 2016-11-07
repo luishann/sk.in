@@ -2,9 +2,8 @@ package entryProject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-public class Entry implements Comparable{
+public class Entry implements Comparable<Entry>{
 	/* To implement observable pattern */
 
 	// List of issues
@@ -29,14 +28,11 @@ public class Entry implements Comparable{
 	 * The constructor takes a path to a photo and the date that the entry was
 	 * created
 	 * 
-	 * @param photoPath
-	 *            path to the photo
 	 * @param date
 	 *            the date that the entry was created
 	 */
 	public Entry(String date) {
 		
-		this.photoPath = photoPath;
 		this.date = date;
 	}
 	
@@ -149,13 +145,8 @@ public class Entry implements Comparable{
 
 	
 	@Override
-	public int compareTo(Object obj) {
-		// TODO Auto-generated method stub
-		if(!(obj instanceof Entry)){
-			throw new IllegalArgumentException();
-		}
-		
-		return Integer.compare(this.getRating(), ((Entry)obj).getRating());
+	public int compareTo(Entry entry) {
+		return Integer.compare(this.getRating(), entry.getRating());
 	}
 
 }
