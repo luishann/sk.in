@@ -1,7 +1,0 @@
-#Mon Oct 24 19:42:43 EDT 2016
-base.0=C\:\\Users\\johnp\\Desktop\\git_stuff\\project-team-15\\SkinApp\\sk.in\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_b15e9890a664c378ad0079e23af8cc754179c06f
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\Users\\johnp\\Desktop\\git_stuff\\project-team-15\\SkinApp\\sk.in\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_4898a9206773ed301f0e70dbff83d06f3b70b9d7\\classes.dex
-base.1=C\:\\Users\\johnp\\Desktop\\git_stuff\\project-team-15\\SkinApp\\sk.in\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_4898a9206773ed301f0e70dbff83d06f3b70b9d7
-file.0=C\:\\Users\\johnp\\Desktop\\git_stuff\\project-team-15\\SkinApp\\sk.in\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_b15e9890a664c378ad0079e23af8cc754179c06f\\classes.dex
