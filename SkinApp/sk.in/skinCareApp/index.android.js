@@ -22,6 +22,7 @@ import Journal from './Journal';
 import Products from './Products';
 import AddEntry from './AddEntry';
 import EntryView from './EntryView';
+import AddProduct from './AddProduct';
 
 class MyToolbar extends Component {
   render() {
@@ -62,11 +63,13 @@ export default class SkinCareApp extends Component {
     if(route.id === 1){
       return <Journal changeRoute={this._changeRoute}/>
     } else if (route.id === 2){
-      return <Products />
+      return <Products changeRoute={this._changeRoute}/>
     } else if (route.id === 3) {
       return <AddEntry />
     } else if (route.id === 4) {
       return <EntryView />
+    } else if (route.id === 5) {
+      return <AddProduct changeRoute={this._changeRoute}/>
     }
   }
 

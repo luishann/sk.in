@@ -23,8 +23,6 @@ const dummyData =  {
   '14': {date: 'Oct 22, 2016', issues: "acne, blackheads", rating: '* *'},
 };
 
-var _navigator;
-
 /* Code adapted from the React Native docs */
 var JournalListView = React.createClass({
   getInitialState: function() {
@@ -44,9 +42,6 @@ var JournalListView = React.createClass({
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this._renderRow}
-          renderScrollComponent={props => <RecyclerViewBackedScrollView
-            {...props} />}
-
         />
       </View>
     );
