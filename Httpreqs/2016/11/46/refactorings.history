@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;WenConfig&apos; to &apos;WebConfig&apos;&#x0D;&#x0A;- Original project: &apos;Httpreqs&apos;&#x0D;&#x0A;- Original element: &apos;WenConfig&apos;&#x0D;&#x0A;- Renamed element: &apos;WebConfig&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;WenConfig&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{WenConfig.java[WenConfig" matchStrategy="1" name="WebConfig" qualified="false" references="true" similarDeclarations="false" stamp="1478627656456" textual="false" version="1.0"/>
-</session>
