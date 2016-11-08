@@ -9,7 +9,7 @@ export default class EntryView extends Component {
   }
 
   _randFunc() {
-    fetch("https://100.65.209.140:3000/users", {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/users", {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
       console.log("got here");

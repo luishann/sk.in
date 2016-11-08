@@ -1,0 +1,85 @@
+Database Plan
+
+User:
+id
+username
+password
+email
+
+Product:
+id
+name
+brand
+
+ProductReview:
+id
+userID
+productID
+rating
+review
+
+Issue:
+id
+name
+
+*** Note: if we are storing everything in our own servers, add a column for
+user id for each table below. Otherwise each table is stored inside the
+user’s own device. ***
+
+MyProduct:
+id
+productID
+startDate
+endDate
+expiryDate
+
+Entry:
+id
+date
+description
+rating
+
+*** I don’t like this… What if we use the same 5 products everyday for like 4 months
+in a row? There would be more rows than necessary in this table ***
+ProductUsed:
+entryID
+productID
+
+Photo:
+id
+entryID
+location
+description
+
+******************************************
+*** Which of the following tables? *** 
+*** 1. If we want to rate each issue whenever we want: ***
+MyIssue:
+id
+issueID
+startDate 
+endDate
+
+IssueRating:
+id
+myIssueID
+date
+rating
+
+IssueTagged:
+entryID
+issueID
+
+*** OR 2. If we want to add/rate each issue for a particular entry (and maybe
+remove rating from the Entry table if we use this one): ***
+IssueRating:
+id
+issueID
+entryID
+rating
+******************************************
+
+
+
+
+
