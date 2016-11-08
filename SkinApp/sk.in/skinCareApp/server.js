@@ -28,3 +28,19 @@ app.get('/users', function(req, res) {
 	});
 
 });
+
+// listener part and one extra query:
+
+var query = 'SELECT * FROM skin.user;';
+client.query(query, function (err, qres) {
+	if (err) {
+		return console.log("error running query", err);
+	} else {
+		console.log(qres.rows);
+		console.log(JSON.stringify(qres.rows));
+	}
+});
+
+var listener = app.listen(process.env.PORT || 3000, function () {
+	console.log('Server running on port ' + listener.address().port);
+});
