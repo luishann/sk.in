@@ -16,7 +16,9 @@ export default class AddEntry extends Component {
     console.log(dummyData);
     /* this is where to make the POST request */
 
+    this.change(1);
   }
+
 
   render() {
 
