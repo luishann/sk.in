@@ -89,7 +89,20 @@ public class WebConfig {
 		map.put("messages", messages);
 		return new ModelAndView(map, "timeline.ftl");
     }, new FreeMarkerEngine());
+		
+	/*
+	* Dispay a user's entries
+	*/
 	
+	get("/entries/:username", (req, res) -> {
+		String username = req.params(":username");
+		User authUser = getAuthenticatedUser(req);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageTitle", ' My Entries');
+		map.put("userId", );
+		
+	}, new FreeMarkerEngine());
 	/*
 	 * Checks if the user exists
 	 */
