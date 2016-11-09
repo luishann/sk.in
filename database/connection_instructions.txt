@@ -3,16 +3,14 @@ scheme://username:password@host:port/database
 -> use this to interpret the following URL
 
 DATABASE URL:
-postgres://ziopwikywoanoj:yO-w-jpnxex5OKPQXLJE0sjgC6@ec2-54-225-64-254.compute-1.amazonaws.com:5432/d9mma6e753ienl
+postgres://uurvdosruvrxjz:YS7FYSfT5DFBEXHRZvuxJXOIo4@ec2-54-235-217-221.compute-1.amazonaws.com:5432/dbrvvj2if6d8if
 -> obtained by running “heroku config:get DATABASE_URL --app frozen-temple-65093” on command line
 
-username: ziopwikywoanoj
-password: yO-w-jpnxex5OKPQXLJE0sjgC6
-host: ec2-54-225-64-254.compute-1.amazonaws.com
+username: uurvdosruvrxjz
+password: YS7FYSfT5DFBEXHRZvuxJXOIo4
+host: ec2-54-235-217-221.compute-1.amazonaws.com
 port: 5432
-database: d9mma6e753ienl
+database: dbrvvj2if6d8if
 
-jdbc:postgresql://ec2-54-225-64-254.compute-1.amazonaws.com:5432/d9mma6e753ienl?user=ziopwikywoanoj&password=yO-w-jpnxex5OKPQXLJE0sjgC6&sslmode=require
-
-
-USE POSTICO/PGADMIN/COMMAND-LINE to create a server using that URL
+> psql -h ec2-54-235-217-221.compute-1.amazonaws.com -d dbrvvj2if6d8if -U uurvdosruvrxjz
+for the command line connection
