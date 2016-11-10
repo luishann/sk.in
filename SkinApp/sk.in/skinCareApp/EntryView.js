@@ -8,6 +8,7 @@ export default class EntryView extends Component {
     };
   }
 
+  // how to make a GET request
   _randFunc() {
     fetch("https://lit-gorge-31410.herokuapp.com/users", {method: "GET"})
     .then((response) => response.json())
