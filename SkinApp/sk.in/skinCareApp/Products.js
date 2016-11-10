@@ -8,6 +8,8 @@ const dummyData =  {
   '3': {brand: "Paula's Choice", name: 'Skin Perfecting 2% BHA Liquid Exfoliant'}
 };
 
+/* ListView that uses const dummy data. See below for ProductList component
+class that uses http rquests to populate a ListView!!!!*/
 var ProductsList = React.createClass({
   getInitialState: function() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -28,7 +30,7 @@ var ProductsList = React.createClass({
     );
   },
 
-  _genRows: function(pressData: {[key: number]: boolean}): Array<string> {
+  _genRows: function(): Array<string> {
     var dataBlob = [];
     for (let prop in dummyData) {
       dataBlob.push(dummyData[prop]);
@@ -50,18 +52,78 @@ var ProductsList = React.createClass({
       </TouchableNativeFeedback>
     );
   },
-
-
-
-
 });
+
+/* Populate listview using http requests, currently using Google books API.
+Need to replace fetch URL and JSON keys when our own API is done! */
+class ProductList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2
+      })
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction", {method: "GET"})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData.items),
+        isLoading: false
+      });
+    })
+    .done();
+  }
+
+  render() {
+    if (this.state.isLoading) {
+      return this.renderLoadingView();
+    }
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderProduct.bind(this)}
+        style={styles.listView}
+      />
+    );
+  }
+
+  renderProduct(product) {
+    return (
+      <TouchableNativeFeedback onPress={() => this.props.changeRoute(6, product)}
+      background={TouchableNativeFeedback.Ripple('#000000')}>
+        <View style={styles.row}>
+          <Text style={styles.name}>{product.volumeInfo.title}</Text>
+          <Text style={styles.brand}>{product.volumeInfo.authors}</Text>
+        </View>
+      </TouchableNativeFeedback>
+    );
+  }
+
+  renderLoadingView() {
+    return (
+      <View style={styles.loading}>
+        <Text>Loading products...</Text>
+      </View>
+    );
+  }
+}
 
 export default class Products extends Component {
 
   render() {
     return (
       <View style={{flex: 1}}>
-        <ProductsList changeRoute={this.props.changeRoute}/>
+        {/*<ProductsList changeRoute={this.props.changeRoute}/>*/}
+        <ProductList changeRoute={this.props.changeRoute}/>
 
         {/* Add Product Button */}
         <TouchableOpacity onPress={this.props.changeRoute.bind(this, 5)}
@@ -82,7 +144,6 @@ var styles = StyleSheet.create({
     marginBottom: 7,
     marginLeft: 9,
     marginRight: 9,
-  //  flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 5
   },
@@ -108,5 +169,13 @@ var styles = StyleSheet.create({
     width: 48,
     height: 48,
     position: 'absolute',
+  },
+  listView: {
+   backgroundColor: '#f2f2f2'
+  },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });

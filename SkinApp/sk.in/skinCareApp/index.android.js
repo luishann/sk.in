@@ -58,6 +58,10 @@ export default class SkinCareApp extends Component {
     _navigator.push({id: route})
   }
 
+  _changeRoute(route, arg1){
+    _navigator.push({id: route, arg: arg1})
+  }
+
   // Render scene depending on route number
   _renderScene(route, navigator) {
     _navigator = navigator;
@@ -72,7 +76,7 @@ export default class SkinCareApp extends Component {
     } else if (route.id === 5) {
       return <AddProduct changeRoute={this._changeRoute}/>
     } else if (route.id === 6) {
-      return <ProductView />
+      return <ProductView product={route.arg}/>
     }
   }
 

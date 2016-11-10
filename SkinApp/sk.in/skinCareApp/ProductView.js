@@ -4,29 +4,16 @@ import { View, Text, StyleSheet, AppRegistry, TouchableHighlight } from 'react-n
 export default class ProductView extends Component {
   static get defaultProps() {
     return {
-      title: 'ProductView View'
+      title: 'Product View'
     };
-  }
-
-  // how to make a GET request
-  _randFunc() {
-    fetch("https://lit-gorge-31410.herokuapp.com/users", {method: "GET"})
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log("got here");
-      console.log(responseData);
-    })
-    .done();
   }
 
   render() {
 
     return (
       <View>
-        <Text>This is an ProductView scene.</Text>
-        <TouchableHighlight onPress={this._randFunc}>
-          <Text>Test</Text>
-        </TouchableHighlight>
+        <Text>Book that was clicked on:</Text>
+        <Text>{this.props.product.volumeInfo.title}</Text>
       </View>
     )
   }
