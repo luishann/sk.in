@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ListView, Image,
-  TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, ListView, Image, TouchableOpacity,
+  TouchableNativeFeedback} from 'react-native';
 
 const dummyData =  {
   '1': {brand: 'Cerave', name: 'Foaming Facial Cleanser'},
@@ -39,13 +39,15 @@ var ProductsList = React.createClass({
   _renderRow: function(rowData: string, sectionID: number, rowID: number,
     highlightRow: (sectionID: number, rowID: number) => void) {
     return (
+      <TouchableNativeFeedback onPress={() => {
+      this.props.changeRoute(6);
+      highlightRow(sectionID, rowID);}}
+      background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
-          <View style={styles.entry}>
-            <Text style={styles.brand}>{rowData.brand}</Text>
-            <Text style={styles.name}>{rowData.name}</Text>
-          </View>
-          <Image source={require('./icons/ic_photos4.png')} />
+          <Text style={styles.name}>{rowData.name}</Text>
+          <Text style={styles.brand}>{rowData.brand}</Text>
         </View>
+      </TouchableNativeFeedback>
     );
   },
 
@@ -80,24 +82,25 @@ var styles = StyleSheet.create({
     marginBottom: 7,
     marginLeft: 9,
     marginRight: 9,
-    flexDirection: 'row',
+  //  flexDirection: 'row',
     justifyContent: 'space-between',
+    borderRadius: 5
   },
   entry: {
     justifyContent: 'center',
     marginLeft: 15,
   },
-  name: {
+  brand: {
     fontSize: 14,
     flex: 1,
-    width: 200,
     flexWrap:'wrap',
+    color: '#222'
   },
-  brand: {
+  name: {
     fontSize: 16,
     flex: 1,
-    width: 200,
-    flexWrap:'wrap'
+    flexWrap:'wrap',
+    color: '#222'
   },
   touchableButton: {
     bottom: 10,

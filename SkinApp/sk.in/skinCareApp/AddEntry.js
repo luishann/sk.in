@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
   TouchableOpacity, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
-import CameraExample from './CameraExample'
+//import CameraExample from './CameraExample'
 
 const dummyData = [];
 

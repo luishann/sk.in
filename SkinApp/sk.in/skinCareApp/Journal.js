@@ -129,6 +129,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     //elevation: 2,
+    borderRadius: 5
   },
   entry: {
     //flexDirection: 'row',
@@ -138,10 +139,12 @@ var styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+    color: '#222'
   },
   date: {
     fontSize: 16,
     flex: 1,
+    color: '#222'
   },
   touchableButton: {
     bottom: 10,
