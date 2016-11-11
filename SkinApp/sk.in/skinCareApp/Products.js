@@ -3,9 +3,12 @@ import { View, Text, StyleSheet, ListView, Image, TouchableOpacity,
   TouchableNativeFeedback} from 'react-native';
 
 const dummyData =  {
-  '1': {brand: 'Cerave', name: 'Foaming Facial Cleanser'},
-  '2': {brand: 'Clinique', name: 'Dramatically Different Moisturizing Gel'},
-  '3': {brand: "Paula's Choice", name: 'Skin Perfecting 2% BHA Liquid Exfoliant'}
+  '1': {brand: 'Cerave', name: 'Foaming Facial Cleanser', expiryDate: '11/22/17',
+    startDate: '11/01/16'},
+  '2': {brand: 'Clinique', name: 'Dramatically Different Moisturizing Gel',
+    expiryDate: '05/04/17', startDate:'11/01/16'},
+  '3': {brand: "Paula's Choice", name: 'Skin Perfecting 2% BHA Liquid Exfoliant',
+    expiryDate: '01/19/18', startDate:'11/01/16'}
 };
 
 /* ListView that uses const dummy data. See below for ProductList component
@@ -42,7 +45,7 @@ var ProductsList = React.createClass({
     highlightRow: (sectionID: number, rowID: number) => void) {
     return (
       <TouchableNativeFeedback onPress={() => {
-      this.props.changeRoute(6);
+      this.props.changeRoute(6, rowData);
       highlightRow(sectionID, rowID);}}
       background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
@@ -122,8 +125,8 @@ export default class Products extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        {/*<ProductsList changeRoute={this.props.changeRoute}/>*/}
-        <ProductList changeRoute={this.props.changeRoute}/>
+        <ProductsList changeRoute={this.props.changeRoute}/>
+        {/*}<ProductList changeRoute={this.props.changeRoute}/>*/}
 
         {/* Add Product Button */}
         <TouchableOpacity onPress={this.props.changeRoute.bind(this, 5)}
