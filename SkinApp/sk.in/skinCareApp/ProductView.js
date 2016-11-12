@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AppRegistry, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, AppRegistry, TouchableOpacity } from 'react-native';
 
 export default class ProductView extends Component {
   static get defaultProps() {
@@ -17,8 +17,11 @@ export default class ProductView extends Component {
         <Text style={styles.text}>Expiry Date: {this.props.product.expirydate}</Text>
         <Text style={styles.text}>Start Date: {this.props.product.startdate}</Text>
         <Text style={styles.text}>End Date: none </Text>
-        {/*<Text>Book that was clicked on:</Text>
-        <Text>{this.props.product.volumeInfo.title}</Text>*/}
+
+        <TouchableOpacity style={{flex: 1}}
+          onPress={this.props.changeRoute.bind(this,2)}>
+          <Text style={styles.ret}>Return to Products </Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -41,5 +44,9 @@ var styles = StyleSheet.create({
   },
   text: {
     color: '#555'
+  },
+  ret: {
+    bottom: 15,
+    position: 'absolute'
   }
 });

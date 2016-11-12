@@ -76,7 +76,7 @@ export default class SkinCareApp extends Component {
     } else if (route.id === 5) {
       return <AddProduct changeRoute={this._changeRoute}/>
     } else if (route.id === 6) {
-      return <ProductView product={route.arg}/>
+      return <ProductView product={route.arg} changeRoute={this._changeRoute}/>
     }
   }
 
