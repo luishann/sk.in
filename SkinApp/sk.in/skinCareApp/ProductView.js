@@ -14,8 +14,8 @@ export default class ProductView extends Component {
       <View style={styles.container}>
         <Text style={styles.brand}>{this.props.product.brand}</Text>
         <Text style={styles.name}>{this.props.product.name}</Text>
-        <Text style={styles.text}>Expiry Date: {this.props.product.expiryDate}</Text>
-        <Text style={styles.text}>Start Date: {this.props.product.startDate}</Text>
+        <Text style={styles.text}>Expiry Date: {this.props.product.expirydate}</Text>
+        <Text style={styles.text}>Start Date: {this.props.product.startdate}</Text>
         <Text style={styles.text}>End Date: none </Text>
         {/*<Text>Book that was clicked on:</Text>
         <Text>{this.props.product.volumeInfo.title}</Text>*/}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity,
 TouchableWithoutFeedback, DatePickerAndroid } from 'react-native';
+import dismissKeyboard from 'dismissKeyboard';
 
 export default class AddProduct extends Component {
   constructor(props) {
@@ -49,18 +50,22 @@ export default class AddProduct extends Component {
     var prod;
     if (this.state.simpleText != 'Pick a Date') {
       prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand,
-        expiryDate: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ')});
+        expirydate: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ')});
     } else {
       prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand});
     }
 
-    fetch("http://www.example.com/test", {method: "POST",
-      body: prod })
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log("Added new product");
-    })
-    .done();
+    fetch("https://lit-gorge-31410.herokuapp.com/products", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    });
+
+    dismissKeyboard();
+    this.props.changeRoute(6, JSON.parse(prod));
   }
 
   render() {
@@ -95,7 +100,7 @@ export default class AddProduct extends Component {
 
         {/* Submit button - add product */}
         <TouchableOpacity style={{width:115}}
-          onPress={this.props.changeRoute.bind(this, 2)}>
+          onPress={this.postProduct.bind(this)}>
           <Text style={styles.button}>Add Product</Text>
         </TouchableOpacity>
       </View>
