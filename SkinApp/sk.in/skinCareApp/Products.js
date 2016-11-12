@@ -2,63 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ListView, Image, TouchableOpacity,
   TouchableNativeFeedback} from 'react-native';
 
-const dummyData =  {
-  '1': {brand: 'Cerave', name: 'Foaming Facial Cleanser', expiryDate: '11/22/17',
-    startDate: '11/01/16'},
-  '2': {brand: 'Clinique', name: 'Dramatically Different Moisturizing Gel',
-    expiryDate: '05/04/17', startDate:'11/01/16'},
-  '3': {brand: "Paula's Choice", name: 'Skin Perfecting 2% BHA Liquid Exfoliant',
-    expiryDate: '01/19/18', startDate:'11/01/16'}
-};
 
-/* ListView that uses const dummy data. See below for ProductList component
-class that uses http rquests to populate a ListView!!!!*/
-var ProductsList = React.createClass({
-  getInitialState: function() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
-      dataSource: ds.cloneWithRows(this._genRows({})),
-    };
-  },
-
-  render: function() {
-    return (
-      <View style={{flex: 1, paddingTop: 0, backgroundColor:'#f2f2f2'}}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-
-        />
-      </View>
-    );
-  },
-
-  _genRows: function(): Array<string> {
-    var dataBlob = [];
-    for (let prop in dummyData) {
-      dataBlob.push(dummyData[prop]);
-    }
-    return dataBlob;
-  },
-
-  _renderRow: function(rowData: string, sectionID: number, rowID: number,
-    highlightRow: (sectionID: number, rowID: number) => void) {
-    return (
-      <TouchableNativeFeedback onPress={() => {
-      this.props.changeRoute(6, rowData);
-      highlightRow(sectionID, rowID);}}
-      background={TouchableNativeFeedback.Ripple('#000000')}>
-        <View style={styles.row}>
-          <Text style={styles.name}>{rowData.name}</Text>
-          <Text style={styles.brand}>{rowData.brand}</Text>
-        </View>
-      </TouchableNativeFeedback>
-    );
-  },
-});
-
-/* Populate listview using http requests, currently using Google books API.
-Need to replace fetch URL and JSON keys when our own API is done! */
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -75,11 +19,11 @@ class ProductList extends Component {
   }
 
   fetchData() {
-    fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction", {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/products", {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(responseData.items),
+        dataSource: this.state.dataSource.cloneWithRows(responseData),
         isLoading: false
       });
     })
@@ -104,8 +48,8 @@ class ProductList extends Component {
       <TouchableNativeFeedback onPress={() => this.props.changeRoute(6, product)}
       background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
-          <Text style={styles.name}>{product.volumeInfo.title}</Text>
-          <Text style={styles.brand}>{product.volumeInfo.authors}</Text>
+          <Text style={styles.name}>{product.name}</Text>
+          <Text style={styles.brand}>{product.brand}</Text>
         </View>
       </TouchableNativeFeedback>
     );
@@ -125,8 +69,7 @@ export default class Products extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <ProductsList changeRoute={this.props.changeRoute}/>
-        {/*}<ProductList changeRoute={this.props.changeRoute}/>*/}
+        <ProductList changeRoute={this.props.changeRoute}/>
 
         {/* Add Product Button */}
         <TouchableOpacity onPress={this.props.changeRoute.bind(this, 5)}
