@@ -5,3 +5,7 @@ Please take a look at our 'deliverables' subfolder in order to view the product.
 The artifacts are all within the 'artifacts' subfolder.
 
 Have a look at our Trello board here: https://trello.com/b/9vpWgPMC/csc301
+
+
+Also see the commits of our other repo 
+https://github.com/anisha-rohra/node-server
