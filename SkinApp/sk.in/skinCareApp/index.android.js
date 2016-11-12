@@ -23,6 +23,7 @@ import Products from './Products';
 import AddEntry from './AddEntry';
 import EntryView from './EntryView';
 import AddProduct from './AddProduct';
+import ProductView from './ProductView';
 
 class MyToolbar extends Component {
   render() {
@@ -57,6 +58,10 @@ export default class SkinCareApp extends Component {
     _navigator.push({id: route})
   }
 
+  _changeRoute(route, arg1){
+    _navigator.push({id: route, arg: arg1})
+  }
+
   // Render scene depending on route number
   _renderScene(route, navigator) {
     _navigator = navigator;
@@ -70,6 +75,8 @@ export default class SkinCareApp extends Component {
       return <EntryView />
     } else if (route.id === 5) {
       return <AddProduct changeRoute={this._changeRoute}/>
+    } else if (route.id === 6) {
+      return <ProductView product={route.arg} changeRoute={this._changeRoute}/>
     }
   }
 
@@ -79,8 +86,8 @@ export default class SkinCareApp extends Component {
       <View style={styles.navMenu}>
 
         {/* Header for showing user profile picture/ name. Dummy data for now */}
-        <View style={{backgroundColor: '#6fc7d1',height: 110}}>
-          <View style={{backgroundColor: '#6fc7d1',height: 60, margin: 30}}>
+        <View style={{backgroundColor: '#62d7df',height: 110}}>
+          <View style={{backgroundColor: '#62d7df',height: 60, margin: 30}}>
             <Image style={{flex: 1,
               width: null,
               height: null,
@@ -93,7 +100,8 @@ export default class SkinCareApp extends Component {
         <TouchableNativeFeedback onPress={this._change.bind(this, 1)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.menuItem}>
-            <Text><Image source={require('./icons/ic_book_red.png')} />  Journal</Text>
+            <Text style={styles.txt}>
+              <Image source={require('./icons/ic_book_red.png')} />  Journal</Text>
           </View>
         </TouchableNativeFeedback>
 
@@ -101,7 +109,8 @@ export default class SkinCareApp extends Component {
         <TouchableNativeFeedback onPress={this._change.bind(this, 2)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.menuItem}>
-            <Text><Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
+            <Text style={styles.txt}>
+              <Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
           </View>
         </TouchableNativeFeedback>
       </View>
@@ -136,7 +145,8 @@ export default class SkinCareApp extends Component {
 
 const styles = StyleSheet.create({
   toolbar: {
-    backgroundColor: '#6fc7d1',
+    //backgroundColor:'#6fc7d1',
+    backgroundColor: '#62d7df',
     height: 56,
     elevation: 10
   },
@@ -149,6 +159,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 20,
   },
+  txt: {
+    color: '#222'
+  }
 });
 
 AppRegistry.registerComponent('SkinCareApp', () => SkinCareApp);

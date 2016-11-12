@@ -3,7 +3,11 @@ import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
+<<<<<<< HEAD
 //import Camera from 'react-native-camera';
+=======
+//import CameraExample from './CameraExample'
+>>>>>>> csc301-fall-2016/master
 
 const dummyData = [];
 

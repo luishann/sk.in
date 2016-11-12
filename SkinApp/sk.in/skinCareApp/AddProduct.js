@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity,
 TouchableWithoutFeedback, DatePickerAndroid } from 'react-native';
+import dismissKeyboard from 'dismissKeyboard';
 
 export default class AddProduct extends Component {
-  static get defaultProps() {
-    return {
-      title: 'AddProduct'
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: 'placeholder',
+      name: 'placeholder',
+      simpleText: 'Pick a Date'
     };
   }
 
-  state = {
+  /* get defaultProps() {
+    return {
+      title: 'AddProduct'
+    };
+  }*/
+
+  /*state = {
     presetDate: new Date(2020, 4, 5),
     allDate: new Date(2020, 4, 5),
     simpleText: 'Pick a Date',
@@ -17,14 +27,14 @@ export default class AddProduct extends Component {
     maxText: 'pick a date, no later than today',
     presetText: 'pick a date, preset to 2020/5/5',
     allText: 'pick a date between 2020/5/1 and 2020/5/10',
-  };
+  };*/
 
   showPicker = async (stateKey, options) => {
     try {
       var newState = {};
       const {action, year, month, day} = await DatePickerAndroid.open(options);
       if (action === DatePickerAndroid.dismissedAction) {
-       newState[stateKey + 'Text'] = 'dismissed';
+       newState[stateKey + 'Text'] = 'Pick a Date';
       } else {
         var date = new Date(year, month, day);
         newState[stateKey + 'Text'] = date.toLocaleDateString();
@@ -36,6 +46,27 @@ export default class AddProduct extends Component {
     }
   };
 
+  postProduct() {
+    var prod;
+    if (this.state.simpleText != 'Pick a Date') {
+      prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand,
+        expirydate: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ')});
+    } else {
+      prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand});
+    }
+
+    fetch("https://lit-gorge-31410.herokuapp.com/products", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    });
+
+    dismissKeyboard();
+    this.props.changeRoute(6, JSON.parse(prod));
+  }
 
   render() {
     return (
@@ -45,6 +76,7 @@ export default class AddProduct extends Component {
           <Text style={styles.label}>Product Brand</Text>
           <TextInput style={styles.input}
             underlineColorAndroid={"transparent"}
+            onChangeText={(brand) => this.setState({brand})}
             autoCapitalize={"words"}/>
         </View>
 
@@ -53,6 +85,7 @@ export default class AddProduct extends Component {
           <Text style={styles.label}>Product Name</Text>
           <TextInput style={styles.input}
             underlineColorAndroid={"transparent"}
+            onChangeText={(name) => this.setState({name})}
             autoCapitalize={"words"}/>
         </View>
 
@@ -65,10 +98,11 @@ export default class AddProduct extends Component {
           </View>
         </TouchableWithoutFeedback>
 
-        <TouchableOpacity onPress={this.props.changeRoute.bind(this, 2)}>
+        {/* Submit button - add product */}
+        <TouchableOpacity style={{width:115}}
+          onPress={this.postProduct.bind(this)}>
           <Text style={styles.button}>Add Product</Text>
         </TouchableOpacity>
-
       </View>
     )
   }
@@ -95,10 +129,11 @@ var styles = StyleSheet.create({
   button: {
     backgroundColor: '#fad900',
     color: 'white',
-    width: 100,
+    width: 108,
     padding: 10,
     borderRadius: 5,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 15
   },
   pickDate: {
     paddingBottom: 20,
@@ -107,7 +142,7 @@ var styles = StyleSheet.create({
   dateButton: {
     color: '#222',
     fontSize: 15,
-    backgroundColor: '#ffb8bc',
+    backgroundColor: '#d8f5d1',
     borderRadius: 5,
     padding: 5
   }
