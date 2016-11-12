@@ -98,6 +98,71 @@ var JournalListView = React.createClass({
   }
 });
 
+/* ListView for Entries that uses our own server. Not in use until the
+get request for entries is completed (at which delete the JournalListView
+class above)*/
+class EntryList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2
+      })
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch("https://lit-gorge-31410.herokuapp.com/entry", {method: "GET"})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData),
+        isLoading: false
+      });
+    })
+    .done();
+  }
+
+  render() {
+    if (this.state.isLoading) {
+      return this.renderLoadingView();
+    }
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderProduct.bind(this)}
+        style={styles.listView}
+      />
+    );
+  }
+
+  renderProduct(entry) {
+    return (
+      <TouchableNativeFeedback onPress={() => this.props.changeRoute(4)}
+      background={TouchableNativeFeedback.Ripple('#000000')}>
+        <View style={styles.row}>
+          <Text>{entry.date}</Text>
+          <Text>Rating: {entry.rating}</Text>
+        </View>
+      </TouchableNativeFeedback>
+    );
+  }
+
+  renderLoadingView() {
+    return (
+      <View style={styles.loading}>
+        <Text>Loading entries...</Text>
+      </View>
+    );
+  }
+}
+
+
 export default class Journal extends Component {
   render() {
     return (
