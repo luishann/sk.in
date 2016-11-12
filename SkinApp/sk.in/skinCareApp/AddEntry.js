@@ -3,11 +3,6 @@ import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
-<<<<<<< HEAD
-//import Camera from 'react-native-camera';
-=======
-//import CameraExample from './CameraExample'
->>>>>>> csc301-fall-2016/master
 
 const dummyData = [];
 
@@ -78,12 +73,6 @@ export default class AddEntry extends Component {
     }
   };
 
-  /*takePicture() {
-    this.camera.capture()
-      .then((data) => this.setState({photo}))
-      .catch(err => console.error(err));
-  }*/
-
   render() {
 
     return (
@@ -113,13 +102,6 @@ export default class AddEntry extends Component {
         <TouchableOpacity onPress={this.change.bind(this, 1)}>
           <Text>Back to Journal</Text>
         </TouchableOpacity>
-        {/*}<Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          aspect={Camera.constants.Aspect.fill}>
-          <Text onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
-        </Camera>*/}
       </View>
     );
 
