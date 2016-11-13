@@ -9,14 +9,18 @@ export default class ProductView extends Component {
   }
 
   render() {
-
+    var expiryString;
+    if (this.props.product.expirydate == null) {
+      expiryString = 'none';
+    } else {
+      var newDate = new Date(Date.parse(this.props.product.expirydate.slice(0, 19).replace(' ', 'T')));
+      expiryString = newDate.toUTCString().slice(0, 16);
+    }
     return (
       <View style={styles.container}>
         <Text style={styles.brand}>{this.props.product.brand}</Text>
         <Text style={styles.name}>{this.props.product.name}</Text>
-        <Text style={styles.text}>Expiry Date: {this.props.product.expirydate}</Text>
-        <Text style={styles.text}>Start Date: {this.props.product.startdate}</Text>
-        <Text style={styles.text}>End Date: none </Text>
+        <Text style={styles.text}>Expiry Date: {expiryString}</Text>
 
         <TouchableOpacity style={{flex: 1}}
           onPress={this.props.changeRoute.bind(this,2)}>
