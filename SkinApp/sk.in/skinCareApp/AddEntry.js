@@ -93,7 +93,7 @@ export default class AddEntry extends Component {
         {/* Date picker */}
         <TouchableWithoutFeedback
           onPress={this.showPicker.bind(this, 'simple', {date: this.state.simpleDate})}>
-          <View style={styles.pickDate}>
+          <View>
             <Text style={styles.label}>Entry Date:</Text>
             <Text style={styles.dateButton}>{this.state.simpleText}</Text>
           </View>
@@ -165,9 +165,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
     textAlign: 'center'
-  },
-  pickDate: {
-    
   },
   dateButton: {
     color: '#222',
