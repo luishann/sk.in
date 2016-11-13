@@ -45,7 +45,7 @@ class EntryList extends Component {
 
   renderProduct(entry) {
     return (
-      <TouchableNativeFeedback onPress={() => this.props.changeRoute(4)}
+      <TouchableNativeFeedback onPress={() => this.props.changeRoute(4, entry.id)}
       background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
           <View style={styles.entry}>
