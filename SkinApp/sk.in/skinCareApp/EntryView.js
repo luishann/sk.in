@@ -47,11 +47,14 @@ export default class EntryView extends Component {
 
   // how to make a GET request
   _randFunc(data) {
-    fetch("https://lit-gorge-31410.herokuapp.com/entry?entryID=" + this.state.entryID, {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/entry?entryID=" + this.props.entryID, {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
+      var newDate = new Date(Date.parse(responseData[0].date.slice(0, 19).replace(' ', 'T')));
+      dateString = newDate.toLocaleDateString();
+
       this.setState({data: responseData[0],
-        simpleText: responseData[0].date.slice(0, 19).replace('T', ' '),
+        simpleText: dateString,
         value: responseData[0].rating,
         rating: responseData[0].rating,
         description: responseData[0].description,
