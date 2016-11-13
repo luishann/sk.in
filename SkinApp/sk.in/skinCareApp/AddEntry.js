@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
-  TouchableOpacity, TouchableWithoutFeedback,
+  PixelRatio, TouchableOpacity, Image,
+  Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
-//import CameraExample from './CameraExample'
 
 const dummyData = [];
 
@@ -41,7 +41,9 @@ export default class AddEntry extends Component {
       presetText: 'pick a date, preset to 2020/5/5',
       allText: 'pick a date between 2020/5/1 and 2020/5/10',
       description: '',
-      rating: 0
+      rating: 0,
+      avatarSource: null,
+      photo: null
     };
     this.change = props.changeRoute;
   }
@@ -100,16 +102,12 @@ export default class AddEntry extends Component {
         <TouchableOpacity onPress={this.change.bind(this, 1)}>
           <Text>Back to Journal</Text>
         </TouchableOpacity>
-        <CameraExample
-            imagePath = {this.state.imagePath}
-            takePicture = {this.takePicture}
-         />
       </View>
     );
 
   }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
 
 });
