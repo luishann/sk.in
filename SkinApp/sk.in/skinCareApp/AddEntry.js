@@ -18,7 +18,7 @@ class SliderExample extends React.Component {
   render() {
     return (
       <View>
-        <Text style={styles.text} >
+        <Text style={styles.ratingStyle}>
           {this.state.value && +this.state.value.toFixed(3)}
         </Text>
         <Slider
@@ -35,7 +35,7 @@ export default class AddEntry extends Component {
     this.state = {
       presetDate: new Date(2020, 4, 5),
       allDate: new Date(2020, 4, 5),
-      simpleText: 'pick a date',
+      simpleText: 'Pick a Date!',
       minText: 'pick a date, no earlier than today',
       maxText: 'pick a date, no later than today',
       presetText: 'pick a date, preset to 2020/5/5',
@@ -49,17 +49,23 @@ export default class AddEntry extends Component {
   }
 
   _onPressButton() {
-    //prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
-      //rating: this.state.rating, photoLocation: ''});
+    prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
+      date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
+      rating: this.state.rating, photoLocation: ''});
+      //prod = JSON.stringify({userid: 1, name: "WILL THIS WORK?", brand: "WHO KNOWS"});
 
-    fetch('https://lit-gorge-31410.com/entry', {
+      console.log("date: " + this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '));
+
+    fetch('https://lit-gorge-31410.herokuapp.com/entry', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: 'INSERT INTO skin.entry (userID) VALUES (1)'
+      body: prod
     });
+
+    this.change(1);
   }
 
   showPicker = async (stateKey, options) => {
@@ -82,32 +88,50 @@ export default class AddEntry extends Component {
   render() {
 
     return (
-      <View style={{padding: 10}}>
+      <View style={styles.container}>
+
+        {/* Date picker */}
         <TouchableWithoutFeedback
           onPress={this.showPicker.bind(this, 'simple', {date: this.state.simpleDate})}>
-          <View>
-            <Text>Entry Date:</Text>
-            <Text>{this.state.simpleText}</Text>
+          <View style={styles.pickDate}>
+            <Text style={styles.label}>Entry Date:</Text>
+            <Text style={styles.dateButton}>{this.state.simpleText}</Text>
           </View>
         </TouchableWithoutFeedback>
-        <SliderExample
-          {...this.props}
-          onSlidingComplete={(value) => this.setState({
-              rating: value,
-          })}
-          minimumValue={0}
-          maximumValue={5}
-          step={0.5}/>
-        <TextInput
-          placeholder="description"
-          onChangeText={(description) => this.setState({description})}
-        />
-        <TouchableOpacity onPress={this._onPressButton.bind(this)}>
-          <Text>Submit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.change.bind(this, 1)}>
-          <Text>Back to Journal</Text>
-        </TouchableOpacity>
+
+        {/* Rating slider */}
+        <View style={styles.pad}>
+          <Text style={styles.label}>Daily Rating</Text>
+          <SliderExample
+            {...this.props}
+            onSlidingComplete={(value) => this.setState({
+                rating: value,
+            })}
+            minimumValue={0}
+            maximumValue={5}
+            step={0.5}/>
+        </View>
+
+        {/* Description */}
+        <View style={styles.pad}>
+          <Text style={styles.label}>Description:</Text>
+          <TextInput style={styles.input}
+            underlineColorAndroid={"transparent"}
+            onChangeText={(description) => this.setState({description})}
+          />
+        </View>
+
+        <View style={styles.buttons}>
+          {/* Submit button */}
+          <TouchableOpacity onPress={this._onPressButton.bind(this)}>
+            <Text style={styles.button}>Add Entry</Text>
+          </TouchableOpacity>
+
+          {/* Back button */}
+          <TouchableOpacity onPress={this.change.bind(this, 1)}>
+            <Text style={styles.button}>Back</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
 
@@ -115,5 +139,50 @@ export default class AddEntry extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+    backgroundColor:'#f2f2f2',
+    padding: 15
+  },
+  input: {
+    backgroundColor: '#fff',
+    height: 40,
+    borderRadius: 5
+  },
+  pad: {
+    paddingTop: 25
+  },
+  label: {
+    color: '#222',
+    fontSize: 15,
+  },
+  button: {
+    backgroundColor: '#fad900',
+    color: 'white',
+    width: 108,
+    padding: 10,
+    borderRadius: 5,
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center'
+  },
+  pickDate: {
+    
+  },
+  dateButton: {
+    color: '#222',
+    fontSize: 15,
+    backgroundColor: '#d8f5d1',
+    borderRadius: 5,
+    padding: 5
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 15
+  },
+  ratingStyle: {
+    textAlign: 'center',
+    fontWeight: 'bold'
+  }
 });
