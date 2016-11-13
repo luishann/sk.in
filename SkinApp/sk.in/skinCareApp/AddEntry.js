@@ -52,8 +52,18 @@ export default class AddEntry extends Component {
     dummyData.push(this.state);
     console.log(dummyData);
     /* this is where to make the POST request */
+    prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
+      date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
+      rating: this.state.rating, photoLocation: ''});
 
-    this.change(1);
+    fetch('https://lit-gorge-31410.com/entry', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    })
   }
 
   showPicker = async (stateKey, options) => {
