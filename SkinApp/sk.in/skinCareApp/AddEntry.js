@@ -63,14 +63,7 @@ export default class AddEntry extends Component {
         'Content-Type': 'application/json',
       },
       body: prod
-    }).then(function(response) {
-            console.log(response.json());
-        }).catch(function(err) {
-          console.log("got here");
-          console.log(err);
-        });
-
-    this.change(1);
+    })
   }
 
   showPicker = async (stateKey, options) => {
