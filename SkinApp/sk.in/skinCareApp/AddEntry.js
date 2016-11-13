@@ -52,6 +52,23 @@ export default class AddEntry extends Component {
     dummyData.push(this.state);
     console.log(dummyData);
     /* this is where to make the POST request */
+    prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
+      date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
+      rating: this.state.rating, photoLocation: ''});
+
+    fetch('https://lit-gorge-31410.com/entry', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    }).then(function(response) {
+            console.log(response.json());
+        }).catch(function(err) {
+          console.log("got here");
+          console.log(err);
+        });
 
     this.change(1);
   }
