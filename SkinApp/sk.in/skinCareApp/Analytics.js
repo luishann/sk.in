@@ -18,9 +18,9 @@ var Component = React.createClass({
 			yValues:[
 				{
 					data:[1,2,3,2],
-					label:'test1',
+					label:'Average Entry Ratings by Month',
 					config:{
-						color:'blue'
+						color:'#21beca'
 					}
 				},
 			]
