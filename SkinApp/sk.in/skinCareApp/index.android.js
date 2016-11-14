@@ -119,7 +119,7 @@ export default class SkinCareApp extends Component {
               <Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
           </View>
         </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={this._change.bind(this, 7)}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 8)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.menuItem}>
             <Text style={styles.txt}>

@@ -89,7 +89,7 @@ export default class EntryView extends Component {
   };
 
   _onPressButton() {
-    prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
+    prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
       date: this.state.simpleText,
       rating: this.state.rating, photoLocation: ''});
 
