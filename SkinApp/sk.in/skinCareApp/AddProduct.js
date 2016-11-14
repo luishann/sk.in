@@ -99,10 +99,16 @@ export default class AddProduct extends Component {
         </TouchableWithoutFeedback>
 
         {/* Submit button - add product */}
-        <TouchableOpacity style={{width:115}}
-          onPress={this.postProduct.bind(this)}>
-          <Text style={styles.button}>Add Product</Text>
-        </TouchableOpacity>
+        <View style={styles.buttons}>
+          <TouchableOpacity style={{width:115}}
+            onPress={this.postProduct.bind(this)}>
+            <Text style={styles.button}>Add Product</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={this.props.changeRoute.bind(this, 2)}>
+            <Text style={styles.button}>Back</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -133,11 +139,17 @@ var styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 15,
+    textAlign: 'center'
   },
   pickDate: {
     paddingBottom: 20,
     //flexDirection: 'row',
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 15
   },
   dateButton: {
     color: '#222',
