@@ -14,18 +14,34 @@ var {
 var Component = React.createClass({
 	getBarData:function (argument) {
 		var data={
-			xValues:['Oct 29, 2016','Oct 30, 2016','Oct 31, 2016', 'Nov 1, 2016', 'Nov 2, 2016', 'Nov 3, 2016'],
+			xValues:['1','2','3'],
 			yValues:[
 				{
-					data:[1, 3, 2, 2, 3, 4],
+					data:[4.0,5.0,6.0],
+					label:'test1',
 					config:{
 						color:'blue'
 					}
 				},
+				{
+					data:[4.0,5.0,6.0],
+					label:'test2',
+					config:{
+						color:'red'
+					}
+				},
+				{
+					data:[4.0,5.0,6.0],
+					label:'test2',
+					config:{
+						color:'yellow'
+					}
+				}
 			]
 		};
 		return data;
 	},
+
 	render: function() {
 		return (
 			<View style={styles.container}>
