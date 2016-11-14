@@ -43,18 +43,16 @@ export default class AddEntry extends Component {
       description: '',
       rating: 0,
       avatarSource: null,
-      photo: null
+      photo: this.props.photo
     };
     this.change = props.changeRoute;
   }
 
   _onPressButton() {
+    console.log(this.state.photo);
     prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
-      rating: this.state.rating, photoLocation: ''});
-      //prod = JSON.stringify({userid: 1, name: "WILL THIS WORK?", brand: "WHO KNOWS"});
-
-      console.log("date: " + this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '));
+      rating: this.state.rating, photoLocation: this.state.photo});
 
     fetch('https://lit-gorge-31410.herokuapp.com/entry', {
       method: "POST",
@@ -119,6 +117,13 @@ export default class AddEntry extends Component {
             underlineColorAndroid={"transparent"}
             onChangeText={(description) => this.setState({description})}
           />
+        </View>
+
+        {/* Choose Photo */}
+        <View>
+          <TouchableOpacity onPress={this.change.bind(this, 7)}>
+            <Text style={styles.button}>Pick A Photo</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttons}>
