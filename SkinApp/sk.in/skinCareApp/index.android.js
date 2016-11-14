@@ -25,6 +25,7 @@ import EntryView from './EntryView';
 import AddProduct from './AddProduct';
 import ProductView from './ProductView';
 import ChoosePhoto from './ChoosePhoto';
+import Analytics from './Analytics';
 
 class MyToolbar extends Component {
   render() {
@@ -80,6 +81,8 @@ export default class SkinCareApp extends Component {
       return <ProductView product={route.arg} changeRoute={this._changeRoute}/>
     } else if (route.id === 7) {
       return <ChoosePhoto changeRoute={this._changeRoute}/>
+    } else if (route.id === 8) {
+      return <Analytics changeRoute={this._changeRoute}/>
     }
   }
 
@@ -114,6 +117,13 @@ export default class SkinCareApp extends Component {
           <View style={styles.menuItem}>
             <Text style={styles.txt}>
               <Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
+          </View>
+        </TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={this._change.bind(this, 7)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text style={styles.txt}>
+              <Image source={require('./icons/ic_book.png')} />  Analytics</Text>
           </View>
         </TouchableNativeFeedback>
       </View>
