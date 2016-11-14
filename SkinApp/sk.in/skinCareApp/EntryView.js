@@ -38,7 +38,8 @@ export default class EntryView extends Component {
       rating: 0,
       description: null,
       dbphoto: null,
-      photo: this.props.photo
+      photo: this.props.photo,
+      date: null
     };
     this.change = props.changeRoute;
   }
@@ -56,6 +57,7 @@ export default class EntryView extends Component {
 
       this.setState({data: responseData[0],
         simpleText: dateString,
+        date: responseData[0].date,
         value: responseData[0].rating,
         rating: responseData[0].rating,
         description: responseData[0].description,
@@ -91,13 +93,20 @@ export default class EntryView extends Component {
   };
 
   _onPressButton() {
+    var newDate;
+    if ( this.state.simpleDate != null) {
+      newDate = this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ');
+    } else {
+      newDate = this.state.date;
+    }
+
     if (this.state.photo == null) {
       prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
-        date: this.state.simpleText,
+        date: newDate,
         rating: this.state.rating, photoLocation: this.state.dbphoto});
     } else {
       prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
-        date: this.state.simpleText,
+        date: newDate,
         rating: this.state.rating, photoLocation: this.state.photo});
     }
 
