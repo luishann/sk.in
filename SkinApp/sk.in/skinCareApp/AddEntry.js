@@ -120,8 +120,8 @@ export default class AddEntry extends Component {
         </View>
 
         {/* Choose Photo */}
-        <View>
-          <TouchableOpacity onPress={this.change.bind(this, 7)}>
+        <View style={styles.pad}>
+          <TouchableOpacity onPress={this.change.bind(this, 7, 'add')}>
             <Text style={styles.button}>Pick A Photo</Text>
           </TouchableOpacity>
         </View>
