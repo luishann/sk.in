@@ -81,7 +81,7 @@ export default class Journal extends Component {
         <EntryList changeRoute={this.props.changeRoute}/>
 
         {/* Add Entry Button */}
-        <TouchableOpacity onPress={this.props.changeRoute.bind(this, 3)}
+        <TouchableOpacity onPress={this.props.changeRoute.bind(this, 3, null)}
         style={styles.touchableButton}>
           <Image source={require('./icons/ic_add_yellow.png')}/>
         </TouchableOpacity>

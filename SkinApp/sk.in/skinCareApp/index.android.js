@@ -24,6 +24,7 @@ import AddEntry from './AddEntry';
 import EntryView from './EntryView';
 import AddProduct from './AddProduct';
 import ProductView from './ProductView';
+import ChoosePhoto from './ChoosePhoto';
 
 class MyToolbar extends Component {
   render() {
@@ -70,13 +71,15 @@ export default class SkinCareApp extends Component {
     } else if (route.id === 2){
       return <Products changeRoute={this._changeRoute}/>
     } else if (route.id === 3) {
-      return <AddEntry changeRoute={this._changeRoute}/>
+      return <AddEntry changeRoute={this._changeRoute} photo={route.arg}/>
     } else if (route.id === 4) {
       return <EntryView changeRoute={this._changeRoute} entryID={route.arg}/>
     } else if (route.id === 5) {
       return <AddProduct changeRoute={this._changeRoute}/>
     } else if (route.id === 6) {
       return <ProductView product={route.arg} changeRoute={this._changeRoute}/>
+    } else if (route.id === 7) {
+      return <ChoosePhoto changeRoute={this._changeRoute}/>
     }
   }
 
