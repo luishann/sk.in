@@ -26,6 +26,7 @@ import AddProduct from './AddProduct';
 import ProductView from './ProductView';
 import ChoosePhoto from './ChoosePhoto';
 import Analytics from './Analytics';
+import ProductAnalytics from './ProductAnalytics';
 
 class MyToolbar extends Component {
   render() {
@@ -83,8 +84,7 @@ export default class SkinCareApp extends Component {
       return <ChoosePhoto changeRoute={this._changeRoute}/>
     } else if (route.id === 8) {
       return <Analytics changeRoute={this._changeRoute}/>
-    }
-    else if(route.id == 9){
+    } else if(route.id == 9){
       return <ProductAnalytics changeRoute={this._changeRoute}/>
     }
   }
