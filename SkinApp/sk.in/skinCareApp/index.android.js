@@ -84,6 +84,9 @@ export default class SkinCareApp extends Component {
     } else if (route.id === 8) {
       return <Analytics changeRoute={this._changeRoute}/>
     }
+    else if(route.id == 9){
+      return <ProductAnalytics changeRoute={this._changeRoute}/>
+    }
   }
 
   render() {
@@ -119,11 +122,20 @@ export default class SkinCareApp extends Component {
               <Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
           </View>
         </TouchableNativeFeedback>
+        {/*Entry Analytics */}
         <TouchableNativeFeedback onPress={this._change.bind(this, 8)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.menuItem}>
             <Text style={styles.txt}>
               <Image source={require('./icons/ic_book.png')} />  Analytics</Text>
+          </View>
+        </TouchableNativeFeedback>
+        {/*Product Analytics */}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 9)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.menuItem}>
+            <Text style={styles.txt}>
+              <Image source={require('./icons/ic_product.png')} />  Product Analytics</Text>
           </View>
         </TouchableNativeFeedback>
       </View>
