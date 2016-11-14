@@ -14,3 +14,5 @@ database: dbrvvj2if6d8if
 
 > psql -h ec2-54-235-217-221.compute-1.amazonaws.com -d dbrvvj2if6d8if -U uurvdosruvrxjz
 for the command line connection
+
+Once connected, do \d skin.* to see everything (the schema)

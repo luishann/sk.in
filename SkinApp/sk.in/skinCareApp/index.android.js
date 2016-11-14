@@ -26,6 +26,7 @@ import AddProduct from './AddProduct';
 import ProductView from './ProductView';
 import ChoosePhoto from './ChoosePhoto';
 import Analytics from './Analytics';
+import ProductAnalytics from './ProductAnalytics';
 
 class MyToolbar extends Component {
   render() {
@@ -87,6 +88,8 @@ export default class SkinCareApp extends Component {
       return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2}/>
     } else if (route.id === 8) {
       return <Analytics changeRoute={this._changeRoute}/>
+    } else if(route.id == 9){
+      return <ProductAnalytics changeRoute={this._changeRoute}/>
     }
   }
 
@@ -123,11 +126,23 @@ export default class SkinCareApp extends Component {
               <Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
           </View>
         </TouchableNativeFeedback>
+
+        <Text style={styles.navHeader}>Analytics</Text>
+
+        {/*Entry Analytics */}
         <TouchableNativeFeedback onPress={this._change.bind(this, 8)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
-          <View style={styles.menuItem}>
+          <View style={styles.analytics}>
             <Text style={styles.txt}>
-              <Image source={require('./icons/ic_book.png')} />  Analytics</Text>
+              <Image source={require('./icons/ic_bar_chart.png')} />  Entries</Text>
+          </View>
+        </TouchableNativeFeedback>
+        {/*Product Analytics */}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 9)}
+          background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.analytics}>
+            <Text style={styles.txt}>
+              <Image source={require('./icons/ic_line_chart.png')} />  All Products</Text>
           </View>
         </TouchableNativeFeedback>
       </View>
@@ -178,6 +193,16 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: '#222'
+  },
+  navHeader: {
+    paddingLeft: 20,
+    marginTop: 20,
+    color: '#222',
+  },
+  analytics: {
+    paddingLeft:45,
+    height: 60,
+    justifyContent: 'center',
   }
 });
 

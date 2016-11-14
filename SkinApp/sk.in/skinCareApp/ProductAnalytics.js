@@ -2,7 +2,7 @@
 
 var React = require('react');
 var {
-	BarChart,
+	LineChart,
 	CombinedChart
 }=require('react-native-chart-android/index.android');
 var {
@@ -14,25 +14,39 @@ var {
 var Component = React.createClass({
 	getBarData:function (argument) {
 		var data={
-			xValues:['Sept 2016','Oct 2016','Nov 2016', 'Dec 2016'],
+			xValues:['Aug 2016','Sept 2016','Oct 2016','Nov 2016'],
 			yValues:[
 				{
-					data:[1,2,3,2],
-					label:'Average Entry Ratings by Month',
+					data:[0,2,4,5],
+					label:'Tea Tree Face Wash',
 					config:{
-						color:'#21beca'
+						color:'red'
+					}
+				},
+				{
+					data:[2,3,4,5],
+					label:'Clean N Clear',
+					config:{
+						color:'yellow'
 					}
 				},
 			]
 		};
 		return data;
 	},
-
 	render: function() {
 		return (
 			<View style={styles.container}>
 				<View style={styles.chartContainer}>
-					<BarChart style={{flex:1}} data={this.getBarData()}/>
+					<LineChart
+						style={{flex:1}}
+						data={this.getBarData()}
+						visibleYRange={[0,5]}
+						drawGridBackground={false}
+						yAxisRight={{enable:false}}
+						yAxis={{startAtZero:false,drawGridLines:false}}
+						xAxis={{drawGridLines:false,position:"BOTTOM"}}
+					/>
 				</View>
 			</View>
 		);
