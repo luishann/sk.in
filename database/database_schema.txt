@@ -20,35 +20,6 @@ CREATE TABLE Skin.Product (
 );
 
 
-*** Table Dropped ***
-CREATE TABLE Skin.Product (
-	ID serial PRIMARY KEY,
-	name text NOT NULL,
-	brand text
-);
-
-
-*** Table Dropped ***
-CREATE TABLE Skin.ProductReview (
-	ID serial PRIMARY KEY,
-	productID integer REFERENCES Skin.Product(ID) NOT NULL,
-	userID integer REFERENCES Skin.User(ID) NOT NULL,
-	rating integer CHECK (rating >= 1 AND rating <= 5) NOT NULL,
-	review text
-);
-
-
-*** Table Dropped ***
-CREATE TABLE Skin.MyProduct (
-	ID serial PRIMARY KEY,
-	userID integer REFERENCES Skin.User(ID) NOT NULL,
-	productID integer REFERENCES Skin.Product(ID) NOT NULL,
-	startDate timestamp DEFAULT now(),
-	endDate timestamp,
-	expiryDate timestamp
-	);
-
-
 CREATE TABLE Skin.Entry (
 	ID serial PRIMARY KEY,
 	userID integer REFERENCES Skin.User(ID) NOT NULL,
@@ -56,15 +27,6 @@ CREATE TABLE Skin.Entry (
 	photoLocation text,
 	description text,
 	rating integer CHECK (rating >= 0 AND rating <= 5)
-	);
-
-
-*** Table Dropped ***
-CREATE TABLE Skin.ProductUsed (
-	entryID integer REFERENCES Skin.Entry(ID),
-	productID integer REFERENCES Skin.MyProduct(ID),
-	rating integer CHECK (rating >= 0 AND rating <= 5),
-	PRIMARY KEY (entryID, productID)
 	);
 
 
