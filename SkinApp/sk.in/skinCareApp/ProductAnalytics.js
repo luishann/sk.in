@@ -14,20 +14,20 @@ var {
 var Component = React.createClass({
 	getBarData:function (argument) {
 		var data={
-			xValues:['Aug 2016','Sept 2016','Oct 2016','Nov 2016'],
+			xValues:['Sept','Oct','Nov'],
 			yValues:[
 				{
-					data:[0,2,4,5],
+					data:[0,2,4],
 					label:'Tea Tree Face Wash',
 					config:{
 						color:'red'
 					}
 				},
 				{
-					data:[2,3,4,5],
+					data:[2,3,4],
 					label:'Clean N Clear',
 					config:{
-						color:'yellow'
+						color:'blue'
 					}
 				},
 			]
@@ -55,13 +55,16 @@ var Component = React.createClass({
 
 var styles = StyleSheet.create({
 	container:{
-		flex:1
+		flex:1,
+		margin: 10,
+		padding: 10
 	},
 	chartContainer:{
-		flex:1
+		flex:1,
+		margin: 5
 	},
 	chart:{
-		flex:1
+		flex:1,
 	}
 });
 

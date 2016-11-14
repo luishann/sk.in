@@ -32,7 +32,11 @@ var Component = React.createClass({
 		return (
 			<View style={styles.container}>
 				<View style={styles.chartContainer}>
-					<BarChart style={{flex:1}} data={this.getBarData()}/>
+					<BarChart 
+						style={{flex:1}}
+						data={this.getBarData()}
+						yAxisRight={{enable:false}}
+						/>
 				</View>
 			</View>
 		);
@@ -41,7 +45,8 @@ var Component = React.createClass({
 
 var styles = StyleSheet.create({
 	container:{
-		flex:1
+		flex:1,
+		margin: 15
 	},
 	chartContainer:{
 		flex:1
