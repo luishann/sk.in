@@ -14,29 +14,15 @@ var {
 var Component = React.createClass({
 	getBarData:function (argument) {
 		var data={
-			xValues:['1','2','3'],
+			xValues:['Sept 2016','Oct 2016','Nov 2016', 'Dec 2016'],
 			yValues:[
 				{
-					data:[4.0,5.0,6.0],
+					data:[1,2,3,2],
 					label:'test1',
 					config:{
 						color:'blue'
 					}
 				},
-				{
-					data:[4.0,5.0,6.0],
-					label:'test2',
-					config:{
-						color:'red'
-					}
-				},
-				{
-					data:[4.0,5.0,6.0],
-					label:'test2',
-					config:{
-						color:'yellow'
-					}
-				}
 			]
 		};
 		return data;
