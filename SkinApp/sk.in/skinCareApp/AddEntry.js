@@ -50,7 +50,7 @@ export default class AddEntry extends Component {
 
   _onPressButton() {
     console.log(this.state.photo);
-    prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
+    prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
       rating: this.state.rating, photoLocation: this.state.photo});
 
