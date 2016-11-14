@@ -122,20 +122,23 @@ export default class SkinCareApp extends Component {
               <Image source={require('./icons/ic_product_red2.png')} />  Products</Text>
           </View>
         </TouchableNativeFeedback>
+
+        <Text style={styles.navHeader}>Analytics</Text>
+
         {/*Entry Analytics */}
         <TouchableNativeFeedback onPress={this._change.bind(this, 8)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
-          <View style={styles.menuItem}>
+          <View style={styles.analytics}>
             <Text style={styles.txt}>
-              <Image source={require('./icons/ic_book.png')} />  Analytics</Text>
+              <Image source={require('./icons/ic_book.png')} />  Entries</Text>
           </View>
         </TouchableNativeFeedback>
         {/*Product Analytics */}
         <TouchableNativeFeedback onPress={this._change.bind(this, 9)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
-          <View style={styles.menuItem}>
+          <View style={styles.analytics}>
             <Text style={styles.txt}>
-              <Image source={require('./icons/ic_product.png')} />  Product Analytics</Text>
+              <Image source={require('./icons/ic_product.png')} />  All Products</Text>
           </View>
         </TouchableNativeFeedback>
       </View>
@@ -186,6 +189,15 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: '#222'
+  },
+  navHeader: {
+    paddingLeft: 20,
+    marginTop: 20
+  },
+  analytics: {
+    paddingLeft:40,
+    height: 60,
+    justifyContent: 'center',
   }
 });
 
