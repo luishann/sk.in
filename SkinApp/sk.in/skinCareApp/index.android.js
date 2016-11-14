@@ -130,7 +130,7 @@ export default class SkinCareApp extends Component {
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.analytics}>
             <Text style={styles.txt}>
-              <Image source={require('./icons/ic_book.png')} />  Entries</Text>
+              <Image source={require('./icons/ic_bar_chart.png')} />  Entries</Text>
           </View>
         </TouchableNativeFeedback>
         {/*Product Analytics */}
@@ -138,7 +138,7 @@ export default class SkinCareApp extends Component {
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.analytics}>
             <Text style={styles.txt}>
-              <Image source={require('./icons/ic_product.png')} />  All Products</Text>
+              <Image source={require('./icons/ic_line_chart.png')} />  All Products</Text>
           </View>
         </TouchableNativeFeedback>
       </View>
@@ -192,10 +192,11 @@ const styles = StyleSheet.create({
   },
   navHeader: {
     paddingLeft: 20,
-    marginTop: 20
+    marginTop: 20,
+    color: '#222',
   },
   analytics: {
-    paddingLeft:40,
+    paddingLeft:45,
     height: 60,
     justifyContent: 'center',
   }
