@@ -30,13 +30,15 @@ export default class EntryView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      entryID: 1,
+      entryID: props.entryID,
       data: null,
       isLoading: true,
       simpleText: null,
       value: 0,
       rating: 0,
-      description: null
+      description: null,
+      dbphoto: null,
+      photo: this.props.photo
     };
     this.change = props.changeRoute;
   }
@@ -45,9 +47,8 @@ export default class EntryView extends Component {
     this._randFunc();
   }
 
-  // how to make a GET request
   _randFunc(data) {
-    fetch("https://lit-gorge-31410.herokuapp.com/entry?entryID=" + this.props.entryID, {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/entry?entryID=" + this.state.entryID, {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
       var newDate = new Date(Date.parse(responseData[0].date.slice(0, 19).replace(' ', 'T')));
@@ -58,6 +59,7 @@ export default class EntryView extends Component {
         value: responseData[0].rating,
         rating: responseData[0].rating,
         description: responseData[0].description,
+        dbphoto: responseData[0].photoLocation,
         isLoading: false});
     })
     .done();
@@ -89,11 +91,17 @@ export default class EntryView extends Component {
   };
 
   _onPressButton() {
-    prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
-      date: this.state.simpleText,
-      rating: this.state.rating, photoLocation: ''});
+    if (this.state.photo == null) {
+      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
+        date: this.state.simpleText,
+        rating: this.state.rating, photoLocation: this.state.dbphoto});
+    } else {
+      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
+        date: this.state.simpleText,
+        rating: this.state.rating, photoLocation: this.state.photo});
+    }
 
-      console.log(prod);
+    console.log(prod);
 
     fetch('https://lit-gorge-31410.herokuapp.com/edit-entry', {
       method: "POST",
@@ -145,6 +153,13 @@ export default class EntryView extends Component {
             placeholder = {this.state.description}
             onChangeText={(description) => this.setState({description})}
           />
+        </View>
+
+        {/* Choose Photo */}
+        <View style={styles.pad}>
+          <TouchableOpacity onPress={this.change.bind(this, 7, 'edit', this.props.entryID)}>
+            <Text style={styles.button}>Pick A Photo</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttons}>

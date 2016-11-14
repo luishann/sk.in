@@ -46,7 +46,43 @@ class EntryList extends Component {
   renderProduct(entry) {
     var newDate = new Date(Date.parse(entry.date.slice(0, 19).replace(' ', 'T')));
     dateString = newDate.toUTCString().slice(0, 16);
+    photo = entry.photolocation;
+    console.log(photo);
 
+    if (entry.photolocation == '' || entry.photolocation ==  null) {
+      return (
+        <TouchableNativeFeedback onPress={() => this.props.changeRoute(4, entry.id)}
+        background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.row}>
+            <View style={styles.entry}>
+              <Text style={styles.date}>{dateString}</Text>
+              <Text style={styles.text}>Rating: {entry.rating}</Text>
+              <Text style={styles.text}>
+                <Image source={require('./icons/ic_tag_small_red.png')} />  acne</Text>
+              </View>
+              <Image source={require('./icons/ic_photos4.png')} />
+          </View>
+        </TouchableNativeFeedback>
+      );
+    } else if (entry.photolocation == './icons/face.jpg') {
+      console.log("got here");
+      return (
+        <TouchableNativeFeedback onPress={() => this.props.changeRoute(4, entry.id)}
+        background={TouchableNativeFeedback.Ripple('#000000')}>
+          <View style={styles.row}>
+            <View style={styles.entry}>
+              <Text style={styles.date}>{dateString}</Text>
+              <Text style={styles.text}>Rating: {entry.rating}</Text>
+              <Text style={styles.text}>
+                <Image source={require('./icons/ic_tag_small_red.png')} />  acne</Text>
+              </View>
+              <View>
+                <Image style={styles.images} source={require('./icons/face.jpg')} />
+              </View>
+          </View>
+        </TouchableNativeFeedback>
+      );
+    }
     return (
       <TouchableNativeFeedback onPress={() => this.props.changeRoute(4, entry.id)}
       background={TouchableNativeFeedback.Ripple('#000000')}>
@@ -57,7 +93,9 @@ class EntryList extends Component {
             <Text style={styles.text}>
               <Image source={require('./icons/ic_tag_small_red.png')} />  acne</Text>
             </View>
-            <Image source={require('./icons/ic_photos4.png')} />
+            <View>
+              <Image style={styles.images} source={require('./icons/face2.jpg')} />
+            </View>
         </View>
       </TouchableNativeFeedback>
     );
@@ -126,4 +164,9 @@ var styles = StyleSheet.create({
     height: 48,
     position: 'absolute',
   },
+  images: {
+    width: 80,
+    height: 100,
+    resizeMode: 'contain'
+  }
 });
