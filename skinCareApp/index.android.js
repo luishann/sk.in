@@ -25,7 +25,7 @@ import EntryView from './EntryView';
 import AddProduct from './AddProduct';
 import ProductView from './ProductView';
 import ChoosePhoto from './ChoosePhoto';
-import Analytics from './Analytics';
+import EntryAnalytics from './EntryAnalytics';
 import ProductAnalytics from './ProductAnalytics';
 
 class MyToolbar extends Component {
@@ -87,7 +87,7 @@ export default class SkinCareApp extends Component {
     } else if (route.id === 7) {
       return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2}/>
     } else if (route.id === 8) {
-      return <Analytics changeRoute={this._changeRoute}/>
+      return <EntryAnalytics changeRoute={this._changeRoute}/>
     } else if(route.id == 9){
       return <ProductAnalytics changeRoute={this._changeRoute}/>
     }
