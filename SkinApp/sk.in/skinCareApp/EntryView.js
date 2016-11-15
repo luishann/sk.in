@@ -164,6 +164,15 @@ export default class EntryView extends Component {
           />
         </View>
 
+        {/* Dummy products data */}
+        <View style={styles.pad}>
+          <Text style={styles.label}>Products used:</Text>
+          <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
+          <Text style={styles.prodUsed}>Clinique Moisturizer: 4</Text>
+          <Text style={styles.prodUsed}>Stridex Acne Pads: 3.5</Text>
+          <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
+        </View>
+
         {/* Choose Photo */}
         <View style={styles.pad}>
           <TouchableOpacity onPress={this.change.bind(this, 7, 'edit', this.props.entryID)}>
@@ -230,5 +239,11 @@ var styles = StyleSheet.create({
   ratingStyle: {
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+  prodUsed: {
+    paddingLeft: 20,
+    fontSize:15,
+    color: '#222',
+    backgroundColor: '#d8f5d1'
   }
 });
