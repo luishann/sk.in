@@ -16,7 +16,7 @@ Discussed how to design the front-end of the android application. Initially inte
 
 ### Roles & responsibilities
 
-* ALL of us will be developing in the front end and back end, the division of responsibilities is meant to indicate who is effectively in "charge" of these areas of development in that they research the most heavily in that direction, and the rest of us turn to them for help in dealing with difficult aspects of the code. *
+* ALL of us will be developing in the front end and back end, the division of responsibilities is meant to indicate who is effectively in "charge" of these areas of development in that they research the most heavily in that direction, and the rest of us turn to them for help in dealing with difficult aspects of the code. 
 
 **Front-end Developers:**
 Shannon, Radhika
