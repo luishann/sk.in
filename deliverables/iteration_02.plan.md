@@ -20,29 +20,34 @@ Discussed how to design the front-end of the android application. Initially inte
 
 **Front-end Developers:**
 Shannon, Radhika
+
 - Be the "expertise", in that you help the rest of the team with any questions they have with regards to front end development
 - Responsible for ensuring that all front-end aspects work (even those made by other people), i.e. testing
 
 **Back-end Developers:**
 Nikita, Sara, John
+
 - In charge of back-end code design (i.e. CRC cards level)
 - Optimize and structure backend code to ensure that everyone can understand and follow it
 - Test all back-end code
 
 **Communication Editor:**
 Anisha
+
 - Write up plan and review files
 - Proof read all written work, including comments, documentation, and minutes
 - Copy editor for all oral communication
 
 **TA Liaison:**
 Nikita
+
 - Ensure communication with our TA
 - Plan meetings with TA / attend office hours and tutorials
 - Provide feedback from TA to the rest of the team
 
 **Researcher:**
 Sebastian
+
 - Go-to person for information about new areas of development
 - Finds relevant tutorials to help us learn new topics
 - Researches for the application itself (i.e. where to find skin care product list)
@@ -65,6 +70,7 @@ Sebastian
 
 **TRELLO Board**
 https://trello.com/b/9vpWgPMC/csc301
+
 - to keep track of whose working on which part
 - the state of each feature (working, testing, etc)
 - a checklist within each feature of things that have or have not been implemented
@@ -75,13 +81,17 @@ https://trello.com/b/9vpWgPMC/csc301
 
 **Slack**
 https://csc301teamgroup.slack.com/
-Email: 
-Password: 
+
+Email: testprojectteam15@gmail.com
+
+Password: 1234pqrs
+
 - to talk to the teams responsible for different features separately
 - to hold group discussions with everyone (to arrange meetings, discuss TA remarks)
 - used to ensure all communication is facilitated in a public (within the group) environment, while organizing different topics in different places
 
 **Doodle Polls**
+
 - determine the best times to facilitate in-person meetings
 - organized and structured, instead of a listing of availability in a group chat
 - ensures that "majority wins", whenever the most number of people are free is when these meetings will be held
@@ -93,6 +103,7 @@ Password:
 For this iteration, we chose the following features to implement, with an overarching goal to prioritize back-end functionality over front-end asethics:
 
 **1) Add Entries To Journal**
+	
 	a. Back-end Functionality
 		i. Uploading Photo
 		ii. Adding Products
@@ -104,6 +115,7 @@ For this iteration, we chose the following features to implement, with an overar
 Our application is a journal, and a journal without the ability to add entries is effectively useless. As a result, we're prioritizing the ability to add an entry to a journal for this iteration.
 
 **2) Viewing Journal**
+	
 	a. Back-end functionality
 		i. Store entries
 	b. Front-end journal view
@@ -112,12 +124,14 @@ Our application is a journal, and a journal without the ability to add entries i
 Viewing the journal is important in much the same that adding an entry is important; the main purpose of the application is defeated without it. We want to be able to store entries but also view past entries to see progress. Furthermore, the ability to view the journal is the the first thing a continuing user will see when they log in to the app and so it is a priority in that regard as well.
 
 **3) Server**
+	
 	a. Connect to back-end
 	b. Connect to front-end
 
 We need a central unit that acts as a means of communication between the front-end and the back-end, so that we are not simply doing dummy data but can test the functionality of our code. The server class is necessary for the interaction between all of our other goals for this iteration, and for the fully functioning prototype in the next iteration. 
 
 **4) Database**
+	
 	a. Implement database schema
 	c. Connect database to server
 	d. Populate the database with example information
@@ -125,12 +139,14 @@ We need a central unit that acts as a means of communication between the front-e
 Implemented in this iteration instead of using dummy data because the focus of our app is storing user information and photos, which is the purpose of the database. If the database isn't done now, it would require going back and changing a lot of the rest of the features to interact with the database later and therefore dummy data would be more work with little pay of. We decided it made more sense for our back-end to use real data in this iteration, and leave the front-end asthetics for the next iteration, and the database is required for the real data to be used.
 
 **5) Analytics**
+	
 	a. Dummy data front end entries analytics view
 	b. Dummy data front end products analytics view
 
 Analytics are the main differentiation between our app and similar apps that already exist, we want to provide a view of the progress that users are making with their skin care issues and treatements. However, for analytics to be truly implemented with real data, everything else on this feature list must fully work. Therefore for this iteration, we will provide an example of what the analytics will look like so as to highlight the importance of viewing progress in our app but we will not implement the back-end until the next iteration.
 
 **5) Log in**
+	
 	a. Front-end View
 	b. "Dummy" log in, not connected to database
 
@@ -139,20 +155,27 @@ The front-end view for logging in is an essential feature for the iteration beca
 ### Artifacts:
 
 **Front-end**
+
 ReactNative for Android application
+ 
  - Add Entry View
  - Journal View
  - Product View
 
 **Back-end**
+
 HTTP Requests on Node JS under the secondary repo, under the 'routes' folder
+
 - Entry HTTP Requests
 - Journal HTTP Requests
 - Product HTTP Requests
 
 **Database**
+
 PostgressSQL
+
 - Schema implemented
 
 **Server**
+
 Node JS Server
