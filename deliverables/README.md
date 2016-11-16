@@ -1,6 +1,6 @@
 # Deliverable 2
 
-Take a look at out video here: [link to video]
+Take a look at out video here: https://1drv.ms/v/s!ApfIYjFB2OV7uhG4kTMyKnwYfahk
 
 View our slack at https://csc301teamgroup.slack.com/
 Login: testprojectteam15@gmail.com
