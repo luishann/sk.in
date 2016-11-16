@@ -7,13 +7,14 @@
 
 ## Process 
  **Introduction**
+ 
 In this iteration, we pivoted a little and decided that we wanted users to focus on products and product ratings, and to use issues as a tagging / organization system, so that users can sort their journal entries by the issues they tagged in them. However, the main focus of the app will be adding and rating products for every entry.
 
 We started by going through a product backlog of all features we want implemented in the app. Decided which specific features would be implemented for this iteration of the app.
 
 Discussed how to design the front-end of the android application. Initially intended to use Android Studio, but held a standing meeting on Skype when a member mentioned ReactNative as an alternate model. Changed features on Trello to reflect these changes.
 
-#### Roles & responsibilities
+### Roles & responsibilities
 
 * ALL of us will be developing in the front end and back end, the division of responsibilities is meant to indicate who is effectively in "charge" of these areas of development in that they research the most heavily in that direction, and the rest of us turn to them for help in dealing with difficult aspects of the code. *
 
@@ -46,7 +47,7 @@ Sebastian
 - Finds relevant tutorials to help us learn new topics
 - Researches for the application itself (i.e. where to find skin care product list)
 
-#### Events
+### Events
 
 - Hold a meeting in which we assign specific tasks on Trello to individuals/groups on October 26 and again on November 1.
 
@@ -60,7 +61,7 @@ Sebastian
 
 - Review meeting and Video making meeting within November 12 to November 14, dependant on when the majority of people can make it. May require multiple small meetings either in person or on Skype before a final large meeting in person. Complete interation_02.review.md and record the video. 
 
-#### Artifacts
+### Artifacts
 
 **TRELLO Board**
 https://trello.com/b/9vpWgPMC/csc301
