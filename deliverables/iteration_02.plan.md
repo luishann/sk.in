@@ -145,7 +145,7 @@ Implemented in this iteration instead of using dummy data because the focus of o
 
 Analytics are the main differentiation between our app and similar apps that already exist, we want to provide a view of the progress that users are making with their skin care issues and treatements. However, for analytics to be truly implemented with real data, everything else on this feature list must fully work. Therefore for this iteration, we will provide an example of what the analytics will look like so as to highlight the importance of viewing progress in our app but we will not implement the back-end until the next iteration.
 
-**5) Log in**
+**6) Log in**
 	
 	a. Front-end View
 	b. "Dummy" log in, not connected to database
