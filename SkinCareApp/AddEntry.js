@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
-  DatePickerAndroid, Slider, Dimensions } from 'react-native';
+  DatePickerAndroid, Slider, Dimensions, Picker } from 'react-native';
 import UploadPhoto from './UploadPhoto';
 import YellowButton from './YellowButton';
+import Select from 'react-select';
 
 const dummyData = [];
 
@@ -46,7 +47,10 @@ export default class AddEntry extends Component {
       rating: 0,
       avatarSource: null,
       photo: this.props.photo,
-      photoData: ''
+      photoData: '',
+      products: null,
+      language: null,
+      options: []
     };
     this.change = props.changeRoute;
   }
@@ -67,6 +71,26 @@ export default class AddEntry extends Component {
     });
 
     this.change(1);
+  }
+
+  getProducts() {
+    console.log("got to getProducts");
+
+    fetch('http://lit-gorge-31410.herokuapp.com/user-products?userid=1', {
+      method: "GET"}).then((response) => response.json())
+                     .then((responseData) => {
+                       for (item in responseData) {
+                         var newArray = this.state.options;
+                         newArray.push({value: responseData[item].id, label: responseData[item].name});
+                         this.setState({options: newArray});
+                       }
+                       console.log(this.state.options);
+                     })
+                     .done();
+  }
+
+  componentDidMount() {
+    this.getProducts();
   }
 
   showPicker = async (stateKey, options) => {
@@ -129,12 +153,15 @@ export default class AddEntry extends Component {
 
         {/* Dummy products data */}
         <View style={styles.pad}>
-          <Text style={styles.label}>Products used:</Text>
-          <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
-          <Text style={styles.prodUsed}>Clinique Moisturizer: 4</Text>
-          <Text style={styles.prodUsed}>Stridex Acne Pads: 3.5</Text>
-          <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
+          <Picker
+            selectedValue={this.state.language}
+            onValueChange={(lang) => this.setState({language: lang})}>
+            <Picker.Item label="Java" value="java" />
+            <Picker.Item label="JavaScript" value="js" />
+          </Picker>
         </View>
+
+
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>
 
@@ -146,7 +173,7 @@ export default class AddEntry extends Component {
 
           {/* Back button */}
           <YellowButton onPressFunction={this.change.bind(this, 1)} buttonLabel={'Back'}/>
-          
+
         </View>
       </View>
     );
