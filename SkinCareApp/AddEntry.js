@@ -54,7 +54,7 @@ export default class AddEntry extends Component {
     prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
       rating: this.state.rating, photo: this.state.photoData});
-    fetch('https://lit-gorge-31410.herokuapp.com/entry', {
+    fetch('http://192.168.1.105:5000/entry', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -133,13 +133,6 @@ export default class AddEntry extends Component {
           <Text style={styles.prodUsed}>Clinique Moisturizer: 4</Text>
           <Text style={styles.prodUsed}>Stridex Acne Pads: 3.5</Text>
           <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
-        </View>
-
-        {/* Choose Photo */}
-        <View style={styles.pad}>
-          <TouchableOpacity onPress={this.change.bind(this, 7, 'add')}>
-            <Text style={styles.button}>Pick A Photo</Text>
-          </TouchableOpacity>
         </View>
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>

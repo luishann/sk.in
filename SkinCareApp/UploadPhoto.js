@@ -56,7 +56,7 @@ export default class UploadPhoto extends Component {
     return (
       <View style={styles.pad}>
         <TouchableOpacity onPress={this._showImagePicker.bind(this)}>
-          <Text style={styles.button}>Test Camera</Text>
+          <Text style={styles.button}>Add Photo</Text>
         </TouchableOpacity>
       </View>
     )
