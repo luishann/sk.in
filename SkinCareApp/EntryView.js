@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
+import UploadPhoto from './UploadPhoto';
 
 class SliderExample extends React.Component {
   constructor(props) {
@@ -54,14 +55,13 @@ export default class EntryView extends Component {
     .then((responseData) => {
       var newDate = new Date(Date.parse(responseData[0].date.slice(0, 19).replace(' ', 'T')));
       dateString = newDate.toLocaleDateString();
-
       this.setState({data: responseData[0],
         simpleText: dateString,
         date: responseData[0].date,
         value: responseData[0].rating,
         rating: responseData[0].rating,
         description: responseData[0].description,
-        dbphoto: responseData[0].photoLocation,
+        dbphoto: responseData[0].photolocation,
         isLoading: false});
     })
     .done();
@@ -124,6 +124,11 @@ export default class EntryView extends Component {
     this.change(1);
   }
 
+  _setPhotoData(data) {
+    this.setState({photoData: data});
+    console.log("Had set photo data to be: " + this.state.photoData);
+  }
+
   render() {
     if (this.state.isLoading) {
       return this.renderLoadingView();
@@ -164,7 +169,7 @@ export default class EntryView extends Component {
           />
         </View>
 
-        {/* Dummy products data */}
+        {/* Dummy products data Test connectivity by adding stuff here */}
         <View style={styles.pad}>
           <Text style={styles.label}>Products used:</Text>
           <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
@@ -173,12 +178,10 @@ export default class EntryView extends Component {
           <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
         </View>
 
-        {/* Choose Photo */}
-        <View style={styles.pad}>
-          <TouchableOpacity onPress={this.change.bind(this, 7, 'edit', this.props.entryID)}>
-            <Text style={styles.button}>Pick A Photo</Text>
-          </TouchableOpacity>
-        </View>
+        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>
+        <Image style={{width: 100, height: 50, resizeMode: Image.resizeMode.contain,
+          borderWidth: 1, borderColor: 'red'}}
+          source={{uri: this.state.dbphoto}}/>
 
         <View style={styles.buttons}>
           {/* Submit button */}

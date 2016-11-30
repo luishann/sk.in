@@ -13,7 +13,8 @@
     "react-native-camera-android": "^1.0.7",
     "react-native-chart": "^1.0.8-beta",
     "react-native-chart-android": "^1.0.6",
-    "react-native-image-picker": "^0.22.14"
+    "react-native-image-picker": "^0.23.0",
+    "react-select-box": "^3.0.1"
   },
   "jest": {
     "preset": "jest-react-native"
