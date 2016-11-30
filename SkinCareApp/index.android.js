@@ -28,6 +28,9 @@ import ChoosePhoto from './ChoosePhoto';
 import EntryAnalytics from './EntryAnalytics';
 import ProductAnalytics from './ProductAnalytics';
 
+//here import a new class (and export it from before)
+//and then add a new if else statement
+
 class MyToolbar extends Component {
   render() {
     var navigator = this.props.navigator;
@@ -68,7 +71,7 @@ export default class SkinCareApp extends Component {
   _changeRoute(route, arg1, arg2) {
     _navigator.push({id: route, arg: arg1, arg2: arg2})
   }
-
+//We can 
   // Render scene depending on route number
   _renderScene(route, navigator) {
     _navigator = navigator;

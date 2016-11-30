@@ -164,7 +164,7 @@ export default class EntryView extends Component {
           />
         </View>
 
-        {/* Dummy products data */}
+        {/* Dummy products data Test connectivity by adding stuff here */}
         <View style={styles.pad}>
           <Text style={styles.label}>Products used:</Text>
           <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
