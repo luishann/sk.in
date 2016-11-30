@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
+import UploadPhoto from './UploadPhoto';
 
 const dummyData = [];
 
@@ -43,17 +44,16 @@ export default class AddEntry extends Component {
       description: '',
       rating: 0,
       avatarSource: null,
-      photo: this.props.photo
+      photo: this.props.photo,
+      photoData: ''
     };
     this.change = props.changeRoute;
   }
 
   _onPressButton() {
-    console.log(this.state.photo);
     prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
-      rating: this.state.rating, photoLocation: this.state.photo});
-
+      rating: this.state.rating, photo: this.state.photoData});
     fetch('https://lit-gorge-31410.herokuapp.com/entry', {
       method: "POST",
       headers: {
@@ -61,6 +61,8 @@ export default class AddEntry extends Component {
         'Content-Type': 'application/json',
       },
       body: prod
+    }).catch(function(error) {
+      console.log("Error sending entry to server: " + error);
     });
 
     this.change(1);
@@ -82,6 +84,11 @@ export default class AddEntry extends Component {
       console.warn(`Error in example '${stateKey}': `, message);
     }
   };
+
+  _setPhotoData(data) {
+    this.setState({photoData: data});
+    console.log("Had set photo data to be: " + this.state.photoData);
+  }
 
   render() {
 
@@ -134,6 +141,8 @@ export default class AddEntry extends Component {
             <Text style={styles.button}>Pick A Photo</Text>
           </TouchableOpacity>
         </View>
+
+        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>
 
         <View style={styles.buttons}>
           {/* Submit button */}
