@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TextInput,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
 import UploadPhoto from './UploadPhoto';
+import YellowButton from './YellowButton';
 
 const dummyData = [];
 
@@ -144,9 +145,8 @@ export default class AddEntry extends Component {
           </TouchableOpacity>
 
           {/* Back button */}
-          <TouchableOpacity onPress={this.change.bind(this, 1)}>
-            <Text style={styles.button}>Back</Text>
-          </TouchableOpacity>
+          <YellowButton onPressFunction={this.change.bind(this, 1)} buttonLabel={'Back'}/>
+          
         </View>
       </View>
     );
