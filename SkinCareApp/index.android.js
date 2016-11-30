@@ -15,7 +15,8 @@ import {
   ToolbarAndroid,
   ScrollView,
   TouchableNativeFeedback,
-  Image
+  Image,
+  BackAndroid
 } from 'react-native';
 
 import Journal from './Journal';
@@ -27,6 +28,9 @@ import ProductView from './ProductView';
 import ChoosePhoto from './ChoosePhoto';
 import EntryAnalytics from './EntryAnalytics';
 import ProductAnalytics from './ProductAnalytics';
+
+//here import a new class (and export it from before)
+//and then add a new if else statement
 
 class MyToolbar extends Component {
   render() {
@@ -41,6 +45,16 @@ class MyToolbar extends Component {
     );
   }
 }
+/*
+Allows for Android back button to be used in Android phones.
+*/
+BackAndroid.addEventListener('hardwareBackPress', () => {  
+  if (_navigator && _navigator.getCurrentRoutes().length > 1) {
+    _navigator.pop();
+    return true;
+  }
+  return false;
+});
 
 export default class SkinCareApp extends Component {
 
@@ -57,6 +71,8 @@ export default class SkinCareApp extends Component {
     }
   }
 
+
+
   _changeRoute(route){
     _navigator.push({id: route})
   }
@@ -68,7 +84,7 @@ export default class SkinCareApp extends Component {
   _changeRoute(route, arg1, arg2) {
     _navigator.push({id: route, arg: arg1, arg2: arg2})
   }
-
+//We can 
   // Render scene depending on route number
   _renderScene(route, navigator) {
     _navigator = navigator;

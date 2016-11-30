@@ -54,7 +54,7 @@ export default class AddEntry extends Component {
     prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
       rating: this.state.rating, photo: this.state.photoData});
-    fetch('http://192.168.1.105:5000/entry', {
+    fetch('https://lit-gorge-31410.herokuapp.com/entry', {
       method: "POST",
       headers: {
         'Accept': 'application/json',

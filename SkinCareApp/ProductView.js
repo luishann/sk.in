@@ -8,6 +8,13 @@ export default class ProductView extends Component {
     };
   }
 
+
+_onPressButton(){
+
+}
+
+
+
   render() {
     var expiryString;
     if (this.props.product.expirydate == null) {
@@ -21,11 +28,26 @@ export default class ProductView extends Component {
         <Text style={styles.brand}>{this.props.product.brand}</Text>
         <Text style={styles.name}>{this.props.product.name}</Text>
         <Text style={styles.text}>Expiry Date: {expiryString}</Text>
+        <Text> This is text I am adding</Text>
 
+        <View style={styles.buttons}>
+
+          {/* Back button */}
+          <TouchableOpacity onPress={this.props.changeRoute.bind(this,2)}>
+            <Text style={styles.button}>Back</Text>
+          </TouchableOpacity>
+        
+
+        <TouchableOpacity onPress={this.props.changeRoute.bind(this,2)}>
+            <Text style={styles.button}>Modify Product</Text>
+          </TouchableOpacity>
+          </View>
+        {/*
         <TouchableOpacity style={{flex: 1}}
           onPress={this.props.changeRoute.bind(this,2)}>
           <Text style={styles.ret}>Return to Products </Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
+
       </View>
     )
   }
@@ -52,5 +74,20 @@ var styles = StyleSheet.create({
   ret: {
     bottom: 15,
     position: 'absolute'
+  },
+  button: {
+    backgroundColor: '#fad900',
+    color: 'white',
+    width: 108,
+    padding: 10,
+    borderRadius: 5,
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center'
+  },
+   buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 15
   }
 });

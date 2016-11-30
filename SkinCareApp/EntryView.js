@@ -124,6 +124,11 @@ export default class EntryView extends Component {
     this.change(1);
   }
 
+  _setPhotoData(data) {
+    this.setState({photoData: data});
+    console.log("Had set photo data to be: " + this.state.photoData);
+  }
+
   render() {
     if (this.state.isLoading) {
       return this.renderLoadingView();
@@ -164,9 +169,7 @@ export default class EntryView extends Component {
           />
         </View>
 
-        <Image style={{width: 100, height: 50, resizeMode: Image.resizeMode.contain, borderWidth: 1, borderColor: 'red'}} source={{uri: this.state.dbphoto}}/>
-
-        {/* Dummy products data */}
+        {/* Dummy products data Test connectivity by adding stuff here */}
         <View style={styles.pad}>
           <Text style={styles.label}>Products used:</Text>
           <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
@@ -176,6 +179,9 @@ export default class EntryView extends Component {
         </View>
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>
+        <Image style={{width: 100, height: 50, resizeMode: Image.resizeMode.contain,
+          borderWidth: 1, borderColor: 'red'}}
+          source={{uri: this.state.dbphoto}}/>
 
         <View style={styles.buttons}>
           {/* Submit button */}
