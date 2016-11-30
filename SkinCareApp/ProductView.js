@@ -12,6 +12,9 @@ export default class ProductView extends Component {
 _onPressButton(){
 
 }
+
+
+
   render() {
     var expiryString;
     if (this.props.product.expirydate == null) {
@@ -33,8 +36,12 @@ _onPressButton(){
           <TouchableOpacity onPress={this.props.changeRoute.bind(this,2)}>
             <Text style={styles.button}>Back</Text>
           </TouchableOpacity>
-        </View>
+        
 
+        <TouchableOpacity onPress={this.props.changeRoute.bind(this,2)}>
+            <Text style={styles.button}>Modify Product</Text>
+          </TouchableOpacity>
+          </View>
         {/*
         <TouchableOpacity style={{flex: 1}}
           onPress={this.props.changeRoute.bind(this,2)}>
@@ -77,5 +84,10 @@ var styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
     textAlign: 'center'
+  },
+   buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 15
   }
 });

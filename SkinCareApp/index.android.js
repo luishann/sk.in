@@ -15,7 +15,8 @@ import {
   ToolbarAndroid,
   ScrollView,
   TouchableNativeFeedback,
-  Image
+  Image,
+  BackAndroid
 } from 'react-native';
 
 import Journal from './Journal';
@@ -44,6 +45,16 @@ class MyToolbar extends Component {
     );
   }
 }
+/*
+Allows for Android back button to be used in Android phones.
+*/
+BackAndroid.addEventListener('hardwareBackPress', () => {  
+  if (_navigator && _navigator.getCurrentRoutes().length > 1) {
+    _navigator.pop();
+    return true;
+  }
+  return false;
+});
 
 export default class SkinCareApp extends Component {
 
@@ -59,6 +70,8 @@ export default class SkinCareApp extends Component {
       this.refs['DRAWER'].closeDrawer();
     }
   }
+
+
 
   _changeRoute(route){
     _navigator.push({id: route})
