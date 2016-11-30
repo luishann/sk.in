@@ -11,6 +11,9 @@ export default class ProductView extends Component {
 
 _onPressButton(){
 
+  //--this.props.changeRoute.bind(this,1);
+  //_navigator.pop();
+
 }
 
 
@@ -32,15 +35,17 @@ _onPressButton(){
 
         <View style={styles.buttons}>
 
-          {/* Back button */}
-          <TouchableOpacity onPress={this.props.changeRoute.bind(this,2)}>
+          <TouchableOpacity onPress={this._onPressButton.bind(this)}>
+            <Text style={styles.button}>Modify Product</Text>
+          </TouchableOpacity>
+          
+          {/* Back button this.props.changeRoute.bind(this,2); the following is faster */}
+          <TouchableOpacity onPress={()=>{_navigator.pop();}}>
             <Text style={styles.button}>Back</Text>
           </TouchableOpacity>
         
 
-        <TouchableOpacity onPress={this.props.changeRoute.bind(this,2)}>
-            <Text style={styles.button}>Modify Product</Text>
-          </TouchableOpacity>
+        
           </View>
         {/*
         <TouchableOpacity style={{flex: 1}}
