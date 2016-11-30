@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
-  PixelRatio, TouchableOpacity, Image,
+  PixelRatio, TouchableOpacity, Image, ScrollView,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
 import UploadPhoto from './UploadPhoto';
@@ -39,7 +39,6 @@ export default class EntryView extends Component {
       rating: 0,
       description: null,
       dbphoto: null,
-      photo: this.props.photo,
       date: null
     };
     this.change = props.changeRoute;
@@ -62,11 +61,11 @@ export default class EntryView extends Component {
         rating: responseData[0].rating,
         description: responseData[0].description,
         dbphoto: responseData[0].photolocation,
-        isLoading: false});
+        isLoading: false
+      });
     })
     .done();
   }
-
   renderLoadingView() {
     return (
       <View style={styles.loading}>
@@ -100,15 +99,15 @@ export default class EntryView extends Component {
       newDate = this.state.date;
     }
 
-    if (this.state.photo == null) {
+    //f (this.state.photo == null) {
       prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
         date: newDate,
         rating: this.state.rating, photoLocation: this.state.dbphoto});
-    } else {
+  /*  } else {
       prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
         date: newDate,
         rating: this.state.rating, photoLocation: this.state.photo});
-    }
+    }*/
 
     console.log(prod);
 
@@ -125,16 +124,24 @@ export default class EntryView extends Component {
   }
 
   _setPhotoData(data) {
-    this.setState({photoData: data});
-    console.log("Had set photo data to be: " + this.state.photoData);
+    this.setState({dbphoto: data});
+    console.log("Had edited photo data to be: " + this.state.dbphoto);
   }
+
+  /*_showPhoto() {
+    if (this.state.dbphoto != '') {
+      return (
+
+      );
+    }
+  }*/
 
   render() {
     if (this.state.isLoading) {
       return this.renderLoadingView();
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
 
         {/* Date picker */}
         <TouchableWithoutFeedback
@@ -178,10 +185,10 @@ export default class EntryView extends Component {
           <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
         </View>
 
-        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>
-        <Image style={{width: 100, height: 50, resizeMode: Image.resizeMode.contain,
-          borderWidth: 1, borderColor: 'red'}}
-          source={{uri: this.state.dbphoto}}/>
+        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Change Photo'}/>
+        { this.state.dbphoto ?  <Image style={{flex:1, height:300, width:300, resizeMode: 'contain'}}
+            source={{uri: this.state.dbphoto}}/> : null }
+
 
         <View style={styles.buttons}>
           {/* Submit button */}
@@ -194,7 +201,7 @@ export default class EntryView extends Component {
             <Text style={styles.button}>Back</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
@@ -203,7 +210,8 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor:'#f2f2f2',
-    padding: 15
+    padding: 20,
+    paddingBottom: 40
   },
   input: {
     backgroundColor: '#fff',
@@ -237,7 +245,8 @@ var styles = StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 15
+    paddingTop: 15,
+    paddingBottom: 40
   },
   ratingStyle: {
     textAlign: 'center',

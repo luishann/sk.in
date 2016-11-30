@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
-  PixelRatio, TouchableOpacity, Image,
+  PixelRatio, TouchableOpacity, Image, ScrollView,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions, Picker } from 'react-native';
 import UploadPhoto from './UploadPhoto';
@@ -118,7 +118,7 @@ export default class AddEntry extends Component {
   render() {
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
 
         {/* Date picker */}
         <TouchableWithoutFeedback
@@ -163,8 +163,9 @@ export default class AddEntry extends Component {
 
 
 
-        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)}/>
-
+        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Add Photo'} />
+        { this.state.photoData ?  <Image style={{flex:1, height:300, width:300, resizeMode: 'contain'}}
+            source={{uri: this.state.photoData}}/> : null }
         <View style={styles.buttons}>
           {/* Submit button */}
           <TouchableOpacity onPress={this._onPressButton.bind(this)}>
@@ -175,7 +176,7 @@ export default class AddEntry extends Component {
           <YellowButton onPressFunction={this.change.bind(this, 1)} buttonLabel={'Back'}/>
 
         </View>
-      </View>
+      </ScrollView>
     );
 
   }
