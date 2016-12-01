@@ -48,7 +48,7 @@ class MyToolbar extends Component {
 /*
 Allows for Android back button to be used in Android phones.
 */
-BackAndroid.addEventListener('hardwareBackPress', () => {  
+BackAndroid.addEventListener('hardwareBackPress', () => {
   if (_navigator && _navigator.getCurrentRoutes().length > 1) {
     _navigator.pop();
     return true;
@@ -56,7 +56,7 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
   return false;
 });
 
-export default class SkinCareApp extends Component {
+export default class UserView extends Component {
 
   // Open navigation drawer
   _setDrawer() {
@@ -84,7 +84,7 @@ export default class SkinCareApp extends Component {
   _changeRoute(route, arg1, arg2) {
     _navigator.push({id: route, arg: arg1, arg2: arg2})
   }
-//We can 
+//We can
   // Render scene depending on route number
   _renderScene(route, navigator) {
     _navigator = navigator;
@@ -221,5 +221,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
-
-AppRegistry.registerComponent('SkinCareApp', () => SkinCareApp);
