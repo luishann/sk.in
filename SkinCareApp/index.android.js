@@ -31,12 +31,17 @@ export default class SkinCareApp extends Component {
     };
   }
 
+  _setUserID(id) {
+    this.setState({userID: id});
+  }
+
   render() {
 
     return (
       <View style={{flex: 1}}>
         { this.state.userID ?  <UserView userID={this.state.userID} />
-          : <Text>'Replace this text with the login/signup component'</Text>}
+          : <Text>'Replace this text with the login/signup component.' +
+          'For example: <Login setUserID={this._getUserID}/>'</Text>}
       </View>
     );
   }
