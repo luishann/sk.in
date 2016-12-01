@@ -27,7 +27,7 @@ export default class SkinCareApp extends Component {
     this.state = {
       // userID hardcoded to 1, later we should change it to null once we
       // finished implementing login/signup
-      userID: null,
+      userID: 1,
     };
   }
 
@@ -41,7 +41,8 @@ export default class SkinCareApp extends Component {
       <View style={{flex: 1}}>
         { this.state.userID ?  <UserView userID={this.state.userID} />
           : <Text>'Replace this text with the login/signup component.'
-          {/*For example: Login setUserID={this._setUserID}*/}</Text>}
+          {/*For example: Login setUserID={this._setUserID}
+          might have to do this._setUserID.bind(this) though*/}</Text>}
       </View>
     );
   }
