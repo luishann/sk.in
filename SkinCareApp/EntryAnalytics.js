@@ -11,9 +11,8 @@ export default class EntryAnalytics extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2
-      })
+			x: null,
+			y: null,
     };
   }
 
@@ -22,11 +21,18 @@ export default class EntryAnalytics extends Component {
   }
 
 	fetchData() {
+		var x_values = [];
+		var y_values = [];
     fetch("https://lit-gorge-31410.herokuapp.com/avg-rating?userID=1", {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
+			for (var i = 0; i < responseData.length; i++) {
+				x_values.push(responseData[i].month);
+				y_values.push(responseData[i].rating);
+			}
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(responseData),
+        x: x_values,
+				y: y_values,
         isLoading: false
       });
     })
@@ -35,18 +41,15 @@ export default class EntryAnalytics extends Component {
 
 	render() {
 		return (
-			<ListView
-        dataSource={this.state.dataSource}
-				renderRow={this.renderProduct.bind(this)}
-				//style={styles.listView}
-			/>
+			<View>
+				<Text>X: {this.state.x}</Text>
+				<Text>Y: {this.state.y}</Text>
+			</View>
 		);
 	}
 
 	renderProduct(entry) {
 		return (
-
-
 				<View>
 					<Text>User: {entry.user}</Text>
 					<Text>Month: {entry.month}</Text>
