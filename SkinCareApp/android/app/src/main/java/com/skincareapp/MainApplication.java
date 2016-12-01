@@ -4,8 +4,6 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
-import com.github.xfumihiro.react_native_image_to_base64.ImageToBase64Package;
-import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.ReactCamera.RNCameraViewPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -30,8 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ImageToBase64Package(),
-            new ImageResizerPackage(),
             new ImagePickerPackage(),
             new RNCameraViewPackage(),
           new MPChartPackage(),
