@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
-  PixelRatio, TouchableOpacity, Image,
+  PixelRatio, TouchableOpacity, Image, ScrollView,
   Platform, TouchableWithoutFeedback,
-  DatePickerAndroid, Slider, Dimensions } from 'react-native';
+  DatePickerAndroid, Slider, Dimensions, Picker } from 'react-native';
+import UploadPhoto from './UploadPhoto';
+import YellowButton from './YellowButton';
+import Select from 'react-select';
 
 const dummyData = [];
 
@@ -43,17 +46,19 @@ export default class AddEntry extends Component {
       description: '',
       rating: 0,
       avatarSource: null,
-      photo: this.props.photo
+      photo: this.props.photo,
+      photoData: '',
+      products: null,
+      language: null,
+      options: []
     };
     this.change = props.changeRoute;
   }
 
   _onPressButton() {
-    console.log(this.state.photo);
     prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
-      rating: this.state.rating, photoLocation: this.state.photo});
-
+      rating: this.state.rating, photo: this.state.photoData});
     fetch('https://lit-gorge-31410.herokuapp.com/entry', {
       method: "POST",
       headers: {
@@ -61,9 +66,31 @@ export default class AddEntry extends Component {
         'Content-Type': 'application/json',
       },
       body: prod
+    }).catch(function(error) {
+      console.log("Error sending entry to server: " + error);
     });
 
     this.change(1);
+  }
+
+  getProducts() {
+    console.log("got to getProducts");
+
+    fetch('http://lit-gorge-31410.herokuapp.com/user-products?userid=1', {
+      method: "GET"}).then((response) => response.json())
+                     .then((responseData) => {
+                       for (item in responseData) {
+                         var newArray = this.state.options;
+                         newArray.push({value: responseData[item].id, label: responseData[item].name});
+                         this.setState({options: newArray});
+                       }
+                       console.log(this.state.options);
+                     })
+                     .done();
+  }
+
+  componentDidMount() {
+    this.getProducts();
   }
 
   showPicker = async (stateKey, options) => {
@@ -83,10 +110,15 @@ export default class AddEntry extends Component {
     }
   };
 
+  _setPhotoData(data) {
+    this.setState({photoData: data});
+    console.log("Had set photo data to be: " + this.state.photoData);
+  }
+
   render() {
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
 
         {/* Date picker */}
         <TouchableWithoutFeedback
@@ -121,20 +153,19 @@ export default class AddEntry extends Component {
 
         {/* Dummy products data */}
         <View style={styles.pad}>
-          <Text style={styles.label}>Products used:</Text>
-          <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
-          <Text style={styles.prodUsed}>Clinique Moisturizer: 4</Text>
-          <Text style={styles.prodUsed}>Stridex Acne Pads: 3.5</Text>
-          <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
+          <Picker
+            selectedValue={this.state.language}
+            onValueChange={(lang) => this.setState({language: lang})}>
+            <Picker.Item label="Java" value="java" />
+            <Picker.Item label="JavaScript" value="js" />
+          </Picker>
         </View>
 
-        {/* Choose Photo */}
-        <View style={styles.pad}>
-          <TouchableOpacity onPress={this.change.bind(this, 7, 'add')}>
-            <Text style={styles.button}>Pick A Photo</Text>
-          </TouchableOpacity>
-        </View>
 
+
+        <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Add Photo'} />
+        { this.state.photoData ?  <Image style={{flex:1, height:300, width:300, resizeMode: 'contain'}}
+            source={{uri: this.state.photoData}}/> : null }
         <View style={styles.buttons}>
           {/* Submit button */}
           <TouchableOpacity onPress={this._onPressButton.bind(this)}>
@@ -142,11 +173,10 @@ export default class AddEntry extends Component {
           </TouchableOpacity>
 
           {/* Back button */}
-          <TouchableOpacity onPress={this.change.bind(this, 1)}>
-            <Text style={styles.button}>Back</Text>
-          </TouchableOpacity>
+          <YellowButton onPressFunction={this.change.bind(this, 1)} buttonLabel={'Back'}/>
+
         </View>
-      </View>
+      </ScrollView>
     );
 
   }

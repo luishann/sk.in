@@ -1,60 +1,69 @@
 'use strict';
 
-var React = require('react');
-var {
-	BarChart,
-	CombinedChart
-}=require('react-native-chart-android/index.android');
-var {
-  StyleSheet,
-  View,
-  Text
-} = require('react-native');
+import React, { Component } from 'react';
+import { BarChart, CombinedChart } from 'react-native-chart-android/index.android';
+import { StyleSheet, View, Text, ListView } from 'react-native';
 
-var Component = React.createClass({
-	getBarData:function (argument) {
-		var data={
-			xValues:['Sept 2016','Oct 2016','Nov 2016', 'Dec 2016'],
-			yValues:[
-				{
-					data:[1,2,3,2],
-					label:'Average Entry Ratings by Month',
-					config:{
-						color:'#21beca'
-					}
-				},
-			]
-		};
-		return data;
-	},
 
-	render: function() {
+export default class EntryAnalytics extends Component {
+
+	constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2
+      })
+    };
+  }
+
+	componentDidMount() {
+    this.fetchData();
+  }
+
+	fetchData() {
+    fetch("https://lit-gorge-31410.herokuapp.com/avg-rating?userID=1", {method: "GET"})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData),
+        isLoading: false
+      });
+    })
+    .done();
+  }
+
+	render() {
 		return (
-			<View style={styles.container}>
-				<View style={styles.chartContainer}>
-					<BarChart 
-						style={{flex:1}}
-						data={this.getBarData()}
-						yAxisRight={{enable:false}}
-						/>
-				</View>
-			</View>
+			<ListView
+        dataSource={this.state.dataSource}
+				renderRow={this.renderProduct.bind(this)}
+				//style={styles.listView}
+			/>
 		);
 	}
-});
+
+	renderProduct(entry) {
+		return (
+
+
+				<View>
+					<Text>User: {entry.user}</Text>
+					<Text>Month: {entry.month}</Text>
+					<Text>Rating: {entry.rating}</Text>
+				</View>
+		)
+	}
+}
 
 var styles = StyleSheet.create({
-	container:{
-		flex:1,
-		margin: 15
-	},
-	chartContainer:{
-		flex:1
-	},
-	chart:{
-		flex:1
-	}
+  text: {
+    flex: 1,
+    color: '#222'
+  },
+  date: {
+    fontSize: 16,
+    flex: 1,
+    color: '#222'
+  },
 });
-
-
-module.exports = Component;
