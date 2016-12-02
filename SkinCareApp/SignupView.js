@@ -3,14 +3,15 @@ import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
+  import UserView from './UserView';
 
 export default class SignupView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'placeholder',
-      password: 'placeholder',
-      email: 'placeholder'
+      username: 'Username',
+      password: 'Password',
+      email: 'Email'
     };
     this.change = props.changeRoute;
   }
@@ -19,9 +20,7 @@ export default class SignupView extends Component {
     if (this.state.username != null && this.state.password != null && this.state.email != null ) {
      user = JSON.stringify({username: this.state.username, password: this.state.password,
          email: this.state.email});
-    } /*else {
-      this.change(10);
-    }*/
+    }
 
     console.log(user);
 
@@ -34,7 +33,7 @@ export default class SignupView extends Component {
       body: user
     });
 
-    this.change(1);
+    this.change(11);
   }
 
   render() {
@@ -46,7 +45,7 @@ export default class SignupView extends Component {
 
         {/* Username */}
         <View style={styles.pad}>
-          <Text style={styles.label}>Description:</Text>
+          <Text style={styles.label}>Username:</Text>
           <TextInput style={styles.input}
             underlineColorAndroid={"transparent"}
             placeholder = {this.state.username}
@@ -56,7 +55,7 @@ export default class SignupView extends Component {
 
         {/* password */}
         <View style={styles.pad}>
-          <Text style={styles.label}>Description:</Text>
+          <Text style={styles.label}>Password:</Text>
           <TextInput secureTextEntry={true} style={styles.input}
             underlineColorAndroid={"transparent"}
             placeholder = {this.state.password}
@@ -66,7 +65,7 @@ export default class SignupView extends Component {
 
         {/* email */}
         <View style={styles.pad}>
-          <Text style={styles.label}>Description:</Text>
+          <Text style={styles.label}>Email:</Text>
           <TextInput style={styles.input}
             underlineColorAndroid={"transparent"}
             placeholder = {this.state.email}
@@ -79,11 +78,6 @@ export default class SignupView extends Component {
           <TouchableOpacity onPress={this._onPressButton.bind(this)}>
             <Text style={styles.button}>Signup</Text>
           </TouchableOpacity>
-
-        {/* Back button */}
-        /*  <TouchableOpacity onPress={this.change.bind(this, 1)}>
-            <Text style={styles.button}>Back</Text>
-          </TouchableOpacity> */
         </View>
       </View>
     )
