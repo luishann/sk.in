@@ -47,16 +47,6 @@ export default class EntryAnalytics extends Component {
 			</View>
 		);
 	}
-
-	renderProduct(entry) {
-		return (
-				<View>
-					<Text>User: {entry.user}</Text>
-					<Text>Month: {entry.month}</Text>
-					<Text>Rating: {entry.rating}</Text>
-				</View>
-		)
-	}
 }
 
 var styles = StyleSheet.create({
