@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { BarChart, CombinedChart } from 'react-native-chart-android/index.android';
 import { StyleSheet, View, Text, ListView } from 'react-native';
 
-
 export default class EntryAnalytics extends Component {
 
 	constructor(props) {
