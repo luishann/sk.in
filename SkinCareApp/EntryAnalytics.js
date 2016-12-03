@@ -10,52 +10,70 @@ export default class EntryAnalytics extends Component {
 	    super(props);
 	    this.state = {
 	      isLoading: true,
-				x: null,
-				y: null,
+				data: {
+					xValues: [],
+					yValues: [{data: [], label:'test1', config:{color: 'blue'}}]
+				}
+				/*data: {
+					xValues: ['1','2','3'],
+					yValues:[
+        {
+          data:[4.0,5.0,6.0],
+          label:'test1',
+          config:{
+            color:'blue'
+          }
+        }]
+				}*/
 	    };
-  	}	
+  	}
 
 	componentDidMount() {
     	this.fetchData();
   	}
 
 	fetchData() {
-		var x_values = [];
-		var y_values = [];
+		var x_Values = [];
+	 	var y_Values = [];
 	    fetch("https://lit-gorge-31410.herokuapp.com/avg-rating?userID=1", {method: "GET"})
 	    .then((response) => response.json())
 	    .then((responseData) => {
+				console.log(responseData);
 				for (var i = 0; i < responseData.length; i++) {
-					x_values.push(responseData[i].month);
-					y_values.push(responseData[i].rating);
+					x_Values.push(responseData[i].month);
+					y_Values.push(responseData[i].rating);
 				}
+
 	      this.setState({
-	        x: x_values,
-			y: y_values,
-	        isLoading: false
+	        data: {
+						xValues: x_Values,
+						yValues: [{data: y_Values, label:'test1', config:{color: 'blue'}}]
+					},
+	        isLoading: false,
 	      });
 	    })
 	    .done();
-  	}
+  }
 
 	render() {
 		return (
-			<View>
-				<Text>X: {this.state.x}</Text>
-				<Text>Y: {this.state.y}</Text>
+			<View style={styles.container}>
+				<View style={styles.chartContainer}>
+					<BarChart style={{flex:1}} data={this.state.data}/>
+				</View>
 			</View>
 		);
 	}
 }
 
 var styles = StyleSheet.create({
-  text: {
-    flex: 1,
-    color: '#222'
+  container:{
+    flex:1
   },
-  date: {
-    fontSize: 16,
-    flex: 1,
-    color: '#222'
+  chartContainer:{
+    flex:1
   },
+  chart:{
+    flex:1
+  }
 });
