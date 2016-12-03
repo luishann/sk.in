@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 import UserView from './UserView';
-import Signup from './Signup';
+import Login from './LoginView';
 
 export default class SkinCareApp extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class SkinCareApp extends Component {
     return (
       <View style={{flex: 1}}>
         { this.state.userID ?  <UserView userID={this.state.userID} />
-          : <Signup setUserID={this._setUserID}/>}
+          : <Login setUserID={this._setUserID}/>}
       </View>
     );
   }

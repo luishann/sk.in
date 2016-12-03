@@ -4,18 +4,20 @@ import { View, Text, StyleSheet, TextInput,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
   import UserView from './UserView';
-
+import SignupView from './SignupView';
 export default class LoginView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: 'Username',
       password: 'Password',
+      isSignup: 0,
+      isLogin: 0
     };
     this.change = props.changeRoute;
   }
 
-  _onPressButton() {
+  _onPressSignup() {
     if (this.state.username != null && this.state.password != null ) {
      user = JSON.stringify({username: this.state.username, password: this.state.password});
     }
@@ -31,16 +33,56 @@ export default class LoginView extends Component {
       body: user
     });
 
-    this.change(11);
+    this.setState({isSignup:1});
+  }
+  _onPressLogin() {
+    if (this.state.username != null && this.state.password != null ) {
+     user = JSON.stringify({username: this.state.username, password: this.state.password});
+    }
+
+    console.log(user);
+
+    fetch('https://lit-gorge-31410.herokuapp.com/add-user', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: user
+    });
+
+    this.setState({isLogin:1});
   }
 
-  render() {
-    if (this.state.isLoading) {
-      return this.renderLoadingView();
+  renderSignupView() {
+     return (
+
+       <SignupView />
+     );
+   }
+   renderUserView() {
+      return (
+
+        <UserView userID={this.state.userID}/>
+      );
     }
+  render() {
+    if (this.state.isSignup) {
+      return this.renderSignupView();
+    }
+    else if(this.state.isLogin){
+      return this.renderUserView();
+    }
+    else{
     return (
       <View style={styles.container}>
 
+      {/* Header for showing user profile picture/ name. Dummy data for now */}
+      <View style={{backgroundColor: '#62d7df',height: 90}}>
+
+          <Text style={styles.title}>SK.IN</Text>
+
+      </View>
         {/* Username */}
         <View style={styles.pad}>
           <Text style={styles.label}>Username:</Text>
@@ -63,13 +105,22 @@ export default class LoginView extends Component {
 
         <View style={styles.buttons}>
           {/* Signup button */}
-          <TouchableOpacity onPress={this._onPressButton.bind(this)}>
+          <TouchableOpacity onPress={this._onPressLogin.bind(this)}>
             <Text style={styles.button}>Login</Text>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.buttons}>
+          {/* Signup button */}
+          <TouchableOpacity onPress={this._onPressSignup.bind(this)}>
+            <Text style={styles.button}>Signup</Text>
+          </TouchableOpacity>
+        </View>
       </View>
+
+
     )
-  }
+  }}
 }
 
 var styles = StyleSheet.create({
@@ -90,10 +141,15 @@ var styles = StyleSheet.create({
     color: '#222',
     fontSize: 15,
   },
+  title: {
+    color: 'white',
+    fontSize: 70,
+    textAlign: 'center'
+  },
   button: {
     backgroundColor: '#fad900',
     color: 'white',
-    width: 108,
+    width: 328,
     padding: 10,
     borderRadius: 5,
     fontWeight: 'bold',

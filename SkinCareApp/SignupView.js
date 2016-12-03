@@ -11,9 +11,11 @@ export default class SignupView extends Component {
     this.state = {
       username: 'Username',
       password: 'Password',
-      email: 'Email'
+      email: 'Email',
+      isSignup: 0
     };
     this.change = props.changeRoute;
+
   }
 
   _onPressButton() {
@@ -33,13 +35,20 @@ export default class SignupView extends Component {
       body: user
     });
 
-    this.change(11);
+    this.setState({isSignup:1});
   }
 
+  renderUserView() {
+     return (
+
+       <UserView userID={this.state.userID}/>
+     );
+   }
   render() {
-    if (this.state.isLoading) {
-      return this.renderLoadingView();
+    if (this.state.isSignup) {
+      return this.renderUserView();
     }
+    else{
     return (
       <View style={styles.container}>
 
@@ -81,7 +90,7 @@ export default class SignupView extends Component {
         </View>
       </View>
     )
-  }
+  }}
 }
 
 var styles = StyleSheet.create({
