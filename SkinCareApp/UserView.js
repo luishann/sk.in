@@ -51,7 +51,12 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 });
 
 export default class UserView extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+    userID: props.userID
+    };
+  }
   // Open navigation drawer
   _setDrawer() {
     this.refs['DRAWER'].openDrawer();
@@ -83,23 +88,23 @@ export default class UserView extends Component {
   _renderScene(route, navigator) {
     _navigator = navigator;
     if(route.id === 1){
-      return <Journal changeRoute={this._changeRoute}/>
+      return <Journal changeRoute={this._changeRoute} userID = {this.state.userID}/>
     } else if (route.id === 2){
-      return <Products changeRoute={this._changeRoute}/>
+      return <Products changeRoute={this._changeRoute} userID = {this.state.userID}/>
     } else if (route.id === 3) {
-      return <AddEntry changeRoute={this._changeRoute} photo={route.arg}/>
+      return <AddEntry changeRoute={this._changeRoute} photo={route.arg} userID = {this.state.userID}/>
     } else if (route.id === 4) {
-      return <EntryView changeRoute={this._changeRoute} entryID={route.arg} photo={route.arg2}/>
+      return <EntryView changeRoute={this._changeRoute} entryID={route.arg} photo={route.arg2} userID = {this.state.userID}/>
     } else if (route.id === 5) {
-      return <AddProduct changeRoute={this._changeRoute}/>
+      return <AddProduct changeRoute={this._changeRoute} userID = {this.state.userID}/>
     } else if (route.id === 6) {
-      return <ProductView product={route.arg} changeRoute={this._changeRoute}/>
+      return <ProductView product={route.arg} changeRoute={this._changeRoute} userID = {this.state.userID}/>
     } else if (route.id === 7) {
-      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2}/>
+      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.state.userID}/>
     } else if (route.id === 8) {
-      return <EntryAnalytics changeRoute={this._changeRoute}/>
+      return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.state.userID}/>
     } else if(route.id == 9){
-      return <ProductAnalytics changeRoute={this._changeRoute}/>
+      return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.state.userID}/>
     }
   }
 
