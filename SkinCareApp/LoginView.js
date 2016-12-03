@@ -11,6 +11,8 @@ export default class LoginView extends Component {
     this.state = {
       username: 'Username',
       password: 'Password',
+      email: '',
+      userID : 0,
       isSignup: 0,
       isLogin: 0
     };
@@ -18,22 +20,7 @@ export default class LoginView extends Component {
   }
 
   _onPressSignup() {
-    if (this.state.username != null && this.state.password != null ) {
-     user = JSON.stringify({username: this.state.username, password: this.state.password});
-    }
-
-    console.log(user);
-
-    fetch('https://lit-gorge-31410.herokuapp.com/add-user', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: user
-    });
-
-    this.setState({isSignup:1});
+  this.setState({isSignup:1});
   }
   _onPressLogin() {
     if (this.state.username != null && this.state.password != null ) {
@@ -42,14 +29,17 @@ export default class LoginView extends Component {
 
     console.log(user);
 
-    fetch('https://lit-gorge-31410.herokuapp.com/add-user', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: user
-    });
+    fetch("https://lit-gorge-31410.herokuapp.com//user-bynamepasswd?username=" + this.state.username +  "&password=" + this.state.password, {method: "GET"})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({data: responseData[0],
+        userID: responseData[0].ID,
+        username: responseData[0].username,
+        password: responseData[0].password,
+        email: responseData[0].email
+      });
+    })
+    .done();
 
     this.setState({isLogin:1});
   }
