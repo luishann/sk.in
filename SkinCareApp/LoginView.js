@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
   PixelRatio, TouchableOpacity, Image,
   Platform, TouchableWithoutFeedback,
-  DatePickerAndroid, Slider, Dimensions } from 'react-native';
+  DatePickerAndroid, Slider, Alert, Dimensions } from 'react-native';
   import UserView from './UserView';
 import SignupView from './SignupView';
 export default class LoginView extends Component {
@@ -23,13 +23,7 @@ export default class LoginView extends Component {
   this.setState({isSignup:1});
   }
   _onPressLogin() {
-    if (this.state.username != null && this.state.password != null ) {
-     user = JSON.stringify({username: this.state.username, password: this.state.password});
-    }
-
-    console.log(user);
-
-    fetch("https://lit-gorge-31410.herokuapp.com//user-bynamepasswd?username=" + this.state.username +  "&password=" + this.state.password, {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/user-bynamepasswd?username=" + "\'" + this.state.username + "\'" + "&password=" + "\'" + this.state.password + "\'", {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({data: responseData[0],
@@ -41,8 +35,15 @@ export default class LoginView extends Component {
     })
     .done();
 
+    /*if (username == "" && password == ""){
+      Alert.alert(
+      "Wrong username/ password"
+    )*/
+
+
     this.setState({isLogin:1});
   }
+
 
   renderSignupView() {
      return (
@@ -53,6 +54,7 @@ export default class LoginView extends Component {
    renderUserView() {
       return (
 
+        //
         <UserView userID={this.state.userID}/>
       );
     }
