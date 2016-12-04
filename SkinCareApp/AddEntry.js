@@ -181,7 +181,7 @@ export default class AddEntry extends Component {
 
                 <View>
                 {
-                  this.state.optionsNames.map(function(item, index){
+                  this.state.products.map(function(item, index){
                     return (
                       <View style={styles.ratingsPad}>
                         <Text style={styles.label}>{item} Rating</Text>
