@@ -13,6 +13,7 @@ export default class SignupView extends Component {
       userID: 0,
       username: 'Username',
       password: 'Password',
+      text: '',
       email: 'Email',
       isSignup: 0
     };
@@ -48,13 +49,13 @@ export default class SignupView extends Component {
 
 
     this.setState({isSignup:1});
-    this.setState({text:'You just created a new account. Enter your username and password to login'});
+    this.setState({text:"\n\nCongratulations!\nYou just created a new account.\nEnter your username and password to login"});
   }
 
   renderLoginView() {
      return (
 
-       <LoginView/>
+       <LoginView text={this.state.text}/>
      );
    }
   render() {

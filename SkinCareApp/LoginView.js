@@ -9,6 +9,9 @@ export default class LoginView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      text: props.text,
+      alert: "",
+      alertFlag: 0,
       username: 'Username',
       password: 'Password',
       email: '',
@@ -26,12 +29,24 @@ export default class LoginView extends Component {
     fetch("https://lit-gorge-31410.herokuapp.com/user-bynamepasswd?username=" + "\'" + this.state.username + "\'" + "&password=" + "\'" + this.state.password + "\'", {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
+      if (responseData == ""){
+        this.setState({
+          alertFlag: 1,
+          alert: "\n\nThe username/password does not exist.\nPlease try again.",
+          username: "username",
+          password: "password",
+          isLogin: 0
+        });
+
+      }
+      else {
       this.setState({data: responseData[0],
         userID: responseData[0].id,
         username: responseData[0].username,
         password: responseData[0].password,
         email: responseData[0].email
       });
+    }
     })
     .done();
 
@@ -77,6 +92,15 @@ export default class LoginView extends Component {
           <Text style={styles.title}>SK.IN</Text>
 
       </View>
+
+<View>
+          <Text style={styles.message}>{this.state.text}</Text>
+
+      </View>
+      <View>
+                <Text style={styles.errmessage}>{this.state.alert}</Text>
+
+            </View>
         {/* Username */}
         <View style={styles.pad}>
           <Text style={styles.label}>Username:</Text>
@@ -138,6 +162,16 @@ var styles = StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 70,
+    textAlign: 'center'
+  },
+  message: {
+    color: 'green',
+    fontSize: 15,
+    textAlign: 'center'
+  },
+  errmessage: {
+    color: 'red',
+    fontSize: 15,
     textAlign: 'center'
   },
   button: {
