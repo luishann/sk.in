@@ -14,17 +14,6 @@ export default class EntryAnalytics extends Component {
 					xValues: [],
 					yValues: [{data: [], label:'test1', config:{color: 'blue'}}]
 				}
-				/*data: {
-					xValues: ['1','2','3'],
-					yValues:[
-        {
-          data:[4.0,5.0,6.0],
-          label:'test1',
-          config:{
-            color:'blue'
-          }
-        }]
-				}*/
 	    };
   	}
 
