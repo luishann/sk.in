@@ -26,11 +26,6 @@ export default class LoginView extends Component {
     fetch("https://lit-gorge-31410.herokuapp.com/user-bynamepasswd?username=" + "\'" + this.state.username + "\'" + "&password=" + "\'" + this.state.password + "\'", {method: "GET"})
     .then((response) =>  response.json())
     .then((responseData) => {
-      if (responseData == ""){
-        Alert.alert(
-          "Wrong Id or password");
-
-      }
       else {this.setState({data: responseData[0],
         userID: responseData[0].id,
         username: responseData[0].username,
