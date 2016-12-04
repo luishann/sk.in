@@ -4,11 +4,13 @@ import { View, Text, StyleSheet, TextInput,
   Platform, TouchableWithoutFeedback,
   DatePickerAndroid, Slider, Dimensions } from 'react-native';
   import UserView from './UserView';
+  import LoginView from './LoginView';
 
 export default class SignupView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userID: 0,
       username: 'Username',
       password: 'Password',
       email: 'Email',
@@ -26,7 +28,7 @@ export default class SignupView extends Component {
 
     console.log(user);
 
-    fetch('https://lit-gorge-31410.herokuapp.com/add-user', {
+    fetch('https://lit-gorge-31410.herokuapp.com/users', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -35,18 +37,29 @@ export default class SignupView extends Component {
       body: user
     });
 
+    /*fetch("https://lit-gorge-31410.herokuapp.com/user-bynamepasswd?username=" + "\'" + this.state.username + "\'" + "&password=" + "\'" + this.state.password + "\'", {method: "GET"})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({data: responseData[0],
+        userID: responseData[0].id,
+      });
+    })
+    .done();*/
+
+
     this.setState({isSignup:1});
+    this.setState({text:'You just created a new account. Enter your username and password to login'});
   }
 
-  renderUserView() {
+  renderLoginView() {
      return (
 
-       <UserView userID={this.state.userID}/>
+       <LoginView/>
      );
    }
   render() {
     if (this.state.isSignup) {
-      return this.renderUserView();
+      return this.renderLoginView();
     }
     else{
     return (
