@@ -50,6 +50,7 @@ export default class AddEntry extends Component {
       products: null,
       language: null,
       options: [],
+      optionsNames: [],
       value: null
     };
     this.change = props.changeRoute;
@@ -81,10 +82,14 @@ export default class AddEntry extends Component {
                      .then((responseData) => {
                        for (item in responseData) {
                          var newArray = this.state.options;
+                         var newArray2 = this.state.optionsNames;
                          newArray.push({value: responseData[item].id, label: responseData[item].name});
+                         newArray2.push(responseData[item].name);
+                         this.setState({optionsNames : newArray2});
                          this.setState({options: newArray});
                        }
                        console.log(this.state.options);
+                       console.log(this.state.optionsNames);
                      })
                      .done();
   }
@@ -163,6 +168,12 @@ export default class AddEntry extends Component {
             <Picker.Item label="Java" value="java" />
             <Picker.Item label="JavaScript" value="js" />
           </Picker>
+          <MultipleChoice
+            options={this.state.optionsNames}
+            selectedOptions={['Lorem ipsum']}
+            maxSelectedOptions={2}
+            onSelection={(option)=>alert(option + ' was selected!')}
+          />
         </View>
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Add Photo'} />
