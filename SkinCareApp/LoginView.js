@@ -24,22 +24,22 @@ export default class LoginView extends Component {
   }
   _onPressLogin() {
     fetch("https://lit-gorge-31410.herokuapp.com/user-bynamepasswd?username=" + "\'" + this.state.username + "\'" + "&password=" + "\'" + this.state.password + "\'", {method: "GET"})
-    .then((response) => response.json())
+    .then((response) =>  response.json())
     .then((responseData) => {
-      this.setState({data: responseData[0],
+      if (responseData == ""){
+        Alert.alert(
+          "Wrong Id or password");
+
+      }
+      else {this.setState({data: responseData[0],
         userID: responseData[0].id,
         username: responseData[0].username,
         password: responseData[0].password,
         email: responseData[0].email
       });
+    }
     })
     .done();
-
-    /*if (username == "" && password == ""){
-      Alert.alert(
-      "Wrong username/ password"
-    )*/
-
 
     this.setState({isLogin:1});
   }
