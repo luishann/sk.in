@@ -1,72 +1,67 @@
 'use strict';
 
-var React = require('react');
-var {
-	LineChart,
-	CombinedChart
-}=require('react-native-chart-android/index.android');
-var {
-  StyleSheet,
-  View,
-  Text
-} = require('react-native');
+import React, { Component } from 'react';
+import { BarChart, CombinedChart } from 'react-native-chart-android/index.android';
+import { StyleSheet, View, Text, ListView } from 'react-native';
 
-var Component = React.createClass({
-	getBarData:function (argument) {
-		var data={
-			xValues:['Sept','Oct','Nov'],
-			yValues:[
-				{
-					data:[0,2,4],
-					label:'Tea Tree Face Wash',
-					config:{
-						color:'red'
-					}
-				},
-				{
-					data:[2,3,4],
-					label:'Clean N Clear',
-					config:{
-						color:'blue'
-					}
-				},
-			]
-		};
-		return data;
-	},
-	render: function() {
+export default class ProductAnalytics extends Component {
+
+	constructor(props) {
+	    super(props);
+	    this.state = {
+	      isLoading: true,
+				data: {
+					xValues: [],
+					yValues: [{data: [], label:'test1', config:{color: 'blue'}}]
+				}
+	    };
+  	}
+
+	componentDidMount() {
+    	this.fetchData();
+  	}
+
+	fetchData() {
+		var x_Values = [];
+	 	var y_Values = [];
+	    fetch("https://lit-gorge-31410.herokuapp.com/max-product-all", {method: "GET"})
+	    .then((response) => response.json())
+	    .then((responseData) => {
+				for (var i = 0; i < responseData.length; i++) {
+					x_Values.push(responseData[i].month);
+					y_Values.push(responseData[i].rating);
+				}
+
+	      this.setState({
+	        data: {
+						xValues: x_Values,
+						yValues: [{data: y_Values, label:'test1', config:{color: 'blue'}}]
+					},
+	        isLoading: false,
+	      });
+	    })
+	    .done();
+  }
+
+	render() {
 		return (
 			<View style={styles.container}>
 				<View style={styles.chartContainer}>
-					<LineChart
-						style={{flex:1}}
-						data={this.getBarData()}
-						visibleYRange={[0,5]}
-						drawGridBackground={false}
-						yAxisRight={{enable:false}}
-						yAxis={{startAtZero:false,drawGridLines:false}}
-						xAxis={{drawGridLines:false,position:"BOTTOM"}}
-					/>
+					<BarChart style={{flex:1}} data={this.state.data}/>
 				</View>
 			</View>
 		);
 	}
-});
+}
 
 var styles = StyleSheet.create({
-	container:{
-		flex:1,
-		margin: 10,
-		padding: 10
-	},
-	chartContainer:{
-		flex:1,
-		margin: 5
-	},
-	chart:{
-		flex:1,
-	}
+  container:{
+    flex:1
+  },
+  chartContainer:{
+    flex:1
+  },
+  chart:{
+    flex:1
+  }
 });
-
-
-module.exports = Component;
