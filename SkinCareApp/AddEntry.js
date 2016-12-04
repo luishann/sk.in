@@ -5,7 +5,6 @@ import { View, Text, StyleSheet, TextInput,
   DatePickerAndroid, Slider, Dimensions, Picker } from 'react-native';
 import UploadPhoto from './UploadPhoto';
 import YellowButton from './YellowButton';
-import Select from 'react-select';
 
 const dummyData = [];
 
@@ -50,7 +49,8 @@ export default class AddEntry extends Component {
       photoData: '',
       products: null,
       language: null,
-      options: []
+      options: [],
+      value: null
     };
     this.change = props.changeRoute;
   }
@@ -115,6 +115,10 @@ export default class AddEntry extends Component {
     console.log("Had set photo data to be: " + this.state.photoData);
   }
 
+  logChange(val) {
+    console.log("Selected: " + val);
+  }
+
   render() {
 
     return (
@@ -160,8 +164,6 @@ export default class AddEntry extends Component {
             <Picker.Item label="JavaScript" value="js" />
           </Picker>
         </View>
-
-
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Add Photo'} />
         { this.state.photoData ?  <Image style={{flex:1, height:300, width:300, resizeMode: 'contain'}}
