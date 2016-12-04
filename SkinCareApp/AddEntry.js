@@ -76,7 +76,7 @@ export default class AddEntry extends Component {
   getProducts() {
     console.log("got to getProducts");
 
-    fetch('http://lit-gorge-31410.herokuapp.com/user-products?userid=' + this.props.userID, {
+    fetch('http://lit-gorge-31410.herokuapp.com/user-products?userID=' + this.props.userID, {
       method: "GET"}).then((response) => response.json())
                      .then((responseData) => {
                        for (item in responseData) {
