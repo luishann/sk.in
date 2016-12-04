@@ -100,7 +100,7 @@ export default class EntryView extends Component {
     }
 
     //f (this.state.photo == null) {
-      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
+      prod = JSON.stringify({userID: this.props.userID, entryID: this.props.entryID, entryDescription: this.state.description,
         date: newDate,
         rating: this.state.rating, photoLocation: this.state.dbphoto});
   /*  } else {

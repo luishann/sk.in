@@ -88,23 +88,23 @@ export default class UserView extends Component {
   _renderScene(route, navigator) {
     _navigator = navigator;
     if(route.id === 1){
-      return <Journal changeRoute={this._changeRoute} userID = {this.state.userID}/>
+      return <Journal changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 2){
-      return <Products changeRoute={this._changeRoute} userID = {this.state.userID}/>
+      return <Products changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 3) {
-      return <AddEntry changeRoute={this._changeRoute} photo={route.arg} userID = {this.state.userID}/>
+      return <AddEntry changeRoute={this._changeRoute} photo={route.arg} userID = {this.props.userID}/>
     } else if (route.id === 4) {
-      return <EntryView changeRoute={this._changeRoute} entryID={route.arg} photo={route.arg2} userID = {this.state.userID}/>
+      return <EntryView changeRoute={this._changeRoute} entryID={route.arg} photo={route.arg2} userID = {this.props.userID}/>
     } else if (route.id === 5) {
-      return <AddProduct changeRoute={this._changeRoute} userID = {this.state.userID}/>
+      return <AddProduct changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 6) {
-      return <ProductView product={route.arg} changeRoute={this._changeRoute} userID = {this.state.userID}/>
+      return <ProductView product={route.arg} changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 7) {
-      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.state.userID}/>
+      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.props.userID}/>
     } else if (route.id === 8) {
-      return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.state.userID}/>
+      return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if(route.id == 9){
-      return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.state.userID}/>
+      return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
     }
   }
 
@@ -125,7 +125,7 @@ export default class UserView extends Component {
         </View>
 
         {/* Journal item */}
-        <TouchableNativeFeedback onPress={this._change.bind(this, 1)}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 1,this.state.userID)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.menuItem}>
             <Text style={styles.txt}>
@@ -187,6 +187,7 @@ export default class UserView extends Component {
       </DrawerLayoutAndroid>
     );
   }
+
 
 }
 

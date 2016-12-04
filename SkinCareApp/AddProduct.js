@@ -52,7 +52,7 @@ export default class AddProduct extends Component {
       prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand,
         expirydate: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ')});
     } else {
-      prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand});
+      prod = JSON.stringify({userid: this.props.userID, name: this.state.name, brand: this.state.brand});
     }
 
     fetch("https://lit-gorge-31410.herokuapp.com/products", {

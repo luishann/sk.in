@@ -16,7 +16,7 @@ export default class LoginView extends Component {
       isSignup: 0,
       isLogin: 0
     };
-    this.change = props.changeRoute;
+    //this.change = props.changeRoute;
   }
 
   _onPressSignup() {
@@ -27,7 +27,7 @@ export default class LoginView extends Component {
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({data: responseData[0],
-        userID: responseData[0].ID,
+        userID: responseData[0].id,
         username: responseData[0].username,
         password: responseData[0].password,
         email: responseData[0].email
@@ -55,6 +55,8 @@ export default class LoginView extends Component {
       return (
 
         //
+
+
         <UserView userID={this.state.userID}/>
       );
     }
