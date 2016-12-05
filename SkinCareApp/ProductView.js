@@ -129,7 +129,7 @@ _onPressButton(){
        <TouchableWithoutFeedback
         onPress={this.showPicker.bind(this, 'simple', {date: this.state.simpleDate})}>
         <View>
-          <Text style={styles.label}>Entry Date:</Text>
+          <Text style={styles.name}>Expiry Date:</Text>
           <Text style={styles.dateButton}>{this.state.simpleText}</Text>
         </View>
       </TouchableWithoutFeedback>
