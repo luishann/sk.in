@@ -4,9 +4,6 @@ TouchableWithoutFeedback, DatePickerAndroid} from 'react-native';
 
 export default class ProductView extends Component {
 
-
-
-
    constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +14,7 @@ export default class ProductView extends Component {
       data: null,
       isLoading: true,
       date: null,
-      simpleText: dateString
+      simpleText: null
     };
     this.change = props.changeRoute;
   }
@@ -39,7 +36,7 @@ export default class ProductView extends Component {
         console.log(response.json());} )*/
     .then((responseData) => {
 
-      var newDate = new Date(Date.parse(responseData[0].startdate.slice(0, 19).replace(' ', 'T')));
+      var newDate = new Date(Date.parse(responseData[0].expirydate.slice(0, 19).replace(' ', 'T')));
       dateString = newDate.toLocaleDateString();
       this.setState(
         {
@@ -126,7 +123,7 @@ _onPressButton(){
     return (
 
       <ScrollView style={styles.container}>
-       
+
       <Text style={styles.brand}>Product Brand:</Text>
       <TextInput style={styles.input}
         underlineColorAndroid={"transparent"}
@@ -148,9 +145,9 @@ _onPressButton(){
           <Text style={styles.dateButton}>{this.state.simpleText}</Text>
         </View>
       </TouchableWithoutFeedback>
-      
 
-      
+
+
 
       <View style={styles.container}>
 
@@ -160,14 +157,14 @@ _onPressButton(){
           <TouchableOpacity onPress={this._onPressButton.bind(this)}>
             <Text style={styles.button}>Modify Product</Text>
           </TouchableOpacity>
-          
+
           {/* Back button this.props.changeRoute.bind(this,2); the following is faster */}
           <TouchableOpacity onPress={()=>{_navigator.pop();}}>
             <Text style={styles.button}>Back</Text>
           </TouchableOpacity>
-        
 
-        
+
+
           </View>
         {/*
         <TouchableOpacity style={{flex: 1}}

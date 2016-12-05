@@ -19,7 +19,7 @@ class ProductList extends Component {
   }
 
   fetchData() {
-    fetch("https://lit-gorge-31410.herokuapp.com/products", {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/products?userid=" + this.props.userID, {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
@@ -50,7 +50,7 @@ class ProductList extends Component {
         <View style={styles.row}>
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.brand}>{product.brand}</Text>
-          
+
         </View>
       </TouchableNativeFeedback>
     );
@@ -70,7 +70,7 @@ export default class Products extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <ProductList changeRoute={this.props.changeRoute}/>
+        <ProductList changeRoute={this.props.changeRoute} userID={this.props.userID}/>
 
         {/* Add Product Button */}
         <TouchableOpacity onPress={this.props.changeRoute.bind(this, 5)}

@@ -49,7 +49,7 @@ export default class AddProduct extends Component {
   postProduct() {
     var prod;
     if (this.state.simpleText != 'Pick a Date') {
-      prod = JSON.stringify({userid: 1, name: this.state.name, brand: this.state.brand,
+      prod = JSON.stringify({userid: this.props.userID, name: this.state.name, brand: this.state.brand,
         expirydate: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ')});
     } else {
       prod = JSON.stringify({userid: this.props.userID, name: this.state.name, brand: this.state.brand});
@@ -65,7 +65,8 @@ export default class AddProduct extends Component {
     });
 
     dismissKeyboard();
-    this.props.changeRoute(6, JSON.parse(prod));
+    //this.props.changeRoute(6, JSON.parse(prod));
+    this.props.changeRoute(2, JSON.parse(prod));
   }
 
   render() {
