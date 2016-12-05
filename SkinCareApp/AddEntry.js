@@ -66,7 +66,7 @@ export default class AddEntry extends Component {
   }
 
   _onPressButton() {
-    prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
+    prod = JSON.stringify({userID: this.props.userID, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
       rating: this.state.rating, photo: this.state.photoData});
 
@@ -122,7 +122,7 @@ export default class AddEntry extends Component {
   getProducts() {
     console.log("got to getProducts");
 
-    fetch('http://lit-gorge-31410.herokuapp.com/user-products?userID=1', {
+    fetch('http://lit-gorge-31410.herokuapp.com/user-products?userID=' + this.props.userID, {
       method: "GET"}).then((response) => response.json())
                      .then((responseData) => {
                        for (item in responseData) {

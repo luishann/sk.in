@@ -19,7 +19,7 @@ class EntryList extends Component {
   }
 
   fetchData() {
-    fetch("https://lit-gorge-31410.herokuapp.com/entries?userID=1", {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/entries?userID="+ this.props.userID, {method: "GET"})
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
@@ -50,7 +50,7 @@ class EntryList extends Component {
     console.log(photo);
 
     return (
-      <TouchableNativeFeedback onPress={() => this.props.changeRoute(4, entry.id)}
+      <TouchableNativeFeedback onPress={() => this.props.changeRoute(4, entry.id,null,this.props.userID)}
       background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
           <View style={styles.entry}>
@@ -80,20 +80,28 @@ class EntryList extends Component {
 
 
 export default class Journal extends Component {
+
   render() {
+    if(this.props.userID){
     return (
       <View style={{flex: 1}}>
 
-        <EntryList changeRoute={this.props.changeRoute}/>
+        <EntryList changeRoute={this.props.changeRoute} userID={this.props.userID}/>
 
         {/* Add Entry Button */}
-        <TouchableOpacity onPress={this.props.changeRoute.bind(this, 3, null)}
+        <TouchableOpacity onPress={this.props.changeRoute.bind(this, 3, null,this.props.userID)}
         style={styles.touchableButton}>
           <Image source={require('./icons/ic_add_yellow.png')}/>
         </TouchableOpacity>
       </View>
     )
   }
+  else{
+    return(
+      <View>
+      </View>
+    );
+  }}
 
 }
 

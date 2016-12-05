@@ -25,7 +25,7 @@ export default class EntryAnalytics extends Component {
 	fetchData() {
 		var x_Values = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	 	var y_Values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	  fetch("https://lit-gorge-31410.herokuapp.com/avg-rating?userID=1&year=" + "\'" + this.state.year + "\'", {method: "GET"})
+	  fetch("https://lit-gorge-31410.herokuapp.com/avg-rating?userID="+this.props.userID+"&year=" + "\'" + this.state.year + "\'", {method: "GET"})
 	    .then((response) => response.json())
 	    .then((responseData) => {
 				console.log(responseData);

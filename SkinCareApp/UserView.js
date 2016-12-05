@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -59,7 +53,12 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 });
 
 export default class UserView extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+    userID: props.userID
+    };
+  }
   // Open navigation drawer
   _setDrawer() {
     this.refs['DRAWER'].openDrawer();
@@ -91,25 +90,25 @@ export default class UserView extends Component {
   _renderScene(route, navigator) {
     _navigator = navigator;
     if(route.id === 1){
-      return <Journal changeRoute={this._changeRoute}/>
+      return <Journal changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 2){
-      return <Products changeRoute={this._changeRoute}/>
+      return <Products changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 3) {
-      return <AddEntry changeRoute={this._changeRoute} photo={route.arg}/>
+      return <AddEntry changeRoute={this._changeRoute} photo={route.arg} userID = {this.props.userID}/>
     } else if (route.id === 4) {
-      return <EntryView changeRoute={this._changeRoute} entryID={route.arg} photo={route.arg2}/>
+      return <EntryView changeRoute={this._changeRoute} entryID={route.arg} photo={route.arg2} userID = {this.props.userID}/>
     } else if (route.id === 5) {
-      return <AddProduct changeRoute={this._changeRoute}/>
+      return <AddProduct changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 6) {
-      return <ProductView changeRoute={this._changeRoute} product={route.arg} productID={route.arg2}/>
+      return <ProductView product={route.arg} productID={route.arg2} changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 7) {
-      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2}/>
+      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.props.userID}/>
     } else if (route.id === 8) {
-      return <EntryAnalytics changeRoute={this._changeRoute} year={route.arg}/>
+      return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.props.userID} year={route.arg}/>
     } else if(route.id == 9){
-      return <ProductAnalytics changeRoute={this._changeRoute}/>
+      return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 10) {
-      return <Years changeRoute={this._changeRoute}/>
+      return <Years changeRoute={this._changeRoute} userID = {this.props.userID}/>
     }
   }
 
@@ -130,7 +129,7 @@ export default class UserView extends Component {
         </View>
 
         {/* Journal item */}
-        <TouchableNativeFeedback onPress={this._change.bind(this, 1)}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 1,this.state.userID)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.menuItem}>
             <Text style={styles.txt}>
@@ -192,6 +191,7 @@ export default class UserView extends Component {
       </DrawerLayoutAndroid>
     );
   }
+
 
 }
 

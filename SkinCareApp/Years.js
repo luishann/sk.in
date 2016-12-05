@@ -21,7 +21,7 @@ export default class Years extends Component {
   	}
 
   fetchData() {
-    fetch("https://lit-gorge-31410.herokuapp.com/getEntryYears?userID=1", {method: "GET"})
+    fetch("https://lit-gorge-31410.herokuapp.com/getEntryYears?userID="+ this.props.userID, {method: "GET"})
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({

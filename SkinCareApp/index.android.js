@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -20,6 +14,7 @@ import {
 } from 'react-native';
 
 import UserView from './UserView';
+import Login from './LoginView';
 
 export default class SkinCareApp extends Component {
   constructor(props) {
@@ -27,7 +22,10 @@ export default class SkinCareApp extends Component {
     this.state = {
       // userID hardcoded to 1, later we should change it to null once we
       // finished implementing login/signup
-      userID: 1,
+
+      text: "",
+      userID: 0,
+
     };
   }
 
@@ -40,9 +38,9 @@ export default class SkinCareApp extends Component {
     return (
       <View style={{flex: 1}}>
         { this.state.userID ?  <UserView userID={this.state.userID} />
-          : <Text>'Replace this text with the login/signup component.'
-          {/*For example: Login setUserID={this._setUserID}
-          might have to do this._setUserID.bind(this) though*/}</Text>}
+
+          : <Login setUserID={this._setUserID} text={this.text}/>}
+
       </View>
     );
   }
