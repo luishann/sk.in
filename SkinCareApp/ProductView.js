@@ -123,7 +123,7 @@ _onPressButton(){
     return (
 
       <ScrollView style={styles.container}>
-       
+
       <Text style={styles.brand}>Product Brand:</Text>
       <TextInput style={styles.input}
         underlineColorAndroid={"transparent"}
@@ -145,7 +145,6 @@ _onPressButton(){
           <Text style={styles.dateButton}>{this.state.simpleText}</Text>
         </View>
       </TouchableWithoutFeedback>
-<<<<<<< HEAD
 
       <Text style={styles.name}>Name:</Text>
           <TextInput style={styles.input}
@@ -153,11 +152,7 @@ _onPressButton(){
             defaultValue  = {this.state.name}
             onChangeText={(name) => this.setState({name})}
           />
-=======
-      
->>>>>>> master
 
-      
 
       <View style={styles.container}>
 

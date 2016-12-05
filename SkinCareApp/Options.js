@@ -9,11 +9,22 @@ export default class Options extends Component{
 
     constructor(props){
       super(props);
-      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = {
         isLoading: true,
-        dataSource: ds.cloneWithRows(['Max Product Overall', 'Min Product Overall'])
+        dataSource:new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
       };
+    }
+
+    componentDidMount(){
+      this.populate();
+    }
+
+    populate(){
+      const options = [{"option":"Maximum-Overall"},{"option":"Minimum-Overall"}];
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(options),
+        isLoading: false
+      });
     }
 
     render() {
