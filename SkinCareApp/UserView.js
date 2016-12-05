@@ -100,7 +100,7 @@ export default class UserView extends Component {
     } else if (route.id === 5) {
       return <AddProduct changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 6) {
-      return <ProductView product={route.arg} changeRoute={this._changeRoute} userID = {this.props.userID}/>
+      return <ProductView product={route.arg} productID={route.arg2} changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 7) {
       return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.props.userID}/>
     } else if (route.id === 8) {
