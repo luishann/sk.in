@@ -151,10 +151,7 @@ _onPressButton(){
       />
 
       <View style={styles.container}>
-        <Text style={styles.brand}>{this.props.product.brand}</Text>
-        <Text style={styles.name}>{this.props.product.name}</Text>
-        <Text style={styles.text}>Expiry Date: {this.state.date}</Text>
-        <Text> This is text I am adding</Text>
+
 
         <View style={styles.buttons}>
 
