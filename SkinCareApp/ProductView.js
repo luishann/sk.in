@@ -4,9 +4,6 @@ TouchableWithoutFeedback, DatePickerAndroid} from 'react-native';
 
 export default class ProductView extends Component {
 
-
-
-
    constructor(props) {
     super(props);
     this.state = {
@@ -135,7 +132,7 @@ _onPressButton(){
           <Text style={styles.dateButton}>{this.state.simpleText}</Text>
         </View>
       </TouchableWithoutFeedback>
-      
+
       <Text style={styles.name}>Name:</Text>
           <TextInput style={styles.input}
             underlineColorAndroid={"transparent"}
@@ -158,14 +155,14 @@ _onPressButton(){
           <TouchableOpacity onPress={this._onPressButton.bind(this)}>
             <Text style={styles.button}>Modify Product</Text>
           </TouchableOpacity>
-          
+
           {/* Back button this.props.changeRoute.bind(this,2); the following is faster */}
           <TouchableOpacity onPress={()=>{_navigator.pop();}}>
             <Text style={styles.button}>Back</Text>
           </TouchableOpacity>
-        
 
-        
+
+
           </View>
         {/*
         <TouchableOpacity style={{flex: 1}}
