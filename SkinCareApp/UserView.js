@@ -23,6 +23,7 @@ import ChoosePhoto from './ChoosePhoto';
 import EntryAnalytics from './EntryAnalytics';
 import Years from './Years';
 import ProductAnalytics from './ProductAnalytics';
+import Options from './Options';
 
 
 //here import a new class (and export it from before)
@@ -102,13 +103,15 @@ export default class UserView extends Component {
     } else if (route.id === 6) {
       return <ProductView product={route.arg} productID={route.arg2} changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 7) {
-      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.props.userID}/>
+      return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID ={this.props.userID}/>
     } else if (route.id === 8) {
       return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.props.userID} year={route.arg}/>
     } else if(route.id == 9){
-      return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
+      return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.props.userID} option={route.arg}/>
     } else if (route.id === 10) {
       return <Years changeRoute={this._changeRoute} userID = {this.props.userID}/>
+    } else if(route.id == 11){
+      return <Options changeRoute={this._changeRoute} userID = {this.props.userID}/>
     }
   }
 
@@ -157,7 +160,7 @@ export default class UserView extends Component {
           </View>
         </TouchableNativeFeedback>
         {/*Product Analytics */}
-        <TouchableNativeFeedback onPress={this._change.bind(this, 9)}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 11)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.analytics}>
             <Text style={styles.txt}>

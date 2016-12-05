@@ -147,8 +147,6 @@ _onPressButton(){
       </TouchableWithoutFeedback>
 
 
-
-
       <View style={styles.container}>
 
 

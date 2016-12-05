@@ -39,7 +39,7 @@ export default class EntryAnalytics extends Component {
 	      this.setState({
 					data: {
 						xValues: x_Values,
-						yValues: [{data: y_Values, label:'My Progress', config:{color: '#21beca'}}]
+						yValues: [{data: y_Values, label:'', config:{color: '#21beca'}}]
 					},
 	        isLoading: false,
 	      });
