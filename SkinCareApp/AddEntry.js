@@ -77,6 +77,8 @@ export default class AddEntry extends Component {
       modalVisible: false,
       entryID: 0,
       tags: [],
+      issues: [],
+      issueID: 0,
       currentTag: ''
     };
     this.change = props.changeRoute;
@@ -135,10 +137,57 @@ export default class AddEntry extends Component {
         },
         body: prod
       })
+    }
 
+    this.postMyIssues(entryID);
+  }
+
+  postMyIssues(entryID) {
+    console.log("got to postMyIssues");
+
+    for (var i = 0; i < this.state.tags.length; i++) {
+      var flag = false;
+      for (var n = 0; n < this.state.issues.length; n++) {
+        if (this.state.issues[n].name == this.state.tags[i]) {
+          flag = true;
+          this.setState({issueID: this.state.issues[n].id});
+          this.postIssuesEntries(entryID);
+        }
+      }
+
+      if (!flag) {
+        console.log(this.state.tags[i]);
+        prod = JSON.stringify({name: this.state.tags[i]});
+        fetch('http://lit-gorge-31410.herokuapp.com/issues', {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: prod
+        }).then((response) => response.json())
+          .then((responseData) => {
+            this.setState({issueID: responseData[0].id});
+            this.postIssuesEntries(entryID);
+          }).done();
+      }
     }
 
     this.change(1);
+  }
+
+  postIssuesEntries(entry) {
+
+    var prod = JSON.stringify({entryID: entry, issueID: this.state.issueID});
+    fetch('http://lit-gorge-31410.herokuapp.com/entry-issues', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    })
+
   }
 
   getProducts() {
@@ -152,14 +201,23 @@ export default class AddEntry extends Component {
                          newArray2.push(responseData[item].id + ", " + responseData[item].name);
                          this.setState({optionsNames : newArray2});
                        }
-                       console.log(this.state.options);
-                       console.log(this.state.optionsNames);
                      })
                      .done();
   }
 
+  getIssues() {
+    fetch('http://lit-gorge-31410.herokuapp.com/issues', {method: "GET"})
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({issues : responseData});
+        console.log(this.state.issues);
+      })
+      .done();
+  }
+
   componentDidMount() {
     this.getProducts();
+    this.getIssues();
   }
 
   showPicker = async (stateKey, options) => {
@@ -225,6 +283,14 @@ export default class AddEntry extends Component {
   render() {
 
     let rows = this.state.tags.map((r, i) => {
+    	return (
+        <View>
+        	<Text style={styles.prodUsed}>{r}</Text>
+        </View>
+      )
+    })
+
+    let rows2 = this.state.products.map((r, i) => {
     	return (
         <View>
         	<Text style={styles.prodUsed}>{r}</Text>
@@ -325,6 +391,11 @@ export default class AddEntry extends Component {
             maxSelectedOptions={this.state.optionsNames.size}
             onSelection={(option)=> this.setProducts(option)}
           />
+        </View>
+
+        <View style={styles.pad}>
+          <Text style={styles.label}>Products Chosen:</Text>
+          { rows2 }
         </View>
 
         <View style={styles.buttons}>

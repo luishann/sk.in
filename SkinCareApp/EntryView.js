@@ -41,7 +41,8 @@ export default class EntryView extends Component {
       dbphoto: null,
       date: null,
       products: [],
-      productNames: []
+      productNames: [],
+      issues: []
     };
     this.change = props.changeRoute;
   }
@@ -49,6 +50,7 @@ export default class EntryView extends Component {
   componentDidMount() {
     this._randFunc();
     this.getProducts();
+    this.getIssues();
     console.log(this.state.productNames);
   }
 
@@ -99,6 +101,17 @@ export default class EntryView extends Component {
       .done();
     }
 
+  }
+
+  getIssues() {
+    console.log("got to get issues");
+
+    fetch("https://lit-gorge-31410.herokuapp.com/entry-issues?entryID=" + this.state.entryID, {method: "GET"})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({issues : responseData});
+    })
+    .done();
   }
 
   renderLoadingView() {
@@ -209,6 +222,17 @@ export default class EntryView extends Component {
             placeholder = {this.state.description}
             onChangeText={(description) => this.setState({description})}
           />
+        </View>
+
+        <View style={styles.pad}>
+          <Text style={styles.label}>Issues tagged:</Text>
+          {
+            this.state.issues.map(function(item, index){
+              return (
+                <Text style={styles.prodUsed}>{item.name}</Text>
+              )
+            }.bind(this))
+          }
         </View>
 
         {/* Dummy products data Test connectivity by adding stuff here */}
