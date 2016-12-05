@@ -82,14 +82,14 @@ _onPressButton(){
       <Text style={styles.name}>Name:</Text>
           <TextInput style={styles.input}
             underlineColorAndroid={"transparent"}
-            placeholder = {this.state.name}
+            defaultValue  = {this.state.name}
             onChangeText={(name) => this.setState({name})}
           />
 
       <Text style={styles.brand}>Brand:</Text>
       <TextInput style={styles.input}
         underlineColorAndroid={"transparent"}
-        placeholder = {this.state.brand}
+        defaultValue = {this.state.brand}
         onChangeText={(brand) => this.setState({brand})}
       />
 
