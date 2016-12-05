@@ -25,18 +25,21 @@ export default class ProductAnalytics extends Component {
 	fetchData() {
 		var x_Values = [];
 	 	var y_Values = [];
-	    fetch("https://lit-gorge-31410.herokuapp.com/" + this.state.option, {method: "GET"})
+		var path="https://lit-gorge-31410.herokuapp.com/" + this.state.option;
+		console.log(path);
+	    fetch(path, {method: "GET"})
 	    .then((response) => response.json())
 	    .then((responseData) => {
+				console.log(responseData);
 				for (var i = 0; i < responseData.length; i++) {
-					x_Values.push(responseData[i].month);
-					y_Values.push(responseData[i].rating);
+					x_Values.push(responseData[i].brand.substring(0,4));
+					y_Values.push(responseData[i].total_rating);
 				}
 
 	      this.setState({
 	        data: {
 						xValues: x_Values,
-						yValues: [{data: y_Values, label:'Overall Products', config:{color: '#FF6663'}}]
+						yValues: [{data: y_Values, label:'', config:{color: '#FF6663'}}]
 					},
 	        isLoading: false,
 	      });
@@ -47,7 +50,7 @@ export default class ProductAnalytics extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.text}> {this.state.year} </Text>
+				<Text style={styles.text}> 5 {this.state.option} </Text>
 					<View style={styles.chartContainer}>
 						<BarChart
 								style={{flex:1}}
