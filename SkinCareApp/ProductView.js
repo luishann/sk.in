@@ -88,9 +88,7 @@ _onPressButton(){
     }
 
     //f (this.state.photo == null) {
-      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
-        date: newDate,
-        rating: this.state.rating, photoLocation: this.state.dbphoto});
+      prod = JSON.stringify({penid: this.state.id, brand: this.state.brand, name: this.state.name, startdate: this.state.date});
   /*  } else {
       prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
         date: newDate,
@@ -99,7 +97,7 @@ _onPressButton(){
 
     console.log(prod);
 
-    fetch('https://lit-gorge-31410.herokuapp.com/edit-entry', {
+    fetch('https://lit-gorge-31410.herokuapp.com/edit-product', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -108,7 +106,7 @@ _onPressButton(){
       body: prod
     });
 
-    this.change(1);
+    this.change(2);
 
   //--this.props.changeRoute.bind(this,1);
   //_navigator.pop();
