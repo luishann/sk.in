@@ -85,9 +85,7 @@ _onPressButton(){
     }
 
     //f (this.state.photo == null) {
-      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
-        date: newDate,
-        rating: this.state.rating, photoLocation: this.state.dbphoto});
+      prod = JSON.stringify({penid: this.state.id, brand: this.state.brand, name: this.state.name, startdate: this.state.date});
   /*  } else {
       prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
         date: newDate,
@@ -96,7 +94,7 @@ _onPressButton(){
 
     console.log(prod);
 
-    fetch('https://lit-gorge-31410.herokuapp.com/edit-entry', {
+    fetch('https://lit-gorge-31410.herokuapp.com/edit-product', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -105,7 +103,7 @@ _onPressButton(){
       body: prod
     });
 
-    this.change(1);
+    this.change(2);
 
   //--this.props.changeRoute.bind(this,1);
   //_navigator.pop();
@@ -125,13 +123,29 @@ _onPressButton(){
     return (
 
       <ScrollView style={styles.container}>
-       <TouchableWithoutFeedback
+       
+      <Text style={styles.brand}>Product Brand:</Text>
+      <TextInput style={styles.input}
+        underlineColorAndroid={"transparent"}
+        defaultValue = {this.state.brand}
+        onChangeText={(brand) => this.setState({brand})}
+      />
+
+      <Text style={styles.name}>Product Name:</Text>
+          <TextInput style={styles.input}
+            underlineColorAndroid={"transparent"}
+            defaultValue  = {this.state.name}
+            onChangeText={(name) => this.setState({name})}
+          />
+
+      <TouchableWithoutFeedback
         onPress={this.showPicker.bind(this, 'simple', {date: this.state.simpleDate})}>
         <View>
-          <Text style={styles.label}>Entry Date:</Text>
+          <Text style={styles.name}>Expiry Date:</Text>
           <Text style={styles.dateButton}>{this.state.simpleText}</Text>
         </View>
       </TouchableWithoutFeedback>
+<<<<<<< HEAD
 
       <Text style={styles.name}>Name:</Text>
           <TextInput style={styles.input}
@@ -139,13 +153,11 @@ _onPressButton(){
             defaultValue  = {this.state.name}
             onChangeText={(name) => this.setState({name})}
           />
+=======
+      
+>>>>>>> master
 
-      <Text style={styles.brand}>Brand:</Text>
-      <TextInput style={styles.input}
-        underlineColorAndroid={"transparent"}
-        defaultValue = {this.state.brand}
-        onChangeText={(brand) => this.setState({brand})}
-      />
+      
 
       <View style={styles.container}>
 
@@ -183,11 +195,12 @@ var styles = StyleSheet.create({
     padding: 20,
   },
   brand: {
-    fontSize: 22,
+    fontSize: 15,
     color: '#222',
+    marginBottom: 10
   },
   name: {
-    fontSize: 19,
+    fontSize: 15,
     color: '#222',
     marginBottom: 10
   },

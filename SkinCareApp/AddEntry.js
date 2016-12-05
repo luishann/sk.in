@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, TextInput,
   DatePickerAndroid, Slider, Dimensions, Picker, Modal } from 'react-native';
 import UploadPhoto from './UploadPhoto';
 import YellowButton from './YellowButton';
-import MultipleChoice from 'react-native-multiple-choice'
+import MultipleChoice from 'react-native-multiple-choice';
 
 const dummyData = [];
 console.disableYellowBox = true;
@@ -33,6 +33,25 @@ class SliderExample extends React.Component {
   }
 }
 
+class TagText extends React.Component {
+  static defaultProps = {
+    text: ''
+  };
+
+  state = {
+    text: this.props.text
+  };
+
+  render() {
+    console.log("got here");
+    return (
+      <View>
+        <Text>{this.state.text}</Text>
+      </View>
+    )
+  }
+}
+
 export default class AddEntry extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +75,11 @@ export default class AddEntry extends Component {
       optionsRatings: 0,
       value: null,
       modalVisible: false,
-      entryID: 0
+      entryID: 0,
+      tags: [],
+      issues: [],
+      issueID: 0,
+      currentTag: ''
     };
     this.change = props.changeRoute;
   }
@@ -116,7 +139,55 @@ export default class AddEntry extends Component {
       })
     }
 
+    this.postMyIssues(entryID);
+  }
+
+  postMyIssues(entryID) {
+    console.log("got to postMyIssues");
+
+    for (var i = 0; i < this.state.tags.length; i++) {
+      var flag = false;
+      for (var n = 0; n < this.state.issues.length; n++) {
+        if (this.state.issues[n].name == this.state.tags[i]) {
+          flag = true;
+          this.setState({issueID: this.state.issues[n].id});
+          this.postIssuesEntries(entryID);
+        }
+      }
+
+      if (!flag) {
+        console.log(this.state.tags[i]);
+        prod = JSON.stringify({name: this.state.tags[i]});
+        fetch('http://lit-gorge-31410.herokuapp.com/issues', {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: prod
+        }).then((response) => response.json())
+          .then((responseData) => {
+            this.setState({issueID: responseData[0].id});
+            this.postIssuesEntries(entryID);
+          }).done();
+      }
+    }
+
     this.change(1);
+  }
+
+  postIssuesEntries(entry) {
+
+    var prod = JSON.stringify({entryID: entry, issueID: this.state.issueID});
+    fetch('http://lit-gorge-31410.herokuapp.com/entry-issues', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    })
+
   }
 
   getProducts() {
@@ -130,14 +201,23 @@ export default class AddEntry extends Component {
                          newArray2.push(responseData[item].id + ", " + responseData[item].name);
                          this.setState({optionsNames : newArray2});
                        }
-                       console.log(this.state.options);
-                       console.log(this.state.optionsNames);
                      })
                      .done();
   }
 
+  getIssues() {
+    fetch('http://lit-gorge-31410.herokuapp.com/issues', {method: "GET"})
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({issues : responseData});
+        console.log(this.state.issues);
+      })
+      .done();
+  }
+
   componentDidMount() {
     this.getProducts();
+    this.getIssues();
   }
 
   showPicker = async (stateKey, options) => {
@@ -194,7 +274,29 @@ export default class AddEntry extends Component {
     this.setState({products: array});
   }
 
+  _addRow() {
+  	this.state.tags.push(this.state.currentTag);
+    this.setState({ tags: this.state.tags });
+    console.log(this.state.tags);
+  }
+
   render() {
+
+    let rows = this.state.tags.map((r, i) => {
+    	return (
+        <View>
+        	<Text style={styles.prodUsed}>{r}</Text>
+        </View>
+      )
+    })
+
+    let rows2 = this.state.products.map((r, i) => {
+    	return (
+        <View>
+        	<Text style={styles.prodUsed}>{r}</Text>
+        </View>
+      )
+    })
 
     return (
 
@@ -267,14 +369,33 @@ export default class AddEntry extends Component {
           />
         </View>
 
+        {/* Tags */}
+        <View style={styles.pad}>
+          <Text style={styles.label}>Tag Issues:</Text>
+          <TextInput style={styles.input}
+            underlineColorAndroid={"transparent"}
+            onChangeText={(currentTag) => this.setState({currentTag})}
+          />
+          <YellowButton onPressFunction={this._addRow.bind(this)} buttonLabel='Add Issue'/>
+          { rows }
+        </View>
+
         {/* Products data */}
         <View style={styles.pad}>
+          <Text style={styles.label}>Your Products</Text>
+          <Text style={{paddingBottom: 10}}>Click on a product to add it. Click on the "Product Rating" button to rate the products individually.</Text>
           <MultipleChoice
+            style={styles.prodUsed}
             options={this.state.optionsNames}
             selectedOptions={[]}
             maxSelectedOptions={this.state.optionsNames.size}
             onSelection={(option)=> this.setProducts(option)}
           />
+        </View>
+
+        <View style={styles.pad}>
+          <Text style={styles.label}>Products Chosen:</Text>
+          { rows2 }
         </View>
 
         <View style={styles.buttons}>
