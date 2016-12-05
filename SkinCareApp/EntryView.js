@@ -46,6 +46,7 @@ export default class EntryView extends Component {
 
   componentDidMount() {
     this._randFunc();
+    //this.getProducts();
   }
 
   _randFunc(data) {
@@ -66,6 +67,18 @@ export default class EntryView extends Component {
     })
     .done();
   }
+
+  /*getProducts() {
+
+      fetch("https://lit-gorge-31410.herokuapp.com/entry-products?entryID" + this.state.entryID, {method: "GET"})
+       .then((response) => response.json())
+       .then((responseData) => {
+         console.log(responseData);
+       })
+       .done();
+
+  }*/
+
   renderLoadingView() {
     return (
       <View style={styles.loading}>

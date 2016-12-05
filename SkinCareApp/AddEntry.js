@@ -8,6 +8,7 @@ import YellowButton from './YellowButton';
 import MultipleChoice from 'react-native-multiple-choice'
 
 const dummyData = [];
+console.disableYellowBox = true;
 
 class SliderExample extends React.Component {
   static defaultProps = {
@@ -54,7 +55,8 @@ export default class AddEntry extends Component {
       optionsNames: [],
       optionsRatings: 0,
       value: null,
-      modalVisible: false
+      modalVisible: false,
+      entryID: 0
     };
     this.change = props.changeRoute;
   }
@@ -67,16 +69,52 @@ export default class AddEntry extends Component {
     prod = JSON.stringify({userID: 1, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
       rating: this.state.rating, photo: this.state.photoData});
+
     fetch('https://lit-gorge-31410.herokuapp.com/entry', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: prod
-    }).catch(function(error) {
-      console.log("Error sending entry to server: " + error);
-    });
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: prod
+        }).then((response) => response.json())
+          .then((responseData) => {
+            console.log(responseData);
+            this.postProductsUsed(responseData[0].id);
+          }).done();
+
+  }
+
+  postProductsUsed(entryID) {
+    console.log("got to postProductsUsed");
+
+    for (var i = 0; i < this.state.products.length; i++) {
+
+      var rating = null;
+      var array = this.state.products[i].split(",");
+      for (var n = 0; n < this.state.options.length; n++) {
+        if (this.state.options[n].productID == array[0]) {
+          rating = this.state.options[n].rating;
+        }
+      }
+
+      if (rating) {
+        var prod = JSON.stringify({entryID: entryID, productID: array[0], rating: rating});
+      } else {
+        var prod = JSON.stringify({entryID: entryID, productID: array[0]});
+      }
+
+      console.log(prod);
+
+      fetch('http://lit-gorge-31410.herokuapp.com/add-products-used', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: prod
+      })
+    }
 
     this.change(1);
   }
@@ -147,10 +185,9 @@ export default class AddEntry extends Component {
   setProducts(option) {
     console.log(option);
     var array = this.state.products;
-    var productArray = option.split(",");
-    var i = array.indexOf(productArray[0]);
+    var i = array.indexOf(option);
     if (i == -1) {
-      array.push(productArray[0]);
+      array.push(option);
     } else {
       array.splice(i, 1);
     }
@@ -173,11 +210,9 @@ export default class AddEntry extends Component {
            <ScrollView style={styles.container}>
 
               <View>
-                <TouchableHighlight onPress={() => {
+                <YellowButton onPressFunction={() => {
                  this.setModalVisible(!this.state.modalVisible)
-                }}>
-                 <Text>Hide Modal</Text>
-                </TouchableHighlight>
+               }} buttonLabel={'Back to Entry'}/>
 
                 <View>
                 {
