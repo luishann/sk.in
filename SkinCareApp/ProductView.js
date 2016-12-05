@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AppRegistry, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { View, Text, StyleSheet, AppRegistry, TouchableOpacity, ScrollView, TextInput,
+TouchableWithoutFeedback, DatePickerAndroid} from 'react-native';
 
 export default class ProductView extends Component {
 
@@ -15,7 +16,8 @@ export default class ProductView extends Component {
       description: null,
       data: null,
       isLoading: true,
-      date: null
+      date: null,
+      simpleText: dateString
     };
     this.change = props.changeRoute;
   }
@@ -38,7 +40,7 @@ export default class ProductView extends Component {
     .then((responseData) => {
 
       var newDate = new Date(Date.parse(responseData[0].startdate.slice(0, 19).replace(' ', 'T')));
-      //dateString = newDate.toLocaleDateString();
+      dateString = newDate.toLocaleDateString();
       this.setState(
         {
         data: responseData[0],
@@ -46,18 +48,67 @@ export default class ProductView extends Component {
         name: responseData[0].name,
         date: responseData[0].startdate,
         brand: responseData[0].brand,
-        isLoading: false
+        isLoading: false,
+        simpleText: dateString
       });
       console.log(this.state.description);
     })
     .done();
   }
 
+  showPicker = async (stateKey, options) => {
+    try {
+      var newState = {};
+      const {action, year, month, day} = await DatePickerAndroid.open(options);
+      if (action === DatePickerAndroid.dismissedAction) {
+        newState[stateKey + 'Text'] = 'dismissed';
+      } else {
+        var date = new Date(year, month, day);
+        newState[stateKey + 'Text'] = date.toLocaleDateString();
+        newState[stateKey + 'Date'] = date;
+      }
+      this.setState(newState);
+    } catch ({code, message}) {
+      console.warn(`Error in example '${stateKey}': `, message);
+    }
+  };
+
 
 
 
 
 _onPressButton(){
+    console.log("ticged");
+
+    var newDate;
+    if ( this.state.simpleDate != null) {
+      newDate = this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' ');
+    } else {
+      newDate = this.state.date;
+    }
+
+    //f (this.state.photo == null) {
+      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
+        date: newDate,
+        rating: this.state.rating, photoLocation: this.state.dbphoto});
+  /*  } else {
+      prod = JSON.stringify({userID: 1, entryID: this.props.entryID, entryDescription: this.state.description,
+        date: newDate,
+        rating: this.state.rating, photoLocation: this.state.photo});
+    }*/
+
+    console.log(prod);
+
+    fetch('https://lit-gorge-31410.herokuapp.com/edit-entry', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: prod
+    });
+
+    this.change(1);
 
   //--this.props.changeRoute.bind(this,1);
   //_navigator.pop();
@@ -77,7 +128,13 @@ _onPressButton(){
     return (
 
       <ScrollView style={styles.container}>
-
+       <TouchableWithoutFeedback
+        onPress={this.showPicker.bind(this, 'simple', {date: this.state.simpleDate})}>
+        <View>
+          <Text style={styles.label}>Entry Date:</Text>
+          <Text style={styles.dateButton}>{this.state.simpleText}</Text>
+        </View>
+      </TouchableWithoutFeedback>
       
       <Text style={styles.name}>Name:</Text>
           <TextInput style={styles.input}
@@ -169,5 +226,17 @@ var styles = StyleSheet.create({
   },
   pad: {
     paddingTop: 25
+  },
+    dateButton: {
+    color: '#222',
+    fontSize: 15,
+    backgroundColor: '#d8f5d1',
+    borderRadius: 5,
+    padding: 5
+  },
+  label: {
+    color: '#222',
+    fontSize: 15,
   }
+
 });
