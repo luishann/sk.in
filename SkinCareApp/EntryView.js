@@ -39,14 +39,17 @@ export default class EntryView extends Component {
       rating: 0,
       description: null,
       dbphoto: null,
-      date: null
+      date: null,
+      products: [],
+      productNames: []
     };
     this.change = props.changeRoute;
   }
 
   componentDidMount() {
     this._randFunc();
-    //this.getProducts();
+    this.getProducts();
+    console.log(this.state.productNames);
   }
 
   _randFunc(data) {
@@ -68,16 +71,35 @@ export default class EntryView extends Component {
     .done();
   }
 
-  /*getProducts() {
+  getProducts() {
 
-      fetch("https://lit-gorge-31410.herokuapp.com/entry-products?entryID" + this.state.entryID, {method: "GET"})
+      fetch("https://lit-gorge-31410.herokuapp.com/entry-products?entryID=" + this.state.entryID, {method: "GET"})
        .then((response) => response.json())
        .then((responseData) => {
-         console.log(responseData);
+         this.setState({products : responseData});
+         console.log(this.state.products);
+         this.getProductNames(this.state.products);
        })
        .done();
 
-  }*/
+  }
+
+  getProductNames(products) {
+    console.log("got here");
+
+    for (var i = 0; i < products.length; i++) {
+      console.log(products[i]);
+      fetch("https://lit-gorge-31410.herokuapp.com/products?prodid=" + products[i].productid, {method: "GET"})
+      .then((response) => response.json())
+      .then((responseData) => {
+        var array = this.state.productNames;
+        array.push(responseData[0].name);
+        this.setState({productNames : array});
+      })
+      .done();
+    }
+
+  }
 
   renderLoadingView() {
     return (
@@ -192,10 +214,13 @@ export default class EntryView extends Component {
         {/* Dummy products data Test connectivity by adding stuff here */}
         <View style={styles.pad}>
           <Text style={styles.label}>Products used:</Text>
-          <Text style={styles.prodUsed}>Neutrogena Daily Cleanser: 3</Text>
-          <Text style={styles.prodUsed}>Clinique Moisturizer: 4</Text>
-          <Text style={styles.prodUsed}>Stridex Acne Pads: 3.5</Text>
-          <Text style={styles.prodUsed}>OST Vitamin C Serum: 4.5</Text>
+          {
+            this.state.productNames.map(function(item, index){
+              return (
+                <Text style={styles.prodUsed}>{item}</Text>
+              )
+            }.bind(this))
+          }
         </View>
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Change Photo'}/>
