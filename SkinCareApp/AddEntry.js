@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, TextInput,
   DatePickerAndroid, Slider, Dimensions, Picker, Modal } from 'react-native';
 import UploadPhoto from './UploadPhoto';
 import YellowButton from './YellowButton';
-import MultipleChoice from 'react-native-multiple-choice'
+import MultipleChoice from 'react-native-multiple-choice';
 
 const dummyData = [];
 console.disableYellowBox = true;
@@ -33,6 +33,25 @@ class SliderExample extends React.Component {
   }
 }
 
+class TagText extends React.Component {
+  static defaultProps = {
+    text: ''
+  };
+
+  state = {
+    text: this.props.text
+  };
+
+  render() {
+    console.log("got here");
+    return (
+      <View>
+        <Text>{this.state.text}</Text>
+      </View>
+    )
+  }
+}
+
 export default class AddEntry extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +75,9 @@ export default class AddEntry extends Component {
       optionsRatings: 0,
       value: null,
       modalVisible: false,
-      entryID: 0
+      entryID: 0,
+      tags: [],
+      currentTag: ''
     };
     this.change = props.changeRoute;
   }
@@ -114,6 +135,7 @@ export default class AddEntry extends Component {
         },
         body: prod
       })
+
     }
 
     this.change(1);
@@ -194,7 +216,21 @@ export default class AddEntry extends Component {
     this.setState({products: array});
   }
 
+  _addRow() {
+  	this.state.tags.push(this.state.currentTag);
+    this.setState({ tags: this.state.tags });
+    console.log(this.state.tags);
+  }
+
   render() {
+
+    let rows = this.state.tags.map((r, i) => {
+    	return (
+        <View>
+        	<Text style={styles.prodUsed}>{r}</Text>
+        </View>
+      )
+    })
 
     return (
 
@@ -267,9 +303,23 @@ export default class AddEntry extends Component {
           />
         </View>
 
+        {/* Tags */}
+        <View style={styles.pad}>
+          <Text style={styles.label}>Tag Issues:</Text>
+          <TextInput style={styles.input}
+            underlineColorAndroid={"transparent"}
+            onChangeText={(currentTag) => this.setState({currentTag})}
+          />
+          <YellowButton onPressFunction={this._addRow.bind(this)} buttonLabel='Add Issue'/>
+          { rows }
+        </View>
+
         {/* Products data */}
         <View style={styles.pad}>
+          <Text style={styles.label}>Your Products</Text>
+          <Text style={{paddingBottom: 10}}>Click on a product to add it. Click on the "Product Rating" button to rate the products individually.</Text>
           <MultipleChoice
+            style={styles.prodUsed}
             options={this.state.optionsNames}
             selectedOptions={[]}
             maxSelectedOptions={this.state.optionsNames.size}
