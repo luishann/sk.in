@@ -11,7 +11,6 @@ export default class LoginView extends Component {
     this.state = {
       text: props.text,
       alert: "",
-      alertFlag: 0,
       username: 'Username',
       password: 'Password',
       email: '',
@@ -30,9 +29,9 @@ export default class LoginView extends Component {
     .then((response) =>  response.json())
     .then((responseData) => {
       if (responseData == ""){
+        Alert.alert(
+      "The username or password does not exist. Please try again.");
         this.setState({
-          alertFlag: 1,
-          alert: "\n\nThe username/password does not exist.\nPlease try again.",
           username: "username",
           password: "password",
           isLogin: 0
@@ -90,10 +89,6 @@ export default class LoginView extends Component {
           <Text style={styles.message}>{this.state.text}</Text>
 
       </View>
-      <View>
-                <Text style={styles.errmessage}>{this.state.alert}</Text>
-
-            </View>
         {/* Username */}
         <View style={styles.pad}>
           <Text style={styles.label}>Username:</Text>
