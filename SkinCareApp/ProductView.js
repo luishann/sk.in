@@ -126,7 +126,22 @@ _onPressButton(){
     return (
 
       <ScrollView style={styles.container}>
-       <TouchableWithoutFeedback
+       
+      <Text style={styles.brand}>Product Brand:</Text>
+      <TextInput style={styles.input}
+        underlineColorAndroid={"transparent"}
+        defaultValue = {this.state.brand}
+        onChangeText={(brand) => this.setState({brand})}
+      />
+
+      <Text style={styles.name}>Product Name:</Text>
+          <TextInput style={styles.input}
+            underlineColorAndroid={"transparent"}
+            defaultValue  = {this.state.name}
+            onChangeText={(name) => this.setState({name})}
+          />
+
+      <TouchableWithoutFeedback
         onPress={this.showPicker.bind(this, 'simple', {date: this.state.simpleDate})}>
         <View>
           <Text style={styles.name}>Expiry Date:</Text>
@@ -134,19 +149,8 @@ _onPressButton(){
         </View>
       </TouchableWithoutFeedback>
       
-      <Text style={styles.name}>Name:</Text>
-          <TextInput style={styles.input}
-            underlineColorAndroid={"transparent"}
-            defaultValue  = {this.state.name}
-            onChangeText={(name) => this.setState({name})}
-          />
 
-      <Text style={styles.brand}>Brand:</Text>
-      <TextInput style={styles.input}
-        underlineColorAndroid={"transparent"}
-        defaultValue = {this.state.brand}
-        onChangeText={(brand) => this.setState({brand})}
-      />
+      
 
       <View style={styles.container}>
 
@@ -184,11 +188,12 @@ var styles = StyleSheet.create({
     padding: 20,
   },
   brand: {
-    fontSize: 22,
+    fontSize: 15,
     color: '#222',
+    marginBottom: 10
   },
   name: {
-    fontSize: 19,
+    fontSize: 15,
     color: '#222',
     marginBottom: 10
   },
