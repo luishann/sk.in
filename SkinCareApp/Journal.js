@@ -56,8 +56,6 @@ class EntryList extends Component {
           <View style={styles.entry}>
             <Text style={styles.date}>{dateString}</Text>
             <Text style={styles.text}>Rating: {entry.rating}</Text>
-            <Text style={styles.text}>
-              <Image source={require('./icons/ic_tag_small_red.png')} />  acne</Text>
             </View>
             <View>
               {entry.photolocation ? <Image style={{flex:1, height: 100, width:100, resizeMode: 'contain'}}
