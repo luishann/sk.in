@@ -45,11 +45,12 @@ class ProductList extends Component {
 
   renderProduct(product) {
     return (
-      <TouchableNativeFeedback onPress={() => this.props.changeRoute(6, product)}
+      <TouchableNativeFeedback onPress={() => this.props.changeRoute(6, product, product.id)}
       background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.brand}>{product.brand}</Text>
+          
         </View>
       </TouchableNativeFeedback>
     );
