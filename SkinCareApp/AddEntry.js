@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput,
-  PixelRatio, TouchableOpacity, Image, ScrollView,
+  PixelRatio, TouchableOpacity, Image, ScrollView, TouchableHighlight,
   Platform, TouchableWithoutFeedback,
-  DatePickerAndroid, Slider, Dimensions, Picker } from 'react-native';
+  DatePickerAndroid, Slider, Dimensions, Picker, Modal } from 'react-native';
 import UploadPhoto from './UploadPhoto';
 import YellowButton from './YellowButton';
-import Select from 'react-select';
+import MultipleChoice from 'react-native-multiple-choice'
 
 const dummyData = [];
+console.disableYellowBox = true;
 
 class SliderExample extends React.Component {
   static defaultProps = {
@@ -48,27 +49,72 @@ export default class AddEntry extends Component {
       avatarSource: null,
       photo: this.props.photo,
       photoData: '',
-      products: null,
+      products: [],
       language: null,
       options: [],
+      optionsNames: [],
+      optionsRatings: 0,
+      value: null,
+      modalVisible: false,
+      entryID: 0
     };
     this.change = props.changeRoute;
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
   }
 
   _onPressButton() {
     prod = JSON.stringify({userID: this.props.userID, entryDescription: this.state.description,
       date: this.state.simpleDate.toISOString().slice(0, 19).replace('T', ' '),
       rating: this.state.rating, photo: this.state.photoData});
+
     fetch('https://lit-gorge-31410.herokuapp.com/entry', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: prod
-    }).catch(function(error) {
-      console.log("Error sending entry to server: " + error);
-    });
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: prod
+        }).then((response) => response.json())
+          .then((responseData) => {
+            console.log(responseData);
+            this.postProductsUsed(responseData[0].id);
+          }).done();
+
+  }
+
+  postProductsUsed(entryID) {
+    console.log("got to postProductsUsed");
+
+    for (var i = 0; i < this.state.products.length; i++) {
+
+      var rating = null;
+      var array = this.state.products[i].split(",");
+      for (var n = 0; n < this.state.options.length; n++) {
+        if (this.state.options[n].productID == array[0]) {
+          rating = this.state.options[n].rating;
+        }
+      }
+
+      if (rating) {
+        var prod = JSON.stringify({entryID: entryID, productID: array[0], rating: rating});
+      } else {
+        var prod = JSON.stringify({entryID: entryID, productID: array[0]});
+      }
+
+      console.log(prod);
+
+      fetch('http://lit-gorge-31410.herokuapp.com/add-products-used', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: prod
+      })
+    }
 
     this.change(1);
   }
@@ -80,11 +126,12 @@ export default class AddEntry extends Component {
       method: "GET"}).then((response) => response.json())
                      .then((responseData) => {
                        for (item in responseData) {
-                         var newArray = this.state.options;
-                         newArray.push({value: responseData[item].id, label: responseData[item].name});
-                         this.setState({options: newArray});
+                         var newArray2 = this.state.optionsNames;
+                         newArray2.push(responseData[item].id + ", " + responseData[item].name);
+                         this.setState({optionsNames : newArray2});
                        }
                        console.log(this.state.options);
+                       console.log(this.state.optionsNames);
                      })
                      .done();
   }
@@ -115,10 +162,79 @@ export default class AddEntry extends Component {
     console.log("Had set photo data to be: " + this.state.photoData);
   }
 
+  logChange(val) {
+    console.log("Selected: " + val);
+  }
+
+  setRatings(val, item) {
+    var array = item.split(",");
+    var newArray = this.state.options;
+    var flag = false;
+    for (var i = 0; i < newArray.length; i++) {
+      if (newArray[i].productID == array[0]) {
+        flag = true;
+        newArray[i].rating = val;
+      }
+    }
+    if (!flag) {
+      newArray.push({productID: array[0], rating: val});
+    }
+    this.setState({options: newArray});
+  }
+
+  setProducts(option) {
+    console.log(option);
+    var array = this.state.products;
+    var i = array.indexOf(option);
+    if (i == -1) {
+      array.push(option);
+    } else {
+      array.splice(i, 1);
+    }
+    this.setState({products: array});
+  }
+
   render() {
 
     return (
+
       <ScrollView style={styles.container}>
+
+        <View>
+          <Modal
+            animationType={"slide"}
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {alert("Modal has been closed.")}}
+            >
+           <ScrollView style={styles.container}>
+
+              <View>
+                <YellowButton onPressFunction={() => {
+                 this.setModalVisible(!this.state.modalVisible)
+               }} buttonLabel={'Back to Entry'}/>
+
+                <View>
+                {
+                  this.state.products.map(function(item, index){
+                    return (
+                      <View style={styles.ratingsPad}>
+                        <Text style={styles.label}>{item} Rating</Text>
+                        <SliderExample
+                          {...this.props}
+                          onSlidingComplete={(value) => this.setRatings(value, item)}
+                          minimumValue={0}
+                          maximumValue={5}
+                          step={0.5}/>
+                      </View>
+                    )
+                  }.bind(this))
+                }
+                </View>
+              </View>
+            </ScrollView>
+          </Modal>
+        </View>
 
         {/* Date picker */}
         <TouchableWithoutFeedback
@@ -151,17 +267,23 @@ export default class AddEntry extends Component {
           />
         </View>
 
-        {/* Dummy products data */}
+        {/* Products data */}
         <View style={styles.pad}>
-          <Picker
-            selectedValue={this.state.language}
-            onValueChange={(lang) => this.setState({language: lang})}>
-            <Picker.Item label="Java" value="java" />
-            <Picker.Item label="JavaScript" value="js" />
-          </Picker>
+          <MultipleChoice
+            options={this.state.optionsNames}
+            selectedOptions={[]}
+            maxSelectedOptions={this.state.optionsNames.size}
+            onSelection={(option)=> this.setProducts(option)}
+          />
         </View>
 
-
+        <View style={styles.buttons}>
+          <TouchableHighlight onPress={() => {
+            this.setModalVisible(true)
+          }}>
+            <Text style={styles.button}>Product Ratings</Text>
+          </TouchableHighlight>
+        </View>
 
         <UploadPhoto setPhotoData={this._setPhotoData.bind(this)} buttonLabel={'Add Photo'} />
         { this.state.photoData ?  <Image style={{flex:1, height:300, width:300, resizeMode: 'contain'}}
@@ -231,5 +353,9 @@ const styles = StyleSheet.create({
     fontSize:15,
     color: '#222',
     backgroundColor: '#d8f5d1'
+  },
+  ratingsPad: {
+    paddingTop: 30,
+    paddingBottom: 30
   }
 });

@@ -15,8 +15,7 @@
     "react-native-chart-android": "^1.0.6",
     "react-native-image-picker": "^0.23.0",
     "react-native-image-resizer": "0.0.12",
-    "react-select": "^1.0.0-rc.2",
-    "react-select-box": "^3.0.1"
+    "react-native-multiple-choice": "0.0.8"
   },
   "jest": {
     "preset": "jest-react-native"

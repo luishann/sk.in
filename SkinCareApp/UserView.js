@@ -21,7 +21,9 @@ import AddProduct from './AddProduct';
 import ProductView from './ProductView';
 import ChoosePhoto from './ChoosePhoto';
 import EntryAnalytics from './EntryAnalytics';
+import Years from './Years';
 import ProductAnalytics from './ProductAnalytics';
+
 
 //here import a new class (and export it from before)
 //and then add a new if else statement
@@ -102,9 +104,11 @@ export default class UserView extends Component {
     } else if (route.id === 7) {
       return <ChoosePhoto changeRoute={this._changeRoute} location={route.arg} entryID={route.arg2} userID = {this.props.userID}/>
     } else if (route.id === 8) {
-      return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
+      return <EntryAnalytics changeRoute={this._changeRoute} userID = {this.props.userID} year={route.arg}/>
     } else if(route.id == 9){
       return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
+    } else if (route.id === 10) {
+      return <Years changeRoute={this._changeRoute}/>
     }
   }
 
@@ -145,7 +149,7 @@ export default class UserView extends Component {
         <Text style={styles.navHeader}>Analytics</Text>
 
         {/*Entry Analytics */}
-        <TouchableNativeFeedback onPress={this._change.bind(this, 8)}
+        <TouchableNativeFeedback onPress={this._change.bind(this, 10)}
           background={TouchableNativeFeedback.Ripple('#000000')}>
           <View style={styles.analytics}>
             <Text style={styles.txt}>
