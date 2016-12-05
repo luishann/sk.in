@@ -108,7 +108,7 @@ export default class UserView extends Component {
     } else if(route.id == 9){
       return <ProductAnalytics changeRoute={this._changeRoute} userID = {this.props.userID}/>
     } else if (route.id === 10) {
-      return <Years changeRoute={this._changeRoute}/>
+      return <Years changeRoute={this._changeRoute} userID = {this.props.userID}/>
     }
   }
 
