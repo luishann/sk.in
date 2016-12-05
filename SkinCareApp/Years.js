@@ -34,26 +34,29 @@ export default class Years extends Component {
 
 	render() {
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderProduct.bind(this)}
-        style={styles.listView}
-      />
+      <ScrollView style={{flex:1}}>
+        <View style={styles.container}>
+          <Text style={styles.text}>All Years</Text>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderProduct.bind(this)}
+            style={styles.listView}
+          />
+        </View>
+      </ScrollView>
     );
 	}
 
   renderProduct(entry) {
     return (
-      <View style={styles.container}>
       <TouchableNativeFeedback onPress={() => this.props.changeRoute(8, entry.year)}
       background={TouchableNativeFeedback.Ripple('#000000')}>
         <View style={styles.row}>
           <View style={styles.entry}>
-            <Text style={styles.text}>{entry.year}</Text>
+            <Text style={styles.text2}>{entry.year}</Text>
           </View>
         </View>
       </TouchableNativeFeedback>
-      </View>
     );
   }
 
@@ -72,7 +75,7 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20
+    paddingTop: 50
   },
   row: {
     padding: 10,
@@ -91,7 +94,14 @@ var styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     flex: 1,
-    color: 'white',
+    paddingBottom: 30,
     textAlign: 'center'
   },
+  text2: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    flex: 1,
+    color: 'white',
+    textAlign: 'center'
+  }
 });
