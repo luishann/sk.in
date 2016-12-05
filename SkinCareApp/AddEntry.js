@@ -107,7 +107,9 @@ export default class AddEntry extends Component {
               console.log("shouldn't get here");
               this.postProductsUsed(responseData[0].id);
             }
-          }).done();
+          }).catch(function(err) {
+            console.log(err);
+          })
 
     this.change(1);
 
