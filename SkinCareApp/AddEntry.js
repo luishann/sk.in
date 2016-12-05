@@ -103,8 +103,13 @@ export default class AddEntry extends Component {
         }).then((response) => response.json())
           .then((responseData) => {
             console.log(responseData);
-            this.postProductsUsed(responseData[0].id);
+            if (this.state.photo == '') {
+              console.log("shouldn't get here");
+              this.postProductsUsed(responseData[0].id);
+            }
           }).done();
+
+    this.change(1);
 
   }
 
@@ -172,8 +177,6 @@ export default class AddEntry extends Component {
           }).done();
       }
     }
-
-    this.change(1);
   }
 
   postIssuesEntries(entry) {
